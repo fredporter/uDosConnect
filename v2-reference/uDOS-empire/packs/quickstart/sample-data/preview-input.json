@@ -1,0 +1,4 @@
+{
+  "server_operator_name": "Ubuntu Host Operator",
+  "server_goal": "Run a preview-first pack through the Ubuntu host compatibility seam and inspect the generated operator report."
+}

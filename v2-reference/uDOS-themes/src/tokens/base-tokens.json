@@ -1,0 +1,18 @@
+{
+  "version": "v2.2.1",
+  "token_categories": [
+    "color",
+    "typography",
+    "spacing",
+    "radius",
+    "border",
+    "shadow",
+    "motion",
+    "density",
+    "surface",
+    "state",
+    "feedback",
+    "focus",
+    "input"
+  ]
+}

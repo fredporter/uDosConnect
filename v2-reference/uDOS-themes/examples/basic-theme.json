@@ -1,0 +1,10 @@
+{
+  "theme": "public-forest",
+  "owner": "udos-themes",
+  "surface": "workspace-shell",
+  "tokens": {
+    "accent": "#3f7d4f",
+    "background": "#f2f0e8",
+    "foreground": "#1c221c"
+  }
+}

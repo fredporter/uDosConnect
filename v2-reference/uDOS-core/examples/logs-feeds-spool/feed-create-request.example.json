@@ -1,0 +1,18 @@
+{
+  "source": {
+    "spool": "mail",
+    "tags": [
+      "promo"
+    ]
+  },
+  "transform": {
+    "mode": "digest",
+    "group_by": "day",
+    "compact": "medium"
+  },
+  "output": {
+    "format": "rss",
+    "target": "private_feed",
+    "scope": "private"
+  }
+}

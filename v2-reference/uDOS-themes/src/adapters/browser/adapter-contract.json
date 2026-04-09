@@ -1,0 +1,11 @@
+{
+  "adapter_id": "browser-default",
+  "surface": "browser",
+  "supports": [
+    "rich-layout",
+    "shared-primitives",
+    "skins",
+    "keyboard-first",
+    "tailwind-prose-bridge"
+  ]
+}

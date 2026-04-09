@@ -1,0 +1,10 @@
+{
+  "adapter_id": "tui-default",
+  "surface": "tui",
+  "supports": [
+    "lip-gloss-style-mapping",
+    "keyboard-first",
+    "low-resource",
+    "guided-flow"
+  ]
+}

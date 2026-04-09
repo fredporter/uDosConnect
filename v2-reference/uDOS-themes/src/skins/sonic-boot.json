@@ -1,0 +1,8 @@
+{
+  "skin_id": "sonic-boot",
+  "overrides": {
+    "tone": "retro-boot",
+    "accent": "#4f7cff",
+    "loader": "c64-boot"
+  }
+}

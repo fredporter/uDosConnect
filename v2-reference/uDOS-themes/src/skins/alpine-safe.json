@@ -1,0 +1,8 @@
+{
+  "skin_id": "alpine-safe",
+  "overrides": {
+    "tone": "minimal-safe",
+    "accent": "#3f5862",
+    "motion": "reduced"
+  }
+}

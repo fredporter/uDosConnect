@@ -1,0 +1,13 @@
+{
+  "adapter_id": "workflow-default",
+  "surface": "workflow",
+  "supports": [
+    "binder-card",
+    "task-node",
+    "workflow-lane",
+    "timeline",
+    "status-indicator",
+    "agent-output",
+    "decision-block"
+  ]
+}

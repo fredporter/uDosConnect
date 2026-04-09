@@ -1,0 +1,32 @@
+# Local machine pointer (written by scripts/bootstrap-family-python.sh)
+.udos-family-python
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor / IDE
+*.swp
+*.swo
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Local workspace overrides (keep *.code-workspace committed)
+*.local.code-workspace
+
+# Scratch (family convention)
+.local/
+.compost/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+
+# Logs
+*.log

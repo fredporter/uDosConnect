@@ -1,0 +1,38 @@
+{
+  "name": "uDosConnect",
+  "folders": [
+    {
+      "name": "scripts (family helpers)",
+      "path": "scripts"
+    },
+    {
+      "name": "uDosDev",
+      "path": "uDosDev"
+    },
+    {
+      "name": "uDosDocs",
+      "path": "uDosDocs"
+    },
+    {
+      "name": "v2-reference (archived)",
+      "path": "v2-reference"
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/.DS_Store": true,
+      "**/node_modules": true,
+      "**/dist": true
+    },
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/dist": true
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode"
+    ]
+  }
+}

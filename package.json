@@ -1,0 +1,10 @@
+{
+  "name": "udos-connect",
+  "private": true,
+  "description": "uDos family monorepo — uDosDev (governance), uDosDocs, v2-reference, shared scripts",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fredporter/uDosConnect.git"
+  }
+}
