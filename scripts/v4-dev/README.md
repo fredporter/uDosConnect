@@ -1,6 +1,6 @@
 # v4 `~/Code/` dev scripts
 
-Small helpers for the **sibling-repo** layout described in **uDos-Go** `workspaces/README.md` — [github.com/fredporter/uDos-Go/tree/main/workspaces](https://github.com/fredporter/uDos-Go/tree/main/workspaces) (clone as `~/Code/uDosGo`).
+Small helpers for the **sibling-repo** layout opened by **uDos-Go** [`uDosGo.code-workspace`](https://github.com/fredporter/uDos-Go/blob/main/uDosGo.code-workspace) (clone as `~/Code/uDosGo`).
 
 | Script | Purpose |
 | --- | --- |
