@@ -6,7 +6,7 @@ Use this file as the single-source quick handoff note for future implementation 
 
 Read:
 
-- `uDOS-docs/docs/v2/classic-modern-mvp-0.1/README.md`
+- `uDosConnect/v2-reference/docs/uDosDocs-v2/classic-modern-mvp-0.1/README.md` (archived v2 bundle)
 - `sonic-screwdriver/docs/sonic-tui-charter.md`
 
 Then implement the requested phase **within those boundaries**.
@@ -33,4 +33,4 @@ Sonic = TUI only for install/repair/doctor; no browser; DB GUI = ThinUI/uDOS.
 
 ## Preferred one-liner
 
-"Read `uDOS-docs/docs/v2/classic-modern-mvp-0.1/README.md` and `sonic-screwdriver/docs/sonic-tui-charter.md`; implement X under those boundaries."
+"Read `uDosConnect/v2-reference/docs/uDosDocs-v2/classic-modern-mvp-0.1/README.md` and `sonic-screwdriver/docs/sonic-tui-charter.md`; implement X under those boundaries."

@@ -29,4 +29,4 @@ Open **`uDOS-dev/workspaces/archive/v2/cursor-09-classic-modern-mvp.code-workspa
 
 ## Suggested promotion path
 
-Draft in inbox first, then promote accepted content into canonical repo-local docs and `uDOS-dev` control-plane locations (and `uDOS-docs/docs/v2/classic-modern-mvp-0.1/` when promoted).
+Draft in inbox first, then promote accepted content into canonical repo-local docs and `uDosDev` control-plane locations. Historical v2 bundle (read-only archive): `uDosConnect/v2-reference/docs/uDosDocs-v2/classic-modern-mvp-0.1/`.

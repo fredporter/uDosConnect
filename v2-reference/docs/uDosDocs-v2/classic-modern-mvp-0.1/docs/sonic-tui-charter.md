@@ -1,6 +1,6 @@
 # Sonic Screwdriver — TUI Charter
 
-**Canonical location:** this file under `uDOS-docs/docs/v2/classic-modern-mvp-0.1/docs/`. **In-repo copy** for implementation (must stay aligned): `sonic-screwdriver/docs/sonic-tui-charter.md`.
+**Canonical location:** this file under `uDosConnect/v2-reference/docs/uDosDocs-v2/classic-modern-mvp-0.1/docs/` (archived v2 bundle). **In-repo copy** for implementation (must stay aligned): `sonic-screwdriver/docs/sonic-tui-charter.md`.
 
 ---
 
