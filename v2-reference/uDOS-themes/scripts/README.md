@@ -5,7 +5,7 @@
 Current script surfaces include:
 
 - `run-theme-checks.sh` for repo activation validation
-- `init-vendor-forks.sh` for `git submodule update --init` on `vendor/forks/*` (fredporter theme forks)
+- `init-vendor-forks.sh` — no-op in **v2-reference** (forks are vendored trees, not submodules)
 - `smoke-adapters.mjs` for browser/TUI/workflow/publish/forms smoke coverage
 - `sync-theme-tokens-to-workspace.sh` — copy `src/theme-tokens.json` to `uDOS-workspace/apps/web/src/lib/theme/theme-tokens.json` (run from a checkout where both repos sit next to each other under the family root)
 - `sync-publish-prose-preset-to-workspace.sh` — copy `src/adapters/publish/tailwind-prose-preset.json` to `uDOS-workspace/apps/web/src/lib/theme/publish/tailwind-prose-preset.json`
