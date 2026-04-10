@@ -1,6 +1,6 @@
 [submodule "uDosDocs"]
 	path = uDosDocs
-	url = https://github.com/fredporter/uDos-Docs.git
+	url = git@github.com:fredporter/uDosDocs.git
 [submodule "uDosDev"]
 	path = uDosDev
-	url = https://github.com/fredporter/uDos-Dev.git
+	url = git@github.com:fredporter/uDosDev.git
