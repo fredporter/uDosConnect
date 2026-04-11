@@ -17,7 +17,7 @@ All checkouts below are rooted at **`~/Code/`** (or an equivalent single parent 
 2. **Everything else in the family bundle** — governance, public docs, archived v2 module snapshots, shared bash/Python helpers, and future extension submodules — lives **under** the **`uDosConnect`** repository:
 
    **`~/Code/uDosConnect/`**  
-   **`~/Code/uDosConnect/uDosDev/`** — Task Forge, dev process v4, governance  
+   **`~/Code/uDosConnect/uDosDev/`** — Task, dev process v4, governance  
    **`~/Code/uDosConnect/uDosDocs/`** — public documentation corpus  
    **`~/Code/uDosConnect/v2-reference/`** — read-only historical module trees  
    **`~/Code/uDosConnect/scripts/`** — shared family scripts  
