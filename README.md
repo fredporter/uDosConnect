@@ -16,6 +16,7 @@ For local paths and multi-repo planning, use **[`docs/family-workspace-layout.md
 
 | Path | Role |
 | --- | --- |
+| [`TASKS.md`](TASKS.md) | Monorepo Task pointer — canonical backlog in **`uDosDev/TASKS.md`**; public docs in **`uDosDocs/TASKS.md`**. |
 | [`uDosDev/`](uDosDev/) | **Submodule** → [`uDos-Dev`](https://github.com/fredporter/uDos-Dev). Family workflow, Task (`TASKS.md`), dev process **v4**, governance scripts. |
 | [`uDosDocs/`](uDosDocs/) | **Submodule** → [`uDos-Docs`](https://github.com/fredporter/uDos-Docs). Public documentation corpus. |
 | [`courses/`](courses/) | **v4 learning pathway** — numbered shells (00–05) + **`06-ucode-runtime`**; locked narrative in **`uDosDocs/docs/educational-content/`**. Validate: `bash scripts/validate-courses.sh`. |
