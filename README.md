@@ -18,8 +18,9 @@ For local paths and multi-repo planning, use **[`docs/family-workspace-layout.md
 | --- | --- |
 | [`uDosDev/`](uDosDev/) | **Submodule** → [`uDos-Dev`](https://github.com/fredporter/uDos-Dev). Family workflow, Task (`TASKS.md`), dev process **v4**, governance scripts. |
 | [`uDosDocs/`](uDosDocs/) | **Submodule** → [`uDos-Docs`](https://github.com/fredporter/uDos-Docs). Public documentation corpus. |
+| [`courses/`](courses/) | **v4 learning pathway** — numbered shells (00–05) + **`06-ucode-runtime`**; locked narrative in **`uDosDocs/docs/educational-content/`**. Validate: `bash scripts/validate-courses.sh`. |
 | [`v2-reference/`](v2-reference/) | Archived conceptual **v2** module snapshots (historical code and notes — **not** a submodule; not the live integration). |
-| [`scripts/`](scripts/) | Shared Python bootstrap, family checks, and path helpers (see [`docs/shared-resources-architecture.md`](docs/shared-resources-architecture.md)). |
+| [`scripts/`](scripts/) | Shared Python bootstrap, family checks, course validation, and path helpers (see [`docs/shared-resources-architecture.md`](docs/shared-resources-architecture.md)). |
 
 ## Workspace
 

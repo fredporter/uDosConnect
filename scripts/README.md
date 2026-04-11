@@ -9,3 +9,5 @@ Run from the **repository root** (parent of this folder), for example:
 ```bash
 ./scripts/bootstrap-family-python.sh
 ```
+
+**Courses:** `./scripts/validate-courses.sh` — ensures each `courses/[0-9][0-9]-*/` folder has a `README.md`.
