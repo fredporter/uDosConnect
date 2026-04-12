@@ -8,7 +8,7 @@ This file satisfies the **Round F** requirement that each active repo exposes a 
 
 ## Backlog
 
-*(empty — use **uDosDev**.)*
+Mirror **[`uDosDev/TASKS.md`](uDosDev/TASKS.md)** — open: **`[UDEV-R39]`** destroy/rebirth CLI, **`[UDEV-R40]`** integration suite expansion.
 
 ## Done
 
