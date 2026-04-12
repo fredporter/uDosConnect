@@ -26,7 +26,7 @@ For local paths and multi-repo planning, use **[`docs/family-workspace-layout.md
 
 ## Workspace
 
-Open [`uDosConnect.code-workspace`](uDosConnect.code-workspace) in Cursor or VS Code for the recommended multi-root view (`uDosDev`, `uDosDocs`, `v2-reference`, `scripts`, optional **`../uDosGo`**). **v4 dev rounds:** [`uDosDev/docs/v4-dev-rounds.md`](uDosDev/docs/v4-dev-rounds.md).
+Open [`uDosConnect.code-workspace`](uDosConnect.code-workspace) in Cursor or VS Code for the recommended multi-root view (`uDosDev`, `uDosDocs`, `v2-reference`, `scripts`, optional **`../uDosGo`**). **v4 dev rounds:** [`uDosDev/docs/v4-dev-rounds.md`](uDosDev/docs/v4-dev-rounds.md). **4.5+ contributor flow + resume:** [`uDosDev/docs/process/v4-5-plus-dev-flow-and-resume.md`](uDosDev/docs/process/v4-5-plus-dev-flow-and-resume.md).
 
 ## Adjacent repositories
 

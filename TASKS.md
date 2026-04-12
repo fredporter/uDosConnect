@@ -12,6 +12,8 @@ Mirror **[`uDosDev/TASKS.md`](uDosDev/TASKS.md)** — open: **`[UDEV-R39]`** des
 
 ## Done
 
+- [x] **4.5+ dev flow + resume (2026-04-12)** — README → [uDosDev `v4-5-plus-dev-flow-and-resume.md`](uDosDev/docs/process/v4-5-plus-dev-flow-and-resume.md); submodule bump
+
 - [x] **Restructure handoff (2026-04-12)** — canonical GitHub slugs in README / CONTRIBUTING / layout doc + v4 scripts README (**uDosGo**, **uDosDev**, **uDosDocs**); submodule **`uDosDev`** bump carries [v3-system-brief](uDosDev/docs/v3-system-brief.md) URL fixes
 
 - [x] **Root TASKS surface** — pointer file for automation + Round F alignment (2026-04-12)
