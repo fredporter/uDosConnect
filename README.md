@@ -17,7 +17,7 @@ For local paths and multi-repo planning, use **[`docs/family-workspace-layout.md
 | Path | Role |
 | --- | --- |
 | [`TASKS.md`](TASKS.md) | Monorepo Task pointer — canonical backlog in **`uDosDev/TASKS.md`**; public docs in **`uDosDocs/TASKS.md`**. |
-| [`uDosDev/`](uDosDev/) | **Submodule** → [`uDosDev`](https://github.com/fredporter/uDosDev). Family workflow, Task (`TASKS.md`), dev process **v4**, governance scripts. **v4 doc inventory:** [`uDosDev/docs/DOC-REGISTRY-uDosv4.md`](uDosDev/docs/DOC-REGISTRY-uDosv4.md). |
+| [`uDosDev/`](uDosDev/) | **Submodule** → [`uDosDev`](https://github.com/fredporter/uDosDev). Family workflow, Task (`TASKS.md`), dev process **v4**, governance scripts. **v4 doc inventory:** [`uDosDev/docs/DOC-REGISTRY-uDosv4.md`](uDosDev/docs/DOC-REGISTRY-uDosv4.md). **Ecosystem map (v4.5+):** [`uDosDev/docs/family-product-map-v4.5.md`](uDosDev/docs/family-product-map-v4.5.md) · [`uDosDev/docs/future/V451_CONSUMER_SPEC_ROADMAP_v4.5.1.md`](uDosDev/docs/future/V451_CONSUMER_SPEC_ROADMAP_v4.5.1.md). |
 | [`uDosDocs/`](uDosDocs/) | **Submodule** → [`uDosDocs`](https://github.com/fredporter/uDosDocs). Public documentation corpus. |
 | [`courses/`](courses/) | **v4 learning pathway** — numbered shells (00–05) + **`06-ucode-runtime`**; locked narrative in **`uDosDocs/docs/educational-content/`**. Validate: `bash scripts/validate-courses.sh`. |
 | [`v2-reference/`](v2-reference/) | Archived conceptual **v2** module snapshots (historical code and notes — **not** a submodule; not the live integration). |
