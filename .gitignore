@@ -18,7 +18,8 @@
 
 # Scratch (family convention)
 .local/
-.compost/
+.compost/*
+!.compost/README.md
 
 # Cursor local cache (large)
 .cursor/cache/
