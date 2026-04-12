@@ -3,3 +3,5 @@
 This repository bundles **`uDosDev`** and **`uDosDocs`** as **Git submodules** (see [`.gitmodules`](.gitmodules)), plus in-tree **`v2-reference`** (archived snapshots, not a submodule) and root **`scripts/`**. **Local planning spine:** [`docs/family-workspace-layout.md`](docs/family-workspace-layout.md) (`~/Code/uDosGo` + `~/Code/uDosConnect/…`). Prefer **[`uDosDev/AGENTS.md`](uDosDev/AGENTS.md)** for Task, dev standard **v4**, and workflow rules.
 
 **uDos** expands to **Universal Device Operating Surface**; use that spelling in new/edited prose ([`uDosDev/docs/process/dev-process-v4.md`](uDosDev/docs/process/dev-process-v4.md)).
+
+**Student / business doc model (v1 locked):** [`uDosDev/docs/specs/v4/UDOS_VALUE_LADDER_AND_PUBLISHING_PREMIUM_v1.md`](uDosDev/docs/specs/v4/UDOS_VALUE_LADDER_AND_PUBLISHING_PREMIUM_v1.md) — public teaching surface in [**AgentDigital-docs**](https://github.com/fredporter/AgentDigital-docs) [`docs/public/`](https://github.com/fredporter/AgentDigital-docs/tree/main/docs/public); private and Core zones under **`uDosDev/docs/private/`** and **`uDosDev/docs/dev/`** (policy only in Git).
