@@ -20,7 +20,7 @@ fi
 
 if [[ ! -f "${DB_PATH}" ]]; then
   echo "Creating uDos SQLite database at ${DB_PATH}"
-  sqlite3 "${DB_PATH}" < "${SCHEMA_PATH}"
+  sqlite3 "${DB_PATH}" < "${SCHEMA_PATH}" >/dev/null
   echo "Database initialised."
 else
   echo "Database already exists at ${DB_PATH}"
