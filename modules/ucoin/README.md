@@ -20,8 +20,8 @@
 
 | Path | Role |
 | --- | --- |
-| [`courses/01-how-crypto-works/`](courses/01-how-crypto-works/) | **Intake** — required before enabling **crypto mode** |
-| [`courses/02-barter-economy.md`](courses/02-barter-economy.md) | Barter units and trust (default path) |
+| [`../../courses/ucoin-crypto-intake/`](../../courses/ucoin-crypto-intake/README.md) | **Intake** — “How Does Crypto Work?” — required before enabling **crypto mode** |
+| [`specs/barter-spec.md`](specs/barter-spec.md) | Barter units and trust (default path; spec-first) |
 
 ## Source layout (planned)
 

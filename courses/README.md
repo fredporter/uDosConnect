@@ -17,6 +17,13 @@
 | 05 | **Personal Infrastructure** | [`05-personal-infrastructure/`](05-personal-infrastructure/README.md) | Home / LAN / ops / rescue |
 | 06 | **uCode runtime** | [`06-ucode-runtime/`](06-ucode-runtime/README.md) | uCode language + CLI + sandbox (specs in uDosDev) |
 
+### Tool-family / adjunct courses (unnumbered)
+
+| Codename | Folder | Role |
+| --- | --- | --- |
+| **Build Your Own Social Media Manager** (Postiz) | [`postiz-beginner/`](postiz-beginner/README.md) | Optional **AGPL** self-host; open-box config + clone helper — pairs [uDosDev Postiz lock](../uDosDev/docs/specs/v4/UDOS_TOOL_FAMILY_POSTIZ_NAME_GENERATOR_UCOIN_LOCKED_v1.md) |
+| **How Does Crypto Work?** (uCoin intake) | [`ucoin-crypto-intake/`](ucoin-crypto-intake/README.md) | Required reading before **uCoin** crypto mode — pairs [`modules/ucoin/`](../modules/ucoin/) |
+
 ## Validate
 
 From **uDosConnect** repo root:
