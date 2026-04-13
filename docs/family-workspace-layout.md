@@ -12,7 +12,7 @@ All checkouts below are rooted at **`~/Code/`** (or an equivalent single parent 
 
    **`~/Code/uDosGo/`**
 
-   Treat this as the only “live” integration tree for implementation work. On GitHub: **[uDosGo](https://github.com/fredporter/uDosGo)**; local folder name **`uDosGo`** is the family convention.
+   Treat this as the only “live” integration tree for implementation work. On GitHub: **[uDosGo](https://github.com/fredporter/uDosGo)**; local folder name **`uDosGo`** is the family convention. **Alternative bucket (same remote):** some workspaces keep the clone at **`~/Code/apps/uDosGo/`** — use the same `git` remote; adjust relative paths to **`uDosConnect`** (`../../uDosConnect` from repo root). **`npm run validate:usxd:sibling`** still finds **`~/Code/tool-family/UniversalSurfaceXD`** from that layout.
 
 2. **Everything else in the family bundle** — governance, public docs, archived v2 module snapshots (except groovebox — see below), shared bash/Python helpers, and future extension submodules — lives **under** the **`uDosConnect`** repository:
 
@@ -46,4 +46,5 @@ All checkouts below are rooted at **`~/Code/`** (or an equivalent single parent 
 ## Related
 
 - [`shared-resources-architecture.md`](shared-resources-architecture.md) — `~/.udos` runtime layout (separate from Git checkouts).  
+- **Pre-v5 program order (PRE5-R01–R07):** [`uDosDev/docs/future/PRE_V5_ROADMAP_SINGLE_LANE_v1.md`](../uDosDev/docs/future/PRE_V5_ROADMAP_SINGLE_LANE_v1.md) — single table; full exit criteria in [`PRE_V5_ROADMAP_AND_EXECUTION_ROUNDS_v1.md`](../uDosDev/docs/future/PRE_V5_ROADMAP_AND_EXECUTION_ROUNDS_v1.md) §4.  
 - Root [`README.md`](../README.md) — what this repository contains.
