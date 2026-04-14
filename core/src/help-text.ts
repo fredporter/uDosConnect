@@ -95,8 +95,8 @@ USXD:
   do usxd apply <name>    Apply theme to vault
   do usxd show            Show active theme
   do usxd serve [--file|--dir] [--port]   USXD-Express preview (live reload)
-  do usxd export [--file|--dir] -o <dir> [--format html|png]
-                           Export markdown surfaces (png is [A2 stub])
+  do usxd export [--file|--dir] -o <dir> [--format html|svg]
+                           Export markdown surfaces (svg is [A2 stub])
   do usxd render <file> [--mode] Terminal render from markdown surface
   do usxd edit [file]     Preview (prefers ~/vault/surfaces)
   do usxd validate <file> Validate usxd + optional grid fences in .md
@@ -115,7 +115,8 @@ GRID (OBF — see docs/specs/obf-grid-spec.md):
   do grid layer merge <file> --layers 0,1,2
 
 OBF UI BLOCKS:
-  do obf render <file>             Render obf CARD/COLUMNS blocks to terminal
+  do obf render <file> [--format terminal|html]
+                           Render obf CARD/COLUMNS/TABS/ACCORDION/GRID blocks
 
 FONT:
   do font install [retro] Download/cache bundle (CDN or cdn/fonts/seed/)

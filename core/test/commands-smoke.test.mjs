@@ -41,3 +41,21 @@ test("collab docs route uses wp stub path", () => {
   assert.equal(submit.code, 0);
   assert.match(submit.output.toLowerCase(), /wordpress draft submission/);
 });
+
+test("obf render supports html format", () => {
+  const out = runDo(["obf", "render", "docs/specs/obf-ui-blocks.md", "--format", "html"]);
+  assert.equal(out.code, 0);
+  assert.match(out.output, /obf-card/);
+  assert.match(out.output, /obf-tabs/);
+  assert.match(out.output, /obf-accordion/);
+  assert.match(out.output, /obf-grid/);
+});
+
+test("usxd render supports teletext, mono, wireframe modes", () => {
+  const file = "tools/usxd-express/surfaces/demo.md";
+  for (const mode of ["teletext", "mono", "wireframe"]) {
+    const out = runDo(["usxd", "render", file, "--mode", mode]);
+    assert.equal(out.code, 0, `mode ${mode} should succeed`);
+    assert.match(out.output, /SURFACE teletext-console/);
+  }
+});

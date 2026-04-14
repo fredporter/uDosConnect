@@ -302,7 +302,7 @@ export async function main(argv: string[]): Promise<void> {
     .option("-f, --file <file>", "Single markdown file")
     .option("-d, --dir <dir>", "Directory of .md files", "./surfaces")
     .option("-o, --output <dir>", "Output directory", "./dist")
-    .option("--format <format>", "Export format: html | png", "html")
+    .option("--format <format>", "Export format: html | svg", "html")
     .action(
       async (positional: string | undefined, o: { file?: string; dir?: string; output?: string; format?: string }) => {
       const file = positional ?? o.file;
@@ -398,7 +398,10 @@ export async function main(argv: string[]): Promise<void> {
   obf
     .command("render")
     .argument("<file>", ".md / .obf containing ```obf blocks")
-    .action(async (file: string) => cmdObfRender(file));
+    .option("--format <format>", "terminal | html", "terminal")
+    .action(async (file: string, o: { format?: string }) =>
+      cmdObfRender(file, (o.format === "html" ? "html" : "terminal") as "terminal" | "html")
+    );
 
   const font = program.command("font").description("Font bundles (stub — see docs/specs/font-system-obf.md)");
   font.command("install").argument("[bundle]", "e.g. retro").action(async (b) => cmdFontInstall(b ?? "retro"));

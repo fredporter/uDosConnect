@@ -13,7 +13,22 @@ type ObfColumns = {
   columns: string[][];
 };
 
-type ObfBlock = ObfCard | ObfColumns;
+type ObfTabs = {
+  kind: "tabs";
+  tabs: Array<{ label: string; lines: string[] }>;
+};
+
+type ObfAccordion = {
+  kind: "accordion";
+  items: Array<{ label: string; lines: string[] }>;
+};
+
+type ObfGrid = {
+  kind: "grid";
+  rows: string[];
+};
+
+type ObfBlock = ObfCard | ObfColumns | ObfTabs | ObfAccordion | ObfGrid;
 
 const OBF_FENCE_RE = /```obf\s*\n([\s\S]*?)```/gm;
 
@@ -38,7 +53,7 @@ function parseCard(lines: string[], start: number): { block: ObfCard; next: numb
   for (; i < lines.length; i++) {
     const raw = lines[i] ?? "";
     const line = raw.trim();
-    if (/^(CARD|COLUMNS)\b/i.test(line)) break;
+    if (/^(CARD|COLUMNS|TABS|ACCORDION|GRID)\b/i.test(line)) break;
     if (!line) continue;
     if (/^BODY\b/i.test(line)) {
       section = "body";
@@ -62,7 +77,7 @@ function parseColumns(lines: string[], start: number): { block: ObfColumns; next
   for (; i < lines.length; i++) {
     const raw = lines[i] ?? "";
     const line = raw.trim();
-    if (/^(CARD|COLUMNS)\b/i.test(line)) break;
+    if (/^(CARD|COLUMNS|TABS|ACCORDION|GRID)\b/i.test(line)) break;
     if (!line) continue;
     if (/^COL(?:UMN)?\s+\d+\b/i.test(line) || /^COLUMN\b/i.test(line)) {
       columns.push([]);
@@ -76,6 +91,73 @@ function parseColumns(lines: string[], start: number): { block: ObfColumns; next
     columns[current]!.push(raw.replace(/^\s{2,}/, "").trimEnd());
   }
   return { block: { kind: "columns", columns }, next: i };
+}
+
+function parseLabel(line: string, kind: "TAB" | "ITEM"): string {
+  const quoted = new RegExp(`^${kind}\\s+"([^"]+)"`, "i").exec(line);
+  if (quoted?.[1]) return quoted[1].trim();
+  const named = new RegExp(`^${kind}\\s+([^:]+):?$`, "i").exec(line);
+  return named?.[1]?.trim() ?? `${kind.toLowerCase()}-${Math.random().toString(36).slice(2, 6)}`;
+}
+
+function parseTabs(lines: string[], start: number): { block: ObfTabs; next: number } {
+  const tabs: Array<{ label: string; lines: string[] }> = [];
+  let current: { label: string; lines: string[] } | null = null;
+  let i = start + 1;
+  for (; i < lines.length; i++) {
+    const raw = lines[i] ?? "";
+    const line = raw.trim();
+    if (/^(CARD|COLUMNS|TABS|ACCORDION|GRID)\b/i.test(line)) break;
+    if (!line) continue;
+    if (/^TAB\b/i.test(line)) {
+      current = { label: parseLabel(line, "TAB"), lines: [] };
+      tabs.push(current);
+      continue;
+    }
+    if (!current) {
+      current = { label: "Tab", lines: [] };
+      tabs.push(current);
+    }
+    current.lines.push(raw.replace(/^\s{2,}/, "").trimEnd());
+  }
+  return { block: { kind: "tabs", tabs }, next: i };
+}
+
+function parseAccordion(lines: string[], start: number): { block: ObfAccordion; next: number } {
+  const items: Array<{ label: string; lines: string[] }> = [];
+  let current: { label: string; lines: string[] } | null = null;
+  let i = start + 1;
+  for (; i < lines.length; i++) {
+    const raw = lines[i] ?? "";
+    const line = raw.trim();
+    if (/^(CARD|COLUMNS|TABS|ACCORDION|GRID)\b/i.test(line)) break;
+    if (!line) continue;
+    if (/^ITEM\b/i.test(line)) {
+      current = { label: parseLabel(line, "ITEM"), lines: [] };
+      items.push(current);
+      continue;
+    }
+    if (!current) {
+      current = { label: "Item", lines: [] };
+      items.push(current);
+    }
+    current.lines.push(raw.replace(/^\s{2,}/, "").trimEnd());
+  }
+  return { block: { kind: "accordion", items }, next: i };
+}
+
+function parseGrid(lines: string[], start: number): { block: ObfGrid; next: number } {
+  const rows: string[] = [];
+  let i = start + 1;
+  for (; i < lines.length; i++) {
+    const raw = lines[i] ?? "";
+    const line = raw.trim();
+    if (/^(CARD|COLUMNS|TABS|ACCORDION|GRID)\b/i.test(line)) break;
+    if (!line) continue;
+    if (/^ROWS\b/i.test(line)) continue;
+    rows.push(raw.replace(/^\s*[|]?\s?/, "").trimEnd());
+  }
+  return { block: { kind: "grid", rows }, next: i };
 }
 
 function parseObfBody(body: string): ObfBlock[] {
@@ -96,6 +178,24 @@ function parseObfBody(body: string): ObfBlock[] {
     }
     if (/^COLUMNS\b/i.test(line)) {
       const parsed = parseColumns(lines, i);
+      out.push(parsed.block);
+      i = parsed.next;
+      continue;
+    }
+    if (/^TABS\b/i.test(line)) {
+      const parsed = parseTabs(lines, i);
+      out.push(parsed.block);
+      i = parsed.next;
+      continue;
+    }
+    if (/^ACCORDION\b/i.test(line)) {
+      const parsed = parseAccordion(lines, i);
+      out.push(parsed.block);
+      i = parsed.next;
+      continue;
+    }
+    if (/^GRID\b/i.test(line)) {
+      const parsed = parseGrid(lines, i);
       out.push(parsed.block);
       i = parsed.next;
       continue;
@@ -144,15 +244,74 @@ function renderColumns(cols: ObfColumns): string {
 
 function renderBlock(block: ObfBlock): string {
   if (block.kind === "card") return renderCard(block);
-  return renderColumns(block);
+  if (block.kind === "columns") return renderColumns(block);
+  if (block.kind === "tabs") {
+    if (block.tabs.length === 0) return "(empty tabs)";
+    const labels = block.tabs.map((t) => `[${t.label}]`).join(" ");
+    const body = block.tabs[0]!.lines.join("\n") || "(empty tab)";
+    return `${labels}\n${"-".repeat(Math.max(12, labels.length))}\n${body}`;
+  }
+  if (block.kind === "accordion") {
+    if (block.items.length === 0) return "(empty accordion)";
+    return block.items
+      .map((it) => {
+        const body = it.lines.join("\n");
+        return `> ${it.label}\n${body}`;
+      })
+      .join("\n\n");
+  }
+  if (block.rows.length === 0) return "(empty grid)";
+  return block.rows.join("\n");
 }
 
-export async function cmdObfRender(file: string): Promise<void> {
+function esc(s: string): string {
+  return s
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function renderBlockHtml(block: ObfBlock): string {
+  if (block.kind === "card") {
+    const body = block.body.map((l) => `<p>${esc(l)}</p>`).join("");
+    const footer = block.footer.length ? `<footer>${block.footer.map((l) => `<p>${esc(l)}</p>`).join("")}</footer>` : "";
+    const title = block.title ? `<h3>${esc(block.title)}</h3>` : "";
+    return `<section class="obf-card">${title}${body}${footer}</section>`;
+  }
+  if (block.kind === "columns") {
+    const cols = block.columns
+      .map((c) => `<div class="obf-col">${c.map((l) => `<p>${esc(l)}</p>`).join("")}</div>`)
+      .join("");
+    return `<section class="obf-columns">${cols}</section>`;
+  }
+  if (block.kind === "tabs") {
+    const tabs = block.tabs
+      .map((t, i) => `<section class="obf-tab" data-active="${i === 0 ? "true" : "false"}"><h4>${esc(t.label)}</h4>${t.lines.map((l) => `<p>${esc(l)}</p>`).join("")}</section>`)
+      .join("");
+    return `<section class="obf-tabs">${tabs}</section>`;
+  }
+  if (block.kind === "accordion") {
+    const items = block.items
+      .map((it) => `<details><summary>${esc(it.label)}</summary>${it.lines.map((l) => `<p>${esc(l)}</p>`).join("")}</details>`)
+      .join("");
+    return `<section class="obf-accordion">${items}</section>`;
+  }
+  const rows = block.rows.map((r) => esc(r)).join("\n");
+  return `<pre class="obf-grid">${rows}</pre>`;
+}
+
+export async function cmdObfRender(file: string, format: "terminal" | "html" = "terminal"): Promise<void> {
   const source = await readSource(file);
   const bodies = extractObfBodies(source);
   const blocks = bodies.flatMap(parseObfBody);
   if (blocks.length === 0) {
-    throw new Error("No OBF UI blocks found (expected CARD or COLUMNS)");
+    throw new Error("No OBF UI blocks found (expected CARD/COLUMNS/TABS/ACCORDION/GRID)");
+  }
+  if (format === "html") {
+    const html = blocks.map((b) => renderBlockHtml(b)).join("\n");
+    console.log(html);
+    return;
   }
   blocks.forEach((b, i) => {
     if (i > 0) console.log("");

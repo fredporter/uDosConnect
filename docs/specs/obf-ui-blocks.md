@@ -20,8 +20,8 @@ These are authoring conventions in markdown and may be rendered by custom pipeli
 
 ## A1.2 renderer status
 
-- `do obf render <file>` supports terminal rendering for `CARD` and `COLUMNS`.
-- `TABS` and `ACCORDION` remain parser/render targets for follow-up work.
+- `do obf render <file>` supports terminal rendering for `CARD`, `COLUMNS`, `TABS`, `ACCORDION`, and `GRID`.
+- `do obf render <file> --format html` emits HTML snippets for the same block set.
 - Publish/build-safe behavior in A1 is currently pass-through: ` ```obf` authoring blocks are source artifacts and are not transformed during `do publish build`.
 - Downstream publish transforms can be added later as an optional renderer stage without changing source markdown.
 
@@ -33,4 +33,22 @@ CARD title="Getting Started"
     This is a card component.
   FOOTER
     Button: [Learn More](#)
+
+TABS
+  TAB "Overview"
+    Intro copy.
+  TAB "Details"
+    More detail copy.
+
+ACCORDION
+  ITEM "What is uDos?"
+    Universal Device Operating Surface.
+  ITEM "Is this local-first?"
+    Yes. A1 is local-first and wireframe.
+
+GRID
+  ROWS
+    ████████
+    █░░░░░░█
+    ████████
 ```

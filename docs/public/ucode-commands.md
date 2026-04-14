@@ -175,7 +175,7 @@ Auto-detection defaults:
 | `do usxd apply <name>` | Copy theme into vault | `do usxd apply default` |
 | `do usxd show` | Active theme metadata | `do usxd show` |
 | `do usxd serve` | **USXD-Express** — preview ` ```usxd``` ` surfaces (live reload) | `do usxd serve --dir ./surfaces` |
-| `do usxd export` | Export markdown surfaces (`--format html`; `png` is `[A2 stub]`) | `do usxd export -d ./surfaces -o ./dist --format html` |
+| `do usxd export` | Export markdown surfaces (`--format html`; `svg` is `[A2 stub]`) | `do usxd export -d ./surfaces -o ./dist --format html` |
 | `do usxd render <file>` | Render markdown USXD surface to terminal | `do usxd render docs/surface.md --mode teletext` |
 | `do usxd edit [file]` | Preview (uses `~/vault/surfaces` when present) | `do usxd edit` |
 | `do usxd validate <file>` | Check ` ```usxd``` ` + optional ` ```grid``` ` | `do usxd validate ui.md` |
@@ -204,7 +204,7 @@ Spec: [../specs/obf-grid-spec.md](../specs/obf-grid-spec.md) · package: `@udos/
 
 | Command | Description | Example |
 | --- | --- | --- |
-| `do obf render <file>` | Render ` ```obf` ` `CARD`/`COLUMNS` blocks to terminal | `do obf render docs/specs/obf-ui-blocks.md` |
+| `do obf render <file> [--format terminal|html]` | Render ` ```obf` ` `CARD`/`COLUMNS`/`TABS`/`ACCORDION`/`GRID` blocks | `do obf render docs/specs/obf-ui-blocks.md --format html` |
 
 Spec: [../specs/obf-ui-blocks.md](../specs/obf-ui-blocks.md).
 
