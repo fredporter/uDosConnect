@@ -78,6 +78,26 @@ test("gui command group is exposed", () => {
   assert.match(gui.output, /index/);
 });
 
+test("adaptor validate accepts baseline yaml", async () => {
+  const dir = await fs.mkdtemp(path.join(os.tmpdir(), "udo-adaptor-"));
+  const file = path.join(dir, "adaptor.yaml");
+  await fs.writeFile(
+    file,
+    `name: demo-adaptor
+version: 1
+runtime:
+  type: node
+  port: 3000
+integration:
+  variables: []
+`,
+    "utf8"
+  );
+  const out = runUdo(["adaptor", "validate", file]);
+  assert.equal(out.code, 0, out.output);
+  assert.match(out.output, /Adaptor config valid\./);
+});
+
 test("trash command lifecycle works with index", async () => {
   const vault = await fs.mkdtemp(path.join(os.tmpdir(), "udo-trash-"));
   await fs.mkdir(path.join(vault, "content"), { recursive: true });

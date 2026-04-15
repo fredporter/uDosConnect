@@ -103,6 +103,7 @@ import {
   cmdGridValidate,
 } from "./actions/grid.js";
 import { cmdObfRender } from "./actions/obf-ui.js";
+import { cmdAdaptorValidate } from "./actions/adaptor.js";
 import type { GridMode } from "@udos/obf-grid";
 
 export async function main(argv: string[]): Promise<void> {
@@ -484,6 +485,13 @@ export async function main(argv: string[]): Promise<void> {
     .action(async (o: { port?: string; open?: boolean }) =>
       cmdGuiOpen({ port: o.port, noOpen: o.open === false })
     );
+
+  const adaptor = program.command("adaptor").description("Adaptor schema and tooling");
+  adaptor
+    .command("validate")
+    .argument("<file>", "Adaptor YAML or JSON file")
+    .description("Validate adaptor config against A2 baseline schema")
+    .action(async (f: string) => cmdAdaptorValidate(f));
 
   const grid = program.command("grid").description("OBF grid — text surfaces (see docs/specs/obf-grid-spec.md)");
   grid

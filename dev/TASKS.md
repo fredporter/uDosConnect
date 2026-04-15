@@ -428,13 +428,15 @@
 
 ---
 
-## A2 tracked (not A1 closure scope)
+## Alpha roadmap tracked (post-baseline scope)
 
 | ID | Task | Notes |
 | --- | --- | --- |
-| **T-A2-MCP** | Integrate Markdownify MCP server | Connect to uDos MCP orchestrator; implement `udo import` (or equivalent); progress for long conversions — spec: [docs/specs/markdownify-integration.md](../docs/specs/markdownify-integration.md), template: [dev/tools/markdownify-config.yaml.example](../dev/tools/markdownify-config.yaml.example) |
-| **T-A2-RUN** | `udo run` / literate markdown | Informed by rnmd + marki experiments — [commonmark-reference.md](../docs/specs/commonmark-reference.md), clones: [dev/toybox-experiments/README.md](toybox-experiments/README.md) |
-| **T-A3-VECTOR** | Vector DB + Cloud WordPress | Foam → embedding graph hypotheses — [vector-db-research.md](../docs/specs/vector-db-research.md) |
-| **T-A2-DOCKER** | `udo docker` patterns | CLI/compose/SDK per [docker-integration.md](../docs/specs/docker-integration.md) |
-| **T-A2-WIDGET** | USXD interactive widgets | Experiment brief: [seed/toybox/experiments/usxd-widget/BRIEF.md](../seed/toybox/experiments/usxd-widget/BRIEF.md) |
-| **T-A2-ADAPTORS** | Adaptor schema + sandbox foundation | Experiment brief: [seed/toybox/experiments/adaptors/BRIEF.md](../seed/toybox/experiments/adaptors/BRIEF.md) |
+| **T-ALPHA-MCP** | Integrate Markdownify MCP server | Target lane: `v0.2.0-alpha.1+`; connect to MCP orchestrator; implement `udo import` (or equivalent) — spec: [docs/specs/markdownify-integration.md](../docs/specs/markdownify-integration.md), template: [dev/tools/markdownify-config.yaml.example](../dev/tools/markdownify-config.yaml.example) |
+| **T-ALPHA-RUN** | `udo run` / literate markdown | Target lane: `v0.2.0-alpha.1+`; informed by rnmd + marki experiments — [commonmark-reference.md](../docs/specs/commonmark-reference.md), clones: [dev/toybox-experiments/README.md](toybox-experiments/README.md) |
+| **T-ALPHA-VECTOR** | Vector DB + Cloud WordPress research | Target lane: `v0.6.0-alpha.1+`; Foam → embedding graph hypotheses — [vector-db-research.md](../docs/specs/vector-db-research.md) |
+| **T-ALPHA-DOCKER** | `udo docker` patterns | Target lane: `v0.3.0-alpha.1+`; CLI/compose/SDK per [docker-integration.md](../docs/specs/docker-integration.md) |
+| **T-ALPHA-WIDGET** | USXD interactive widgets | Target lane: `v0.1.0-alpha.1`; experiment brief: [seed/toybox/experiments/usxd-widget/BRIEF.md](../seed/toybox/experiments/usxd-widget/BRIEF.md) |
+| **T-ALPHA-ADAPTORS** | Adaptor schema + sandbox foundation | Target lane: `v0.1.0-alpha.1`; experiment brief: [seed/toybox/experiments/adaptors/BRIEF.md](../seed/toybox/experiments/adaptors/BRIEF.md) |
+| **T-ALPHA-SKIN-TAILWIND** | Tailwind + Tailwind Plus browser surfaces | Target lane: `v0.5.0-alpha.1`; build browser index/demo surfaces on USXD skin tokens |
+| **T-ALPHA-USXD-GO-SCAFFOLD** | `usxd-go` runtime scaffold | Target lane: `v0.1.0-alpha.1`; initial module skeleton + IO layer contracts per [usxd-go.md](../docs/specs/usxd-go.md) |

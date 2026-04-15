@@ -5,13 +5,36 @@ audience: public
 slot: 5
 status: "draft"
 last_reviewed: "2026-04-15"
-applies_to: "A2/A3 planning; recorded in A1 as spec"
+applies_to: "Alpha planning and implementation gating"
 ---
 
 # USXD-GO technical specification
 
-Version: `1.0.0-draft`  
-Status: Draft for implementation planning
+Version: `v0.1.0-alpha.1`  
+Status: Draft for Alpha implementation planning
+
+## 0) Versioning policy (authoritative)
+
+uDos stays in Alpha until the format is proven. USXD-GO uses semantic versioning with prerelease labels:
+
+- Current target: `v0.1.0-alpha.1` (Alpha 1 scope)
+- Bugfixes in current round: `v0.1.0-alpha.N` patch-level prerelease progression
+- New feature rounds: `v0.X.0-alpha.1` minor progression
+
+Planned roadmap:
+
+| Phase | Version | Milestone |
+| --- | --- | --- |
+| Current | `v0.1.0-alpha.1` | CHASIS baseline + four Go widgets + state server |
+| Next | `v0.1.0-alpha.2` | Bugfix patch round (no new feature lane) |
+| Next | `v0.1.0-alpha.3` | Bugfix patch round (no new feature lane) |
+| Next | `v0.2.0-alpha.1` | Liquid template integration |
+| Next | `v0.3.0-alpha.1` | Static HTML export |
+| Next | `v0.4.0-alpha.1` | React renderer + WebSocket bridge |
+| Next | `v0.5.0-alpha.1` | SKIN layer (Tailwind CSS variables) |
+| Next | `v0.6.0-alpha.1` | LENS gameplay/filter overlay |
+| Beta | `v0.7.0-beta.1` | Feature-complete hardening |
+| Production | `v1.0.0` | Stable release |
 
 ## 1) Four-layer IO model
 
@@ -22,15 +45,17 @@ USXD-GO aligns to:
 - **SKIN**: visual styling and tokens
 - **LENS**: future gameplay/filter overlays
 
-This model is architectural planning for A2/A3 and beyond.
+This model is architectural planning across alpha rounds.
 
 ## 2) Open Box compatible USXD JSON
 
-USXD blocks should be self-describing, portable, and schema-addressable:
+USXD blocks should be self-describing, portable, and schema-addressable.
+For `v0.1.0-alpha.1`, the minimal payload is:
 
 - `open_box` metadata
-- explicit `version`
-- structured `chassis`, `widgets`, `skin`, `lens`, `state`
+- explicit `usxd_version`
+- structured `chassis` and `widgets`
+- no `liquid`, `static_export`, `skin`, or `lens` sections yet
 
 The draft contract supplied in operator notes is the canonical working proposal for this phase.
 
@@ -45,7 +70,7 @@ Each component should serialize to an Open Box-compatible USXD block.
 
 ## 4) Tailwind / skin bridge
 
-For browser rendering:
+For browser rendering (scheduled for `v0.5.0-alpha.1`):
 
 - tokenized uDos colors/typography/spacing
 - component classes matching USXD primitives
@@ -53,15 +78,23 @@ For browser rendering:
 
 ## 5) React renderer bridge
 
-A renderer can consume USXD JSON snapshots (poll or WebSocket stream) and map to UI components while keeping terminal/browser semantics aligned.
+A renderer can consume USXD JSON snapshots (poll or WebSocket stream) and map to UI components while keeping terminal/browser semantics aligned. This lane is scheduled for `v0.4.0-alpha.1`.
 
-## 6) Cursor implementation checklist
+## 6) Alpha 1 implementation checklist (`v0.1.0-alpha.1`)
 
-Implementation checklist (Go module, components, server bridge, skin config, renderer, tests) is accepted as planning scope and intentionally deferred to explicit A2 authorization.
+Scope for this release:
 
-## 7) A1 boundary
+- Go module with Bubble Tea
+- CHASIS layout engine baseline
+- Four widgets (Login, Table, Tabs, Async) as Go structs
+- JSON serialization for `v0.1.0-alpha.1` schema
+- HTTP state endpoint (`/api/usxd/state`)
+- WebSocket live updates (`/ws/usxd`)
 
-In A1 this is a **spec-only artifact**:
+Out of scope for this release:
 
-- no mandatory `usxd-go` runtime shipping requirement
-- no A2 feature execution until explicit operator permission
+- Liquid templating (`v0.2.0-alpha.1`)
+- Static export (`v0.3.0-alpha.1`)
+- React renderer (`v0.4.0-alpha.1`)
+- Tailwind SKIN (`v0.5.0-alpha.1`)
+- LENS (`v0.6.0-alpha.1`)

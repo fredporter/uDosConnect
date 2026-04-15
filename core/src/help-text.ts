@@ -115,6 +115,9 @@ GUI:
   udo gui index            Alias for \`udo gui\` (explicit "open index" wording)
   udo gui demos            Open bundled demo surfaces index
 
+ADAPTOR:
+  udo adaptor validate <file>   Validate adaptor YAML/JSON against A2 baseline schema
+
 GRID (OBF — see docs/specs/obf-grid-spec.md):
   udo grid render <file> [--mode]   Render grid (ANSI)
   udo grid export <file> --format ascii|obf|…

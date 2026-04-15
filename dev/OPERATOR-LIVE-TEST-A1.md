@@ -1,6 +1,6 @@
 # Operator live test — **alpha** A1 milestone (uDosConnect)
 
-**Milestone:** Rust core tasks **T001–T021**, TypeScript VA1 `**@udos/core`** tests, repo hygiene (shakedown), optional Rust `**udos-core**` CLI smoke. (**Alpha** = A1/A2 product line; **beta** = historical program docs.)
+**Milestone:** Rust core tasks **T001–T021**, TypeScript VA1 `**@udos/core`** tests, repo hygiene (shakedown), optional Rust `**udos-core`** CLI smoke. (**Alpha** = A1/A2 product line; **beta** = historical program docs.)
 
 **When:** Before tagging a release or declaring A1 "operator accepted."
 
@@ -22,7 +22,7 @@ This runs, in order: full workspace **build**, `**@udos/core`** tests, **shakedo
 
 ## Manual smoke (student / installer path)
 
-After `npm install` at root and `npm run build` (or use `**launcher/install.sh**` / `**launcher/udos.command**` per root `README.md`):
+After `npm install` at root and `npm run build` (or use `**launcher/install.sh`** / `**launcher/udos.command**` per root `README.md`):
 
 1. `**udo help**` — CLI responds.
 2. `**udo doctor**` — reports healthy workspace assumptions.

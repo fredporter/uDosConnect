@@ -1,39 +1,40 @@
 ---
-title: "A1 version mapping"
+title: "Semver alpha mapping"
 tags: [--public]
 audience: public
 slot: 5
 ---
 
-# A1 version mapping (release alignment)
+# Semver alpha mapping (release alignment)
 
-This file maps practical release numbers to the locked ladder in `version-ladder-a1-a2.md`.
+This file maps feature rounds to semantic versions while uDos remains in Alpha.
 
 ## Mapping table
 
-| Ladder stage | Scope signal | Suggested semver window |
+| Milestone lane | Scope signal | Suggested semver |
 | --- | --- | --- |
-| A1.0.x | Wireframe core baseline (`vault`, markdown, grid/usxd local tooling, local publish) | `1.0.x` |
-| A1.1.x | GitHub-native collaboration (`udo github`, `udo issue`, `udo pr`) | `1.1.x` |
-| A1.2.x | OBF/UI renderer expansion (`udo usxd render/export parity`, `udo obf render`) | `1.2.x` |
-| A1.3.x | Orchestration contracts + strict A2 stubs/boundary checks | `1.3.x` |
+| Alpha baseline | CHASIS + 4 widget baseline + state server | `v0.1.0-alpha.1` |
+| Alpha patch rounds | Bugfix-only stabilization in same lane | `v0.1.0-alpha.2`, `v0.1.0-alpha.3`, ... |
+| Liquid lane | Template integration | `v0.2.0-alpha.1` |
+| Static export lane | HTML export support | `v0.3.0-alpha.1` |
+| React lane | Browser renderer + WebSocket bridge | `v0.4.0-alpha.1` |
+| SKIN lane | Tailwind variable bridge | `v0.5.0-alpha.1` |
+| LENS lane | Overlay/filter layer | `v0.6.0-alpha.1` |
+| Beta hardening | Feature complete verification | `v0.7.0-beta.1` |
+| Production | Stable contract | `v1.0.0` |
 
 ## Current package alignment
 
-- `@udos/core` is currently tagged `1.0.0-va1`.
-- Recommended realignment path:
-  - Next publish-able baseline: `1.0.1` (stability/docs fixes only)
-  - When GitHub-native flow is considered complete end-to-end: bump to `1.1.0`
-  - When OBF UI renderer scope is accepted: bump to `1.2.0`
-  - When orchestration contracts + boundary enforcement are complete: bump to `1.3.0`
+- `@udos/core` currently uses an internal VA1 package marker.
+- Release-policy guidance for USXD lanes should use prerelease semver (`0.x.y-alpha.n`) until Beta/GA.
 
 ## Bump rules (A1)
 
-- Patch (`x.y.Z`): bugfixes/docs/tests/internal refactors with no command-surface expansion.
-- Minor (`x.Y.z`): new user-facing command capability in A1 scope.
-- Major (`X.y.z`): reserved for boundary model changes or A2 transition.
+- Patch-level prerelease increment (`v0.1.0-alpha.1` -> `v0.1.0-alpha.2`): bugfixes in the same feature lane.
+- Minor increment (`v0.1.0-alpha.3` -> `v0.2.0-alpha.1`): new feature lane.
+- Beta and GA are explicit transitions (`v0.7.0-beta.1` then `v1.0.0`).
 
 ## Notes
 
-- This mapping is release-policy guidance and does not override locked A1/A2 boundaries.
-- A2 versions remain governed by `version-ladder-a1-a2.md`.
+- This mapping governs release naming for alpha work.
+- Feature-gating decisions remain controlled by roadmap and operator approval.
