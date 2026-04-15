@@ -76,6 +76,8 @@ test("gui command group is exposed", () => {
   assert.match(gui.output, /udo gui/);
   assert.match(gui.output, /demos/);
   assert.match(gui.output, /index/);
+  assert.match(gui.output, /status/);
+  assert.match(gui.output, /stop/);
 });
 
 test("adaptor validate accepts baseline yaml", async () => {

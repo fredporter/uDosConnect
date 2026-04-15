@@ -43,7 +43,16 @@ import {
   cmdUsxdApply,
   cmdUsxdShow,
 } from "./actions/publish-sync-usxd.js";
-import { cmdGuiDemos, cmdGuiOpen, cmdUsxdEdit, runUsxdExpress } from "./actions/usxd-express-tool.js";
+import {
+  cmdGuiBrowserOpen,
+  cmdGuiDemos,
+  cmdGuiLogs,
+  cmdGuiOpen,
+  cmdGuiStatus,
+  cmdGuiStop,
+  cmdUsxdEdit,
+  runUsxdExpress,
+} from "./actions/usxd-express-tool.js";
 import {
   cmdVersion,
   cmdStatus,
@@ -470,8 +479,16 @@ export async function main(argv: string[]): Promise<void> {
       cmdGuiOpen({ port: o.port, noOpen: o.open === false })
     );
   gui
+    .command("start")
+    .description("Start GUI service in background (port-managed)")
+    .option("-p, --port <port>", "Preferred HTTP port")
+    .option("--no-open", "Do not open browser after start")
+    .action(async (o: { port?: string; open?: boolean }) =>
+      cmdGuiOpen({ port: o.port, noOpen: o.open === false })
+    );
+  gui
     .command("demos")
-    .description("Open bundled demo surfaces in browser GUI")
+    .description("Start bundled demo surfaces GUI in background")
     .option("-p, --port <port>", "HTTP port")
     .option("--no-open", "Disable startup browser-open prompt")
     .action(async (o: { port?: string; open?: boolean }) =>
@@ -485,6 +502,14 @@ export async function main(argv: string[]): Promise<void> {
     .action(async (o: { port?: string; open?: boolean }) =>
       cmdGuiOpen({ port: o.port, noOpen: o.open === false })
     );
+  gui.command("status").description("Show GUI service status").action(async () => cmdGuiStatus());
+  gui.command("stop").description("Stop background GUI service").action(async () => cmdGuiStop());
+  gui
+    .command("logs")
+    .description("Show GUI service logs")
+    .option("-n, --lines <n>", "Tail lines", "80")
+    .action(async (o: { lines: string }) => cmdGuiLogs(parseInt(o.lines, 10) || 80));
+  gui.command("open").description("Open running GUI URL in browser").action(async () => cmdGuiBrowserOpen());
 
   const adaptor = program.command("adaptor").description("Adaptor schema and tooling");
   adaptor

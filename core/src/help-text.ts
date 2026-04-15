@@ -111,9 +111,14 @@ USXD:
   udo usxd validate <file> Validate usxd + optional grid fences in .md
 
 GUI:
-  udo gui                  Open browser GUI index (vault surfaces or bundled demos)
+  udo gui                  Start GUI service in background (port-managed)
+  udo gui start            Explicit start (same as \`udo gui\`)
   udo gui index            Alias for \`udo gui\` (explicit "open index" wording)
-  udo gui demos            Open bundled demo surfaces index
+  udo gui demos            Start bundled demo surfaces GUI in background
+  udo gui status           Show GUI service status (pid, port, url)
+  udo gui logs [-n 80]     Show GUI service log tail
+  udo gui open             Open running GUI URL in browser
+  udo gui stop             Stop background GUI service
 
 ADAPTOR:
   udo adaptor validate <file>   Validate adaptor YAML/JSON against A2 baseline schema
