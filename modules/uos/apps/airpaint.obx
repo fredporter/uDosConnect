@@ -24,9 +24,10 @@ mounts:
     readonly: true
 
 commands:
-  default: "airpaint /workspace/{file}"
+  # {file} is the in-container path (/workspace/… or /workspace/.uos-outside for paths outside cwd)
+  default: "airpaint {file}"
   cli:
     - pattern: "uos launch airpaint {file}"
-      command: "airpaint /workspace/{file}"
+      command: "airpaint {file}"
     - pattern: "uos launch airpaint --new"
       command: "airpaint --new-document"
