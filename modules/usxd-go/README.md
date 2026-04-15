@@ -9,6 +9,7 @@ Current scope:
 - Four widget serializers in `widgets/`
 - HTTP endpoint: `/api/usxd/state`
 - WebSocket endpoint: `/ws/usxd`
+- Alpha 1 schema validation helpers in `schema/validate.go`
 
 Run server:
 
@@ -17,11 +18,52 @@ cd modules/usxd-go
 go run ./cmd/usxd-server
 ```
 
+Run server + interactive story bridge (publishes live state to `/ws/usxd`):
+
+```bash
+cd modules/usxd-go
+USXD_STORY_TUI=1 go run ./cmd/usxd-server
+```
+
+Browser demo page:
+
+```bash
+# then open:
+http://localhost:8099/demo
+http://localhost:8099/demo/story
+http://localhost:8099/demo/final
+```
+
 Demo example:
 
 ```bash
 cd modules/usxd-go
 go run ./examples/four-components
+```
+
+Story example:
+
+```bash
+cd modules/usxd-go
+go run ./examples/story-onboarding
+```
+
+Interactive TUI story (Bubble Tea):
+
+```bash
+cd modules/usxd-go
+go run ./examples/story-bubbletea
+```
+
+Make targets:
+
+```bash
+cd modules/usxd-go
+make fmt
+make test
+make run-server
+make run-story
+make run-story-tui
 ```
 
 References:

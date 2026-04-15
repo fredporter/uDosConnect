@@ -22,6 +22,8 @@ func WSHandler(hub *StateHub) http.HandlerFunc {
 			return
 		}
 		defer conn.Close()
+		stateCh := hub.Subscribe()
+		defer hub.Unsubscribe(stateCh)
 
 		ticker := time.NewTicker(1500 * time.Millisecond)
 		defer ticker.Stop()
@@ -51,6 +53,14 @@ func WSHandler(hub *StateHub) http.HandlerFunc {
 
 		for {
 			select {
+			case s := <-stateCh:
+				payload, err := serializer.ToJSON(s)
+				if err != nil {
+					return
+				}
+				if err := conn.WriteMessage(websocket.TextMessage, payload); err != nil {
+					return
+				}
 			case <-ticker.C:
 				if err := writeState(); err != nil {
 					return
