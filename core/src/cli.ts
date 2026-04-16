@@ -521,13 +521,20 @@ export async function main(argv: string[]): Promise<void> {
     .argument("[args...]", "Forwarded to manifest command")
     .option("--dry-run", "Print docker/podman invocation (default)")
     .option("--execute", "Run docker/podman (stdio inherited)")
-    .action(async (appName: string, forwarded: string[], o: { execute?: boolean; dryRun?: boolean }) => {
+    .option("--runtime <engine>", "docker or podman (overrides OBX; env UOS_RUNTIME)")
+    .action(async (appName: string, forwarded: string[], o: { execute?: boolean; dryRun?: boolean; runtime?: string }) => {
       if (o.execute && o.dryRun) {
         console.error("Use only one of --dry-run or --execute.");
         process.exitCode = 1;
         return;
       }
-      await cmdAppLaunch(appName, forwarded, { execute: Boolean(o.execute) });
+      const rt = o.runtime?.trim();
+      if (rt && rt !== "docker" && rt !== "podman") {
+        console.error("--runtime must be docker or podman.");
+        process.exitCode = 1;
+        return;
+      }
+      await cmdAppLaunch(appName, forwarded, { execute: Boolean(o.execute), runtime: rt });
     });
 
   const adaptor = program.command("adaptor").description("Adaptor schema and tooling");

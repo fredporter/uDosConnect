@@ -40,7 +40,11 @@ func printHelp() {
 
 Commands:
   uos apps list
-  uos launch <app> (--dry-run | --execute) [--] [args...]
+  uos launch <app> [options] (--dry-run | --execute) [--] [args...]
+
+Options:
+  --runtime docker|podman   Override OBX container.type (default: manifest or UOS_RUNTIME)
+
 `)
 }
 
@@ -77,24 +81,41 @@ func cmdAppsList() error {
 
 func cmdLaunch(args []string) error {
 	if len(args) < 1 {
-		return fmt.Errorf("usage: uos launch <app> (--dry-run | --execute) [--] [args...]")
+		return fmt.Errorf("usage: uos launch <app> [options] (--dry-run | --execute) [--] [args...]")
 	}
 	app := args[0]
 	rest := args[1:]
 	dry := false
 	execute := false
+	runtimeFlag := ""
 	var passthrough []string
 	sawSep := false
-	for _, a := range rest {
-		if !sawSep && a == "--dry-run" {
+	for i := 0; i < len(rest); i++ {
+		a := rest[i]
+		if sawSep {
+			passthrough = append(passthrough, a)
+			continue
+		}
+		if a == "--dry-run" {
 			dry = true
 			continue
 		}
-		if !sawSep && a == "--execute" {
+		if a == "--execute" {
 			execute = true
 			continue
 		}
-		if !sawSep && a == "--" {
+		if a == "--runtime" {
+			if i+1 >= len(rest) {
+				return fmt.Errorf("--runtime requires docker or podman")
+			}
+			runtimeFlag = strings.ToLower(strings.TrimSpace(rest[i+1]))
+			if runtimeFlag != "docker" && runtimeFlag != "podman" {
+				return fmt.Errorf("--runtime must be docker or podman")
+			}
+			i++
+			continue
+		}
+		if a == "--" {
 			sawSep = true
 			continue
 		}
@@ -106,8 +127,9 @@ func cmdLaunch(args []string) error {
 	if !dry && !execute {
 		return fmt.Errorf("choose --dry-run (print invocation) or --execute (run docker/podman)")
 	}
+	opts := launch.LaunchOpts{Runtime: runtimeFlag}
 	if dry {
-		return launch.DryRunDocker(app, passthrough)
+		return launch.DryRunDocker(app, passthrough, opts)
 	}
-	return launch.RunContainer(app, passthrough)
+	return launch.RunContainer(app, passthrough, opts)
 }

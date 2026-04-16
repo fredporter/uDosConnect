@@ -77,3 +77,50 @@ func TestResolveFilePlaceholder_missingOutsideWorkspace(t *testing.T) {
 		t.Fatalf("cref: got %q", cref)
 	}
 }
+
+func TestSplitCommandArgv(t *testing.T) {
+	t.Parallel()
+	for _, tc := range []struct {
+		in   string
+		want []string
+	}{
+		{"airpaint foo bar", []string{"airpaint", "foo", "bar"}},
+		{`airpaint "/tmp/a b.png"`, []string{"airpaint", "/tmp/a b.png"}},
+		{"tool 'x y' z", []string{"tool", "x y", "z"}},
+		{`a "b\"c"`, []string{"a", `b"c`}},
+	} {
+		got, err := splitCommandArgv(tc.in)
+		if err != nil {
+			t.Fatalf("split %q: %v", tc.in, err)
+		}
+		if len(got) != len(tc.want) {
+			t.Fatalf("split %q: got %#v want %#v", tc.in, got, tc.want)
+		}
+		for i := range tc.want {
+			if got[i] != tc.want[i] {
+				t.Fatalf("split %q [%d]: got %q want %q", tc.in, i, got[i], tc.want[i])
+			}
+		}
+	}
+	_, err := splitCommandArgv(`echo "hi`)
+	if err == nil {
+		t.Fatal("expected unterminated quote error")
+	}
+}
+
+func TestEffectiveContainerKind(t *testing.T) {
+	t.Setenv("UOS_RUNTIME", "")
+	k, err := effectiveContainerKind("docker", "")
+	if err != nil || k != "docker" {
+		t.Fatalf("got %q %v", k, err)
+	}
+	k, err = effectiveContainerKind("docker", "podman")
+	if err != nil || k != "podman" {
+		t.Fatalf("override: got %q %v", k, err)
+	}
+	t.Setenv("UOS_RUNTIME", "podman")
+	k, err = effectiveContainerKind("docker", "")
+	if err != nil || k != "podman" {
+		t.Fatalf("env: got %q %v", k, err)
+	}
+}

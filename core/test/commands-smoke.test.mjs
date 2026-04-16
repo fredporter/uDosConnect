@@ -87,10 +87,11 @@ test("app command group is exposed", () => {
   assert.match(app.output, /\blaunch\b/);
 });
 
-test("app launch documents execute", () => {
+test("app launch documents execute and runtime", () => {
   const launch = runUdo(["app", "launch", "--help"]);
   assert.equal(launch.code, 0);
   assert.match(launch.output, /--execute/);
+  assert.match(launch.output, /--runtime/);
 });
 
 test("adaptor validate accepts baseline yaml", async () => {

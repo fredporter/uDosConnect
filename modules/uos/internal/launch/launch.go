@@ -82,8 +82,41 @@ func loadManifestAndCommand(app string, passthroughArgs []string) (*manifest.Bod
 	return body, p, cmd, extra, nil
 }
 
-func DryRunDocker(app string, passthroughArgs []string) error {
+// LaunchOpts configures dry-run and execute. Runtime is docker|podman or empty to use manifest / UOS_RUNTIME.
+type LaunchOpts struct {
+	Runtime string
+}
+
+// effectiveContainerKind resolves docker vs podman: --runtime / LaunchOpts.Runtime wins, then UOS_RUNTIME, then manifest type.
+func effectiveContainerKind(manifestType string, override string) (string, error) {
+	v := strings.TrimSpace(override)
+	if v == "" {
+		v = strings.TrimSpace(os.Getenv("UOS_RUNTIME"))
+	}
+	if v != "" {
+		raw := v
+		vl := strings.ToLower(v)
+		if vl == "docker" || vl == "podman" {
+			return vl, nil
+		}
+		return "", fmt.Errorf("runtime must be docker or podman (got %q)", strings.TrimSpace(raw))
+	}
+	mt := strings.ToLower(strings.TrimSpace(manifestType))
+	switch mt {
+	case "docker", "podman":
+		return mt, nil
+	default:
+		return "", fmt.Errorf("unknown container type %q (use docker|podman or set UOS_RUNTIME)", manifestType)
+	}
+}
+
+func DryRunDocker(app string, passthroughArgs []string, opts LaunchOpts) error {
 	body, p, cmd, extra, err := loadManifestAndCommand(app, passthroughArgs)
+	if err != nil {
+		return err
+	}
+
+	kind, err := effectiveContainerKind(body.Container.Type, opts.Runtime)
 	if err != nil {
 		return err
 	}
@@ -91,41 +124,50 @@ func DryRunDocker(app string, passthroughArgs []string) error {
 	fmt.Printf("app: %s\n", app)
 	fmt.Printf("manifest: %s\n", p)
 	fmt.Printf("container: %s image=%s runtime=%s\n", body.Container.Type, body.Container.Image, body.Container.Runtime)
+	fmt.Printf("effective: %s\n", kind)
 	fmt.Printf("command: %s\n\n", cmd)
 
-	switch strings.ToLower(strings.TrimSpace(body.Container.Type)) {
+	var args []string
+	switch kind {
 	case "docker":
-		args := dockerRunArgs(body, cmd, extra)
-		fmt.Println("docker " + strings.Join(args, " "))
-		return nil
+		args, err = dockerRunArgs(body, cmd, extra)
 	case "podman":
-		args := podmanRunArgs(body, cmd, extra)
-		fmt.Println("podman " + strings.Join(args, " "))
-		return nil
+		args, err = podmanRunArgs(body, cmd, extra)
 	default:
-		return fmt.Errorf("dry-run only supports docker|podman for now (got %q)", body.Container.Type)
+		return fmt.Errorf("dry-run only supports docker|podman (got %q)", kind)
 	}
+	if err != nil {
+		return err
+	}
+	fmt.Println(kind + " " + strings.Join(args, " "))
+	return nil
 }
 
 // RunContainer resolves the OBX manifest and runs docker or podman with inherited stdio.
-func RunContainer(app string, passthroughArgs []string) error {
+func RunContainer(app string, passthroughArgs []string, opts LaunchOpts) error {
 	body, _, cmd, extra, err := loadManifestAndCommand(app, passthroughArgs)
 	if err != nil {
 		return err
 	}
-	ct := strings.ToLower(strings.TrimSpace(body.Container.Type))
-	bin, err := exec.LookPath(ct)
+	kind, err := effectiveContainerKind(body.Container.Type, opts.Runtime)
 	if err != nil {
-		return fmt.Errorf("%s not found in PATH (install %s or add --dry-run to print the invocation)", ct, ct)
+		return err
+	}
+	bin, err := exec.LookPath(kind)
+	if err != nil {
+		return fmt.Errorf("%s not found in PATH (install %s or add --dry-run to print the invocation)", kind, kind)
 	}
 	var runArgs []string
-	switch ct {
+	switch kind {
 	case "docker":
-		runArgs = dockerRunArgs(body, cmd, extra)
+		runArgs, err = dockerRunArgs(body, cmd, extra)
 	case "podman":
-		runArgs = podmanRunArgs(body, cmd, extra)
+		runArgs, err = podmanRunArgs(body, cmd, extra)
 	default:
-		return fmt.Errorf("execute supports docker|podman only (got %q)", body.Container.Type)
+		return fmt.Errorf("execute supports docker|podman only (got %q)", kind)
+	}
+	if err != nil {
+		return err
 	}
 	c := exec.Command(bin, runArgs...)
 	c.Stdin = os.Stdin
@@ -202,7 +244,67 @@ func expandPlaceholders(cmd string, passthroughArgs []string, containerFile stri
 	return cmd
 }
 
-func dockerRunArgs(body *manifest.BodyModel, command string, extra []extraBind) []string {
+// splitCommandArgv splits a manifest command line on ASCII whitespace outside of '...' and "...".
+func splitCommandArgv(s string) ([]string, error) {
+	s = strings.TrimSpace(s)
+	if s == "" {
+		return nil, nil
+	}
+	var parts []string
+	var cur strings.Builder
+	inSingle, inDouble := false, false
+	escape := false
+	flush := func() {
+		if cur.Len() > 0 {
+			parts = append(parts, cur.String())
+			cur.Reset()
+		}
+	}
+	for _, r := range s {
+		if escape {
+			cur.WriteRune(r)
+			escape = false
+			continue
+		}
+		if inDouble {
+			if r == '\\' {
+				escape = true
+				continue
+			}
+			if r == '"' {
+				inDouble = false
+				continue
+			}
+			cur.WriteRune(r)
+			continue
+		}
+		if inSingle {
+			if r == '\'' {
+				inSingle = false
+				continue
+			}
+			cur.WriteRune(r)
+			continue
+		}
+		switch r {
+		case ' ', '\t', '\n':
+			flush()
+		case '\'':
+			inSingle = true
+		case '"':
+			inDouble = true
+		default:
+			cur.WriteRune(r)
+		}
+	}
+	if inSingle || inDouble || escape {
+		return nil, fmt.Errorf("unterminated quote in command")
+	}
+	flush()
+	return parts, nil
+}
+
+func dockerRunArgs(body *manifest.BodyModel, command string, extra []extraBind) ([]string, error) {
 	args := []string{"run", "--rm", "--name", sanitizeName(body)}
 	if body.Resources.CPU > 0 {
 		args = append(args, "--cpus", fmt.Sprintf("%d", body.Resources.CPU))
@@ -238,17 +340,24 @@ func dockerRunArgs(body *manifest.BodyModel, command string, extra []extraBind) 
 		}
 		args = append(args, "-v", b.host+":"+b.container+ro)
 	}
+	parts, err := splitCommandArgv(command)
+	if err != nil {
+		return nil, err
+	}
 	args = append(args, body.Container.Image)
-	args = append(args, strings.Fields(command)...)
-	return args
+	args = append(args, parts...)
+	return args, nil
 }
 
-func podmanRunArgs(body *manifest.BodyModel, command string, extra []extraBind) []string {
-	args := dockerRunArgs(body, command, extra)
+func podmanRunArgs(body *manifest.BodyModel, command string, extra []extraBind) ([]string, error) {
+	args, err := dockerRunArgs(body, command, extra)
+	if err != nil {
+		return nil, err
+	}
 	// podman supports --replace for dev iteration; harmless for one-shot runs.
 	out := []string{"run", "--rm", "--replace"}
 	out = append(out, args[2:]...)
-	return out
+	return out, nil
 }
 
 func sanitizeName(body *manifest.BodyModel) string {

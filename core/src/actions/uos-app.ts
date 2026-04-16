@@ -35,9 +35,12 @@ export async function cmdAppList(): Promise<void> {
 export async function cmdAppLaunch(
   app: string,
   passthrough: string[],
-  opts: { execute: boolean }
+  opts: { execute: boolean; runtime?: string }
 ): Promise<void> {
   const args = ["launch", app];
+  if (opts.runtime) {
+    args.push("--runtime", opts.runtime);
+  }
   args.push(opts.execute ? "--execute" : "--dry-run");
   if (passthrough.length > 0) {
     args.push("--", ...passthrough);
