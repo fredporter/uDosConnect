@@ -1,5 +1,7 @@
 # Experiment 2 — notion.css (pure CSS)
 
+**Harness:** [`index.html`](index.html) + [`README.md`](README.md) (clone `vendor/notion.css`, `npx serve`).
+
 **Runner:**  
 **Date:**  
 

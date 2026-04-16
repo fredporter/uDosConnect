@@ -63,6 +63,8 @@ cd dev/experiments/theme-integration/experiment-2-notion-css/vendor
 git clone https://github.com/sreeram-venkitesh/notion.css
 ```
 
+(No build step — use `src/notion.css` as linked from the harness.)
+
 ### Test focus
 
 | View | Component | Success signal |
@@ -72,10 +74,12 @@ git clone https://github.com/sreeram-venkitesh/notion.css
 | Card | Gallery of items | Borders and shadows feel right |
 | Form | Inputs, buttons, selects | Rounded Notion-like controls |
 
+**Harness:** [`experiment-2-notion-css/index.html`](experiment-2-notion-css/index.html) + [`experiment-2-notion-css/README.md`](experiment-2-notion-css/README.md) — loads `vendor/notion.css/src/notion.css` inside a light `.notion-view` canvas; USXD chrome stays on the dark shell.
+
 ### Integration sketch
 
 ```html
-<link rel="stylesheet" href="vendor/notion.css/dist/notion.min.css" />
+<link rel="stylesheet" href="vendor/notion.css/src/notion.css" />
 <div class="notion-view">
   <!-- USXD content -->
 </div>
@@ -95,12 +99,12 @@ git clone https://github.com/sreeram-venkitesh/notion.css
 
 ### Setup
 
-Create a **separate** Vite + React app under `experiment-3-notion-react/` (use `vendor/` or a subfolder for the app; keep `node_modules/` gitignored).
+Create a **separate** Vite + React app under `experiment-3-notion-react/` (see [`experiment-3-notion-react/README.md`](experiment-3-notion-react/README.md); `node_modules/` gitignored).
 
 ```bash
 cd dev/experiments/theme-integration/experiment-3-notion-react
-npm create vite@latest notion-react-test -- --template react-ts
-cd notion-react-test
+npm create vite@latest notion-react-lab -- --template react-ts
+cd notion-react-lab
 npm install notion-design-system
 npm install -D tailwindcss postcss autoprefixer
 ```
@@ -138,14 +142,20 @@ dev/experiments/theme-integration/
 ├── README.md                 # this master brief
 ├── DECISIONS.md              # integration decision after experiments
 ├── experiment-1-retro/
-│   └── notes.md              # findings template
+│   ├── index.html
+│   ├── README.md
+│   └── notes.md
 ├── experiment-2-notion-css/
+│   ├── index.html
+│   ├── README.md
 │   └── notes.md
 └── experiment-3-notion-react/
+    ├── README.md
+    ├── .gitignore            # ignores local notion-react-lab/
     └── notes.md
 ```
 
-Add `index.html` / Vite apps locally; keep **vendor clones** and **node_modules** out of git (see `.gitignore`).
+Add **vendor clones** and **node_modules** locally; keep them out of git (see `.gitignore` in `theme-integration/` and experiment-3).
 
 ---
 

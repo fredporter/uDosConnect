@@ -1,5 +1,7 @@
 # Experiment 3 — notion-design-system (React + Tailwind)
 
+**Harness:** Vite app created locally per [`README.md`](README.md) (not committed).
+
 **Runner:**  
 **Date:**  
 
