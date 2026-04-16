@@ -234,6 +234,7 @@
           bedstead: "vendor/bedstead/Teletext50.css",
           c64: "vendor/c64css3/css.css",
         };
+        const NES_CDN = "https://unpkg.com/nes.css@2.3.0/css/nes.min.css";
         const select = document.getElementById("theme-select");
         const link = document.getElementById("theme-sheet");
         const status = document.getElementById("theme-status");
@@ -257,10 +258,15 @@
             rowTheme.textContent = key;
           };
           link.onerror = function () {
+            if (key === "nes" && href !== NES_CDN) {
+              setStatus("Local NES.css missing; falling back to CDN nes.css@2.3.0.");
+              link.href = NES_CDN;
+              return;
+            }
             setStatus(
               "Could not load " +
                 href +
-                ". Clone vendor repos (see README) and run NES.css build if using NES.",
+                ". Clone vendor repos (see README). NES can fall back to CDN.",
             );
             rowTheme.textContent = "missing";
           };
