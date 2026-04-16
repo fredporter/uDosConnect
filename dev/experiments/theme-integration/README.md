@@ -34,7 +34,9 @@ git clone https://github.com/fredporter/c64css3
 
 ### Test page goals
 
-Build an `index.html` (can live beside `vendor/` or in `experiment-1-retro/`) that:
+**Harness:** [`experiment-1-retro/index.html`](experiment-1-retro/index.html) + [`experiment-1-retro/README.md`](experiment-1-retro/README.md) (clone/build instructions).
+
+Build out or extend `index.html` so that it:
 
 1. Renders a **USXD-style shell** (header / dock / centre / footer).
 2. Provides a **theme selector** (NES / Bedstead / C64 / default).

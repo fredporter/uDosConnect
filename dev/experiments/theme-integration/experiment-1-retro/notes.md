@@ -1,5 +1,7 @@
 # Experiment 1 — Retro themes (NES.css, Bedstead, C64.css)
 
+**Harness:** `index.html` + [`README.md`](README.md) (clone `vendor/`, build NES.css, `npx serve`).
+
 **Runner:**  
 **Date:**  
 
