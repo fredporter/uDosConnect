@@ -97,7 +97,17 @@ import {
   cmdPrReview,
   cmdPrMerge,
 } from "./actions/github.js";
-import { cmdWpPublish, cmdWpReview, cmdWpSync } from "./actions/wordpress.js";
+import {
+  cmdWpPublish, 
+  cmdWpReview, 
+  cmdWpSync,
+  cmdWpSubmit,
+  cmdWpApprove,
+  cmdWpSetup,
+  cmdWpImport,
+  cmdWpExport,
+  cmdWpStatus
+} from "./actions/wordpress.js";
 import { cmdApprove, cmdReview, cmdSubmit } from "./actions/collab.js";
 import {
   cmdGridEdit,
@@ -315,6 +325,12 @@ export async function main(argv: string[]): Promise<void> {
   wp.command("sync").action(async () => cmdWpSync());
   wp.command("publish").action(async () => cmdWpPublish());
   wp.command("review").action(async () => cmdWpReview());
+  wp.command("submit").action(async () => cmdWpSubmit());
+  wp.command("approve").action(async () => cmdWpApprove());
+  wp.command("setup").action(async () => cmdWpSetup());
+  wp.command("import").action(async () => cmdWpImport());
+  wp.command("export").action(async () => cmdWpExport());
+  wp.command("status").action(async () => cmdWpStatus());
 
   program
     .command("submit")

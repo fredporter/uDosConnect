@@ -161,6 +161,17 @@ Auto-detection defaults:
 | `udo wp sync` | WordPress sync stub (upgrade message) |
 | `udo wp publish` | WordPress publish stub (upgrade message) |
 | `udo wp review` | WordPress editorial review stub (upgrade message) |
+| `udo wp submit` | WordPress draft submission stub (upgrade message) |
+| `udo wp approve` | WordPress draft approval stub (upgrade message) |
+
+## WordPress adaptor commands (A1 implementation)
+
+| Command | Description |
+| --- | --- |
+| `udo wp setup` | Configure WordPress connection and credentials |
+| `udo wp status` | Check WordPress connection status |
+| `udo wp import` | Import WordPress posts as uDos notes (A1 stub) |
+| `udo wp export` | Export uDos notes as WordPress posts (A1 stub) |
 
 ## Sync (A1 stubs for WP cloud actions)
 
