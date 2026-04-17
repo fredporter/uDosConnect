@@ -106,7 +106,9 @@ import {
   cmdWpSetup,
   cmdWpImport,
   cmdWpExport,
-  cmdWpStatus
+  cmdWpStatus,
+  cmdWpApiTest,
+  cmdWpApiPostsList
 } from "./actions/wordpress.js";
 import { cmdApprove, cmdReview, cmdSubmit } from "./actions/collab.js";
 import {
@@ -331,6 +333,10 @@ export async function main(argv: string[]): Promise<void> {
   wp.command("import").action(async () => cmdWpImport());
   wp.command("export").action(async () => cmdWpExport());
   wp.command("status").action(async () => cmdWpStatus());
+  
+  const api = wp.command("api").description("WordPress API direct access");
+  api.command("test").action(async () => cmdWpApiTest());
+  api.command("posts").action(async () => cmdWpApiPostsList());
 
   program
     .command("submit")

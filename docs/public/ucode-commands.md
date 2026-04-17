@@ -164,14 +164,24 @@ Auto-detection defaults:
 | `udo wp submit` | WordPress draft submission stub (upgrade message) |
 | `udo wp approve` | WordPress draft approval stub (upgrade message) |
 
-## WordPress adaptor commands (A1 implementation)
+## WordPress adaptor commands (A2 implementation)
 
 | Command | Description |
 | --- | --- |
 | `udo wp setup` | Configure WordPress connection and credentials |
-| `udo wp status` | Check WordPress connection status |
-| `udo wp import` | Import WordPress posts as uDos notes (A1 stub) |
-| `udo wp export` | Export uDos notes as WordPress posts (A1 stub) |
+| `udo wp status` | Check WordPress connection status with API test |
+| `udo wp import` | Import WordPress posts as uDos notes (A2) |
+| `udo wp export` | Export uDos notes as WordPress posts (A2) |
+
+## WordPress API commands (A2 direct access)
+
+| Command | Description |
+| --- | --- |
+| `udo wp api test` | Test WordPress API connectivity |
+| `udo wp api posts` | List WordPress posts from API |
+| `udo wp api posts <id>` | Get specific post details |
+| `udo wp api categories` | List all categories |
+| `udo wp api tags` | List all tags |
 
 ## Sync (A1 stubs for WP cloud actions)
 

@@ -1,5 +1,6 @@
 import chalk from "chalk";
 import { upgradeMessage } from "../cloud-stubs/upgrade.js";
+import { WordPressClient, WordPressClientFactory, WordPressPost } from "../lib/wordpress-client.js";
 
 /**
  * WordPress Sync Command - Bidirectional synchronization
@@ -128,41 +129,131 @@ export async function cmdWpExport(): Promise<void> {
 }
 
 /**
+ * WordPress API Test Command - Test API connectivity
+ */
+export async function cmdWpApiTest(): Promise<void> {
+  try {
+    const client = await WordPressClientFactory.getClient();
+    
+    console.log(chalk.blue("\n🧪 Testing WordPress API Connectivity"));
+    
+    const connected = await client.testConnectivity();
+    
+    if (connected) {
+      console.log(chalk.green("✅ Connection successful!"));
+      
+      // Get some basic info
+      const user = await client.getCurrentUser();
+      console.log(`👤 Logged in as: ${user.name} (ID: ${user.id})`);
+      
+    } else {
+      console.log(chalk.red("❌ Connection failed"));
+      console.log("Check your WordPress URL and credentials");
+    }
+    
+  } catch (error: any) {
+    console.error(chalk.red("❌ API test failed:"), error.message);
+    if (error.code === 'wordpress_setup_error') {
+      console.log("\n📋 Setup required:");
+      console.log("   WORDPRESS_URL=https://your-site.com");
+      console.log("   WORDPRESS_USERNAME=your-username");
+      console.log("   WORDPRESS_APPLICATION_PASSWORD=your-password");
+    }
+  }
+}
+
+/**
+ * WordPress API Posts List Command
+ */
+export async function cmdWpApiPostsList(): Promise<void> {
+  try {
+    const client = await WordPressClientFactory.getClient();
+    
+    console.log(chalk.blue("\n📝 Fetching WordPress Posts"));
+    
+    const posts = await client.getPosts({ perPage: 10 });
+    
+    console.log(chalk.green(`✅ Found ${posts.length} posts:`));
+    
+    posts.forEach((post: WordPressPost, index: number) => {
+      console.log(`\n${index + 1}. ${post.title?.rendered || 'Untitled'}`);
+      console.log(`   ID: ${post.id}`);
+      console.log(`   Status: ${post.status}`);
+      console.log(`   Date: ${post.date}`);
+      console.log(`   Link: ${post.link}`);
+    });
+    
+    if (posts.length === 10) {
+      console.log(`\n💡 Tip: Use --all to fetch all posts`);
+    }
+    
+  } catch (error: any) {
+    console.error(chalk.red("❌ Failed to fetch posts:"), error.message);
+  }
+}
+
+/**
  * WordPress Status Command - Show connection status
  */
 export async function cmdWpStatus(): Promise<void> {
-  console.log(chalk.blue("\n🌐 WordPress Adaptor Status"));
-  
-  // Check environment variables
-  const url = process.env.WORDPRESS_URL;
-  const username = process.env.WORDPRESS_USERNAME;
-  const password = process.env.WORDPRESS_APPLICATION_PASSWORD;
-  
-  if (url) {
-    console.log(`✅ URL: ${url}`);
-  } else {
-    console.log("❌ URL: Not configured");
-  }
-  
-  if (username) {
-    console.log(`✅ Username: ${username}`);
-  } else {
-    console.log("❌ Username: Not configured");
-  }
-  
-  if (password) {
-    console.log(`✅ Application Password: Configured`);
-  } else {
-    console.log("❌ Application Password: Not configured");
-  }
-  
-  console.log(`\n📋 Post Type: ${process.env.POST_TYPE || 'post'}`);
-  
-  if (url && username && password) {
-    console.log(chalk.green("\n✅ Configuration: Complete"));
-    console.log("   Ready for WordPress integration (A2)");
-  } else {
-    console.log(chalk.yellow("\n⚠️  Configuration: Incomplete"));
-    console.log("   Run: udo wp setup for configuration instructions");
+  try {
+    console.log(chalk.blue("\n🌐 WordPress Adaptor Status"));
+    
+    const client = await WordPressClientFactory.getClient();
+    
+    // Check environment variables
+    const url = process.env.WORDPRESS_URL;
+    const username = process.env.WORDPRESS_USERNAME;
+    const password = process.env.WORDPRESS_APPLICATION_PASSWORD;
+    
+    if (url) {
+      console.log(`✅ URL: ${url}`);
+    } else {
+      console.log("❌ URL: Not configured");
+    }
+    
+    if (username) {
+      console.log(`✅ Username: ${username}`);
+    } else {
+      console.log("❌ Username: Not configured");
+    }
+    
+    if (password) {
+      console.log(`✅ Application Password: Configured`);
+    } else {
+      console.log("❌ Application Password: Not configured");
+    }
+    
+    console.log(`\n📋 Post Type: ${process.env.POST_TYPE || 'post'}`);
+    
+    // Test actual connection
+    const connected = await client.testConnectivity();
+    
+    if (connected) {
+      console.log(chalk.green("\n✅ Configuration: Complete"));
+      console.log("   WordPress API is accessible");
+      
+      // Show user info if available
+      try {
+        const user = await client.getCurrentUser();
+        console.log(`   Logged in as: ${user.name}`);
+      } catch (error) {
+        // User info not essential for status
+      }
+      
+    } else {
+      console.log(chalk.yellow("\n⚠️  Configuration: Incomplete"));
+      console.log("   WordPress API not accessible");
+      console.log("   Run: udo wp setup for configuration instructions");
+    }
+    
+  } catch (error: any) {
+    console.error(chalk.red("❌ Status check failed:"), error.message);
+    if (error.code === 'wordpress_setup_error') {
+      console.log("\n📋 Setup required:");
+      console.log("   WORDPRESS_URL=https://your-site.com");
+      console.log("   WORDPRESS_USERNAME=your-username");
+      console.log("   WORDPRESS_APPLICATION_PASSWORD=your-password");
+    }
   }
 }
