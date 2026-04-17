@@ -108,7 +108,8 @@ import {
   cmdWpExport,
   cmdWpStatus,
   cmdWpApiTest,
-  cmdWpApiPostsList
+  cmdWpApiPostsList,
+  cmdWpSyncStatus
 } from "./actions/wordpress.js";
 import { cmdApprove, cmdReview, cmdSubmit } from "./actions/collab.js";
 import {
@@ -323,8 +324,22 @@ export async function main(argv: string[]): Promise<void> {
   pr.command("approve").argument("<id>").action(async (id: string) => cmdPrApprove(id));
   pr.command("merge").argument("<id>").action(async (id: string) => cmdPrMerge(id));
 
-  const wp = program.command("wp").description("WordPress docs/content workflow (A1 stubs)");
-  wp.command("sync").action(async () => cmdWpSync());
+  const wp = program.command("wp").description("WordPress docs/content workflow (A2 implementation)");
+  
+  // Main sync command (A2 implementation)
+  wp.command("sync").description("Bidirectional synchronization (A2)").action(async () => cmdWpSync());
+  
+  // Sync subcommands
+  const syncSub = wp.command("sync-sub");
+  syncSub.command("status").description("Show sync status").action(async () => cmdWpSyncStatus());
+  syncSub.command("run").action(async () => cmdWpSync()); // Alias for main sync
+  
+  // API commands
+  const api = wp.command("api").description("WordPress API direct access");
+  api.command("test").action(async () => cmdWpApiTest());
+  api.command("posts").action(async () => cmdWpApiPostsList());
+  
+  // Other commands
   wp.command("publish").action(async () => cmdWpPublish());
   wp.command("review").action(async () => cmdWpReview());
   wp.command("submit").action(async () => cmdWpSubmit());
@@ -333,10 +348,6 @@ export async function main(argv: string[]): Promise<void> {
   wp.command("import").action(async () => cmdWpImport());
   wp.command("export").action(async () => cmdWpExport());
   wp.command("status").action(async () => cmdWpStatus());
-  
-  const api = wp.command("api").description("WordPress API direct access");
-  api.command("test").action(async () => cmdWpApiTest());
-  api.command("posts").action(async () => cmdWpApiPostsList());
 
   program
     .command("submit")

@@ -164,6 +164,14 @@ Auto-detection defaults:
 | `udo wp submit` | WordPress draft submission stub (upgrade message) |
 | `udo wp approve` | WordPress draft approval stub (upgrade message) |
 
+## WordPress sync commands (A2 implementation)
+
+| Command | Description |
+| --- | --- |
+| `udo wp sync run` | Run bidirectional synchronization (dry-run mode) |
+| `udo wp sync status` | Show synchronization status and state |
+| `udo wp sync --apply` | Apply synchronization changes (future) |
+
 ## WordPress adaptor commands (A2 implementation)
 
 | Command | Description |

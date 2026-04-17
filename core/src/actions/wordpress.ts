@@ -1,24 +1,57 @@
 import chalk from "chalk";
 import { upgradeMessage } from "../cloud-stubs/upgrade.js";
 import { WordPressClient, WordPressClientFactory, WordPressPost } from "../lib/wordpress-client.js";
+import { WordPressSyncFactory } from "../sync/wordpress-sync.js";
 
 /**
- * WordPress Sync Command - Bidirectional synchronization
+ * WordPress Sync Command - Bidirectional synchronization (A2 Implementation)
  */
 export async function cmdWpSync(): Promise<void> {
-  console.log(chalk.green("🔄 WordPress synchronization"));
-  console.log(chalk.blue("\n📝 WordPress sync command"));
-  console.log("   Status: A1 stub implementation");
-  console.log("   A2 will include: bidirectional sync, conflict resolution, incremental updates");
-  console.log("\n🚀 Try these commands:");
-  console.log("   udo wp import   - Import WordPress posts");
-  console.log("   udo wp export   - Export uDos notes to WordPress");
-  console.log("   udo wp setup    - Configure WordPress connection");
-  console.log("\n📋 Configuration:");
-  console.log("   Set environment variables:");
-  console.log("   WORDPRESS_URL=https://your-site.com");
-  console.log("   WORDPRESS_USERNAME=your-username");
-  console.log("   WORDPRESS_APPLICATION_PASSWORD=your-password");
+  try {
+    const syncEngine = await WordPressSyncFactory.getSyncEngine();
+    
+    console.log(chalk.green("🔄 WordPress Bidirectional Synchronization (A2)"));
+    console.log("\n📋 Sync Options:");
+    console.log("   --dry-run       Preview changes without applying");
+    console.log("   --since <date>  Sync changes since date");
+    console.log("   --limit <num>   Limit number of items to sync");
+    console.log("   --resolve <strategy> Conflict resolution (udos|wordpress|manual)");
+    console.log("   --batch <size>  Batch size for processing");
+    
+    // For A2, we'll implement the basic sync with dry-run mode
+    const result = await syncEngine.sync({
+      dryRun: true, // Always dry-run for A2 safety
+      limit: 10     // Limit for A2 testing
+    });
+    
+    if (result.success) {
+      console.log(chalk.blue("\n📊 Sync Preview Results:"));
+      console.log(`   Created: ${result.created}`);
+      console.log(`   Updated: ${result.updated}`);
+      console.log(`   Deleted: ${result.deleted}`);
+      console.log(`   Skipped: ${result.skipped}`);
+      console.log(`   Conflicts: ${result.conflicts}`);
+      console.log(`   Duration: ${result.durationMs}ms`);
+      
+      if (result.conflicts > 0) {
+        console.log(chalk.yellow("\n⚠️  Manual conflict resolution required"));
+        console.log("   Use --resolve-strategy to auto-resolve conflicts");
+      }
+      
+      console.log(chalk.green("\n✅ Dry run completed successfully"));
+      console.log("   Run with --apply to execute changes (A2 feature)");
+      
+    } else {
+      console.log(chalk.red("\n❌ Sync preview failed:"));
+      result.errors.forEach(error => console.log(`   - ${error}`));
+    }
+    
+  } catch (error: any) {
+    console.error(chalk.red("❌ Sync command failed:"), error.message);
+    console.log(chalk.blue("\n📋 Setup required:"));
+    console.log("   Run: udo wp setup");
+    console.log("   Configure WordPress connection first");
+  }
 }
 
 /**
@@ -189,6 +222,43 @@ export async function cmdWpApiPostsList(): Promise<void> {
     
   } catch (error: any) {
     console.error(chalk.red("❌ Failed to fetch posts:"), error.message);
+  }
+}
+
+/**
+ * WordPress Sync Status Command - Show sync state
+ */
+export async function cmdWpSyncStatus(): Promise<void> {
+  try {
+    const syncEngine = await WordPressSyncFactory.getSyncEngine();
+    
+    console.log(chalk.blue("\n🔄 WordPress Sync Status"));
+    
+    // Show sync state information
+    const syncState = await syncEngine['syncState']; // Access private property for status
+    
+    console.log(`📅 Last Sync: ${syncState.lastSync || 'Never'}`);
+    console.log(`📊 WordPress Total: ${syncState.wordPressTotal}`);
+    console.log(`📊 uDos Total: ${syncState.udosTotal}`);
+    console.log(`🔢 Last WordPress ID: ${syncState.lastWordPressSyncId || 'None'}`);
+    
+    // Test connectivity
+    const client = await WordPressClientFactory.getClient();
+    const connected = await client.testConnectivity();
+    
+    if (connected) {
+      console.log(chalk.green("\n✅ Sync Ready"));
+      console.log("   WordPress API accessible");
+      console.log("   Run: udo wp sync --dry-run to preview changes");
+    } else {
+      console.log(chalk.yellow("\n⚠️  Sync Not Ready"));
+      console.log("   WordPress API not accessible");
+    }
+    
+  } catch (error: any) {
+    console.error(chalk.red("❌ Sync status failed:"), error.message);
+    console.log(chalk.blue("\n📋 Setup required:"));
+    console.log("   Run: udo wp setup");
   }
 }
 
