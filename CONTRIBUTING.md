@@ -59,13 +59,13 @@ The project uses a pre-commit hook to ensure code quality before committing. The
 2. **Trailing Comma Check**: Checks for trailing commas in Vue files.
 3. **Linting**: Runs ESLint on TypeScript and JavaScript files to catch syntax errors and enforce code style.
 4. **Workspace Validation**: Validates the npm workspaces configuration.
-5. **Large Files Check**: Prevents files larger than 1MB from being committed.
-6. **Secrets Check**: Prevents potential secrets from being committed.
+5. **Smoke Tests**: Runs smoke tests to ensure basic functionality.
+6. **Large Files Check**: Prevents files larger than 1MB from being committed.
+7. **Secrets Check**: Prevents potential secrets from being committed.
 
 If any of these checks fail, the commit will be aborted. Fix the issues and try committing again.
 
 #### Note
-- **Smoke Tests**: Temporarily disabled due to failing tests. Enable it once the smoke tests are fixed.
 - **JSON/YAML Validation**: Temporarily disabled due to syntax errors in tsconfig.json files. Enable it once the syntax errors are fixed.
 
 #### ESLint Configuration

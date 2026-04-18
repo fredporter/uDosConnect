@@ -38,12 +38,12 @@ test("github and pr command groups are exposed", () => {
   assert.match(pr.output, /udo pr/);
 });
 
-test("wp command emits A2 upgrade guidance", () => {
+test("wp command emits setup guidance when not configured", () => {
   const wp = runUdo(["wp", "sync"]);
   assert.equal(wp.code, 0);
-  assert.match(wp.output.toLowerCase(), /wordpress sync/);
-  assert.match(wp.output.toLowerCase(), /a1 stub implementation/);
-  assert.match(wp.output.toLowerCase(), /bidirectional sync/);
+  assert.match(wp.output.toLowerCase(), /setup required/);
+  assert.match(wp.output.toLowerCase(), /udo wp setup/);
+  assert.match(wp.output.toLowerCase(), /configure wordpress connection/);
 });
 
 test("collab docs route uses wp stub path", () => {
