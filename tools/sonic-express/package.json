@@ -10,7 +10,14 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "start:webhook": "tsx src/webhook-server.ts",
-    "dev:webhook": "nodemon --watch src --ext ts --exec 'tsx src/webhook-server.ts'"
+    "dev:webhook": "nodemon --watch src --ext ts --exec 'tsx src/webhook-server.ts'",
+    "install": "tsx src/main.ts install",
+    "start": "tsx src/main.ts start",
+    "stop": "tsx src/main.ts stop",
+    "restart": "tsx src/main.ts restart",
+    "health": "tsx src/main.ts health",
+    "self-heal": "tsx src/main.ts self-heal",
+    "cleanup": "tsx src/main.ts cleanup"
   },
   "dependencies": {
     "@udos/shared-types": "*",
