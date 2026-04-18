@@ -71,6 +71,16 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('../views/surfaces/ToolRegistrySurface.vue'),
         meta: { title: 'MCP Tool Registry' },
       },
+      {
+        path: 'dev-dashboard',
+        component: () => import('../views/surfaces/DevModeDashboard.vue'),
+        meta: { title: 'Dev Mode Dashboard' },
+      },
+      {
+        path: 'react-renderer',
+        component: () => import('../views/surfaces/ReactRenderer.vue'),
+        meta: { title: 'React Renderer' },
+      },
     ],
   },
 

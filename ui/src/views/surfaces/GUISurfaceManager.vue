@@ -55,6 +55,8 @@ onMounted(() => {
     { id: 'browser', title: 'Browser Surface', path: '/surface/browser' },
     { id: 'story', title: 'Story Surface', path: '/surface/story' },
     { id: 'tools', title: 'MCP Tool Registry', path: '/surface/tools' },
+    { id: 'dev-dashboard', title: 'Dev Mode Dashboard', path: '/surface/dev-dashboard' },
+    { id: 'react-renderer', title: 'React Renderer', path: '/surface/react-renderer' },
   ];
 });
 </script>
@@ -126,6 +128,12 @@ onMounted(() => {
             </button>
             <button @click="execCommand('udo tools list')" class="w-full text-left px-3 py-1 rounded hover:bg-gray-700">
               🛠️ udo tools list
+            </button>
+            <button @click="execCommand('udo dev-dashboard')" class="w-full text-left px-3 py-1 rounded hover:bg-gray-700">
+              🎮 udo dev-dashboard
+            </button>
+            <button @click="execCommand('udo react-renderer')" class="w-full text-left px-3 py-1 rounded hover:bg-gray-700">
+              🌐 udo react-renderer
             </button>
           </div>
         </div>
