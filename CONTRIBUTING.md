@@ -1,26 +1,116 @@
-# Contributing
+# Contributing to uDosConnect
 
-If this tree is not yet a Git repository locally, run `git init` at the repo root, then `git remote add origin https://github.com/fredporter/uDosConnect.git` (or your fork). If **`origin`** still points at the old **`uDosExtension`** URL, run:
+Thank you for contributing to uDosConnect! This guide will help you get started with the development workflow.
 
-`git remote set-url origin https://github.com/fredporter/uDosConnect.git`
+## Development Workflow
 
-**Monorepo:** there are **no Git submodules**. Clone normally:
+### 1. Prerequisites
 
-`git clone https://github.com/fredporter/uDosConnect.git`
+- Node.js (>= 18)
+- npm (>= 9)
+- Git
+- Bash (or Zsh on macOS)
 
-**Canonical trees in this repo:** **`dev/`** (governance / workflow), **`docs/`** (documentation). Do **not** recreate old **`uDosDev/`** or **`uDosDocs/`** directory names at the root — that material is **absorbed** into **`dev/`** and **`docs/`**.
+### 2. Getting Started
 
-1. **Governance and process** — read [`dev/workflow/migrated-round1/process/dev-process-beta.md`](dev/workflow/migrated-round1/process/dev-process-beta.md) and [`dev/TASKS.md`](dev/TASKS.md).
-2. **Planning spine** — read [`docs/family-workspace-layout.md`](docs/family-workspace-layout.md): optional coding root (e.g. **`~/Code/`**), Mac/Linux/Windows examples, **`uDosConnect`** as active monorepo, optional **`archive/`** for retired trees.
-3. **Scratch** — use repo-local **`.local/`** or **`dev/local/`** (gitignored) per dev standard; do not commit inbox dumps.
-4. **Paths in docs** — follow the **optional** coding-root pattern in [`docs/family-workspace-layout.md`](docs/family-workspace-layout.md); avoid other machine-specific absolute paths. Checks under **`scripts/`** or **`dev/`** may reject patterns like `/Users/.../Code/`.
-5. **Local Python pointer** — after `scripts/bootstrap-family-python.sh`, the file **`.udos-connect-python`** is created at the repo root and is **gitignored** (legacy fallback: `.udos-family-python`).
-6. **PRs** — prefer **`main`**; keep changes scoped and described in complete sentences.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/fredporter/uDosConnect.git
+   cd uDosConnect
+   ```
 
-7. **Family checks** — scripts under **`scripts/`** may assume paths described in [`docs/family-workspace-layout.md`](docs/family-workspace-layout.md); if optional paths are absent, a script may stop early — that is normal on a partial environment.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-8. **Node / npm** — this repo uses **npm workspaces** at the root (`package.json` + `package-lock.json`). Install with **`npm ci`** (or **`npm install`**) at the repo root, then **`npm run build`** or **`npm test`**. Do not rely on per-package lockfiles under `core/` or `tools/sonic-express/`. The VA1 CLI is **`udo`** (from workspace `@udos/core` after `npm link` in `core/`); see [docs/public/ucode-commands.md](docs/public/ucode-commands.md).
+3. Install ESLint and related plugins:
+   ```bash
+   npm install --save-dev eslint eslint-plugin-vue @typescript-eslint/parser @typescript-eslint/eslint-plugin @eslint/js
+   ```
 
-9. **Dev scaffold (`--devonly` templates)** — contributor tiers, VibeCLI ↔ Cursor handover, and ignored scratch: [`dev/README.md`](dev/README.md). Do not commit personal notes under **`dev/local/`**; roadmaps/features in-repo are **template-only** (see `dev/.gitignore`).
+### 3. Development Scripts
 
-For deeper context, use **`docs/`** and **`dev/workflow/`** in this repo (including imported snapshots under `dev/workflow/imported/` where present).
+- **Build the project**:
+  ```bash
+  npm run build
+  ```
+
+- **Run tests**:
+  ```bash
+  npm run test
+  ```
+
+- **Lint the code**:
+  ```bash
+  npm run lint:check
+  ```
+
+- **Fix linting issues**:
+  ```bash
+  npm run lint
+  ```
+
+### 4. Pre-Commit Hooks
+
+The project uses a pre-commit hook to ensure code quality before committing. The hook performs the following checks:
+
+1. **VibeCLI Configuration Validation**: Validates the VibeCLI configuration.
+2. **Trailing Comma Check**: Checks for trailing commas in Vue files.
+3. **Linting**: Runs ESLint on Vue files to catch syntax errors and enforce code style.
+
+If any of these checks fail, the commit will be aborted. Fix the issues and try committing again.
+
+### 5. Scripts
+
+The project includes several scripts to help with development:
+
+- **`scripts/fix_comma.sh`**: Removes trailing commas from Vue files.
+- **`scripts/test_modular.sh`**: Tests the modular scripting functionality.
+- **`scripts/lib/file_utils.sh`**: Library of reusable functions for file operations.
+
+### 6. CI/CD Workflow
+
+The project uses GitHub Actions for continuous integration. The workflow runs the following checks on every push and pull request:
+
+1. **Pre-Commit Checks**: Runs the pre-commit hook to validate the code.
+2. **Linting**: Runs ESLint on Vue files.
+
+### 7. Code Style
+
+- Use `eslint` for linting Vue, JavaScript, and TypeScript files.
+- Follow the Vue 3 style guide for Vue components.
+- Use TypeScript for type safety.
+
+### 8. Commit Messages
+
+Use clear and descriptive commit messages. Follow the conventional commits format:
+
+- `feat`: A new feature
+- `fix`: A bug fix
+- `docs`: Documentation changes
+- `style`: Code style changes (e.g., formatting, missing semicolons)
+- `refactor`: Code refactoring
+- `test`: Adding or updating tests
+- `chore`: Maintenance tasks (e.g., updating dependencies)
+
+Example:
+```bash
+git commit -m "feat: Add new feature for user authentication"
+```
+
+### 9. Pull Requests
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Make your changes and commit them.
+4. Push your changes to your fork.
+5. Open a pull request to the main repository.
+
+### 10. Issues
+
+Report bugs and request features by opening an issue on GitHub. Include as much detail as possible.
+
+## License
+
+By contributing to uDosConnect, you agree that your contributions will be licensed under the MIT License.
