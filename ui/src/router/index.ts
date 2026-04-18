@@ -27,6 +27,11 @@ const routes: Array<RouteRecordRaw> = [
         meta: { title: 'GitHub Sync' },
       },
       {
+        path: 'wordpress',
+        component: () => import('../views/surfaces/WordPressSurface.vue'),
+        meta: { title: 'WordPress Adaptor' },
+      },
+      {
         path: 'usxd',
         component: () => import('../views/surfaces/USXDSurface.vue'),
         meta: { title: 'USXD Renderer' },
@@ -45,6 +50,26 @@ const routes: Array<RouteRecordRaw> = [
         path: 'demos',
         component: () => import('../views/surfaces/DemosSurface.vue'),
         meta: { title: 'Demo Surfaces' },
+      },
+      {
+        path: 'dev',
+        component: () => import('../views/surfaces/DevModeSurface.vue'),
+        meta: { title: 'Dev Mode Dashboard' },
+      },
+      {
+        path: 'browser',
+        component: () => import('../views/surfaces/BrowserSurface.vue'),
+        meta: { title: 'Browser Surface' },
+      },
+      {
+        path: 'story',
+        component: () => import('../views/surfaces/StorySurface.vue'),
+        meta: { title: 'Story Surface' },
+      },
+      {
+        path: 'tools',
+        component: () => import('../views/surfaces/ToolRegistrySurface.vue'),
+        meta: { title: 'MCP Tool Registry' },
       },
     ],
   },

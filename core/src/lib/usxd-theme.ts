@@ -1,13 +1,22 @@
 import fs from "fs-extra";
 import path from "node:path";
-import { templatesDir } from "../paths.js";
+import { templatesDir, getVendorRoot } from "../paths.js";
 
-export function usxdTemplatesRoot(): string {
+export async function usxdTemplatesRoot(): Promise<string> {
+  // Check vendor themes first, then fall back to templates
+  const vendorThemes = path.join(getVendorRoot(), "themes");
+  try {
+    if (await fs.pathExists(vendorThemes)) {
+      return vendorThemes;
+    }
+  } catch (e) {
+    console.error(`Failed to check vendor themes:`, e);
+  }
   return path.join(templatesDir(), "usxd");
 }
 
 export async function listUsxdThemeNames(): Promise<string[]> {
-  const root = usxdTemplatesRoot();
+  const root = await usxdTemplatesRoot();
   if (!(await fs.pathExists(root))) return [];
   const entries = await fs.readdir(root, { withFileTypes: true });
   return entries.filter((e) => e.isDirectory()).map((e) => e.name).sort();
@@ -35,7 +44,7 @@ export async function readActiveUsxd(vaultRoot: string): Promise<ActiveUsxd | nu
 
 /** Copy `templates/usxd/<name>/` → `vault/system/usxd/current/` and write `active.json`. */
 export async function applyUsxdTheme(vaultRoot: string, name: string): Promise<void> {
-  const src = path.join(usxdTemplatesRoot(), name);
+  const src = path.join(await usxdTemplatesRoot(), name);
   if (!(await fs.pathExists(src))) {
     throw new Error(`Unknown USXD theme: ${name} (expected ${src})`);
   }
@@ -51,7 +60,7 @@ export async function applyUsxdTheme(vaultRoot: string, name: string): Promise<v
 export async function resolveThemeCssPath(vaultRoot: string, themeName: string): Promise<string | null> {
   const v = path.join(vaultUsxdCurrentDir(vaultRoot), "theme.css");
   if (await fs.pathExists(v)) return v;
-  const t = path.join(usxdTemplatesRoot(), themeName, "theme.css");
+  const t = path.join(await usxdTemplatesRoot(), themeName, "theme.css");
   if (await fs.pathExists(t)) return t;
   return null;
 }

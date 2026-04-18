@@ -51,7 +51,7 @@ export async function buildStaticSite(vaultRoot: string): Promise<PublishBuildRe
   const active = await readActiveUsxd(vaultRoot);
   const themeName = active?.name ?? "default";
   const cssSrc = await resolveThemeCssPath(vaultRoot, themeName);
-  const fallbackCss = path.join(usxdTemplatesRoot(), "default", "theme.css");
+  const fallbackCss = path.join(await usxdTemplatesRoot(), "default", "theme.css");
   let themeText: string;
   if (cssSrc && (await fs.pathExists(cssSrc))) {
     themeText = await fs.readFile(cssSrc, "utf8");

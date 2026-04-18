@@ -43,7 +43,7 @@ async function exportMarkdownFile(markdown: string, sourcePath: string, outDir: 
   const surfaces = parseAllUsxdFromMarkdown(markdown);
   const grid = extractGrid(markdown);
   for (const u of surfaces) {
-    const html = renderToHTML(u, grid, { tailwindCdn: false, liveReload: false });
+    const html = await renderToHTML(u, grid, { tailwindCdn: false, liveReload: false });
     const safe = u.name.replace(/[^a-z0-9-_]+/gi, "-").replace(/^-+|-+$/g, "") || "surface";
     const target = path.join(outDir, `${safe}.html`);
     await fs.writeFile(target, html, "utf8");

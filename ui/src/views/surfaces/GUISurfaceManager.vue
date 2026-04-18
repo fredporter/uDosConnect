@@ -46,10 +46,15 @@ onMounted(() => {
     { id: 'vibe', title: 'Vibe TUI', path: '/surface/vibe' },
     { id: 'vault', title: 'Vault Browser', path: '/surface/vault' },
     { id: 'github', title: 'GitHub Sync', path: '/surface/github' },
+    { id: 'wordpress', title: 'WordPress Adaptor', path: '/surface/wordpress' },
     { id: 'usxd', title: 'USXD Renderer', path: '/surface/usxd' },
     { id: 'workflow', title: 'Workflow Engine', path: '/surface/workflow' },
     { id: 'mcp', title: 'MCP Bridge', path: '/surface/mcp' },
     { id: 'demos', title: 'Demo Surfaces', path: '/surface/demos' },
+    { id: 'dev', title: 'Dev Mode Dashboard', path: '/surface/dev' },
+    { id: 'browser', title: 'Browser Surface', path: '/surface/browser' },
+    { id: 'story', title: 'Story Surface', path: '/surface/story' },
+    { id: 'tools', title: 'MCP Tool Registry', path: '/surface/tools' },
   ];
 });
 </script>
@@ -107,11 +112,20 @@ onMounted(() => {
             <button @click="execCommand('udo github status')" class="w-full text-left px-3 py-1 rounded hover:bg-gray-700">
               🌐 udo github status
             </button>
+            <button @click="execCommand('udo wp status')" class="w-full text-left px-3 py-1 rounded hover:bg-gray-700">
+              🌍 udo wp status
+            </button>
             <button @click="execCommand('udo usxd list')" class="w-full text-left px-3 py-1 rounded hover:bg-gray-700">
               🎨 udo usxd list
             </button>
             <button @click="execCommand('udo workflow list')" class="w-full text-left px-3 py-1 rounded hover:bg-gray-700">
               ⚙️ udo workflow list
+            </button>
+            <button @click="execCommand('udo dev status')" class="w-full text-left px-3 py-1 rounded hover:bg-gray-700">
+              🔧 udo dev status
+            </button>
+            <button @click="execCommand('udo tools list')" class="w-full text-left px-3 py-1 rounded hover:bg-gray-700">
+              🛠️ udo tools list
             </button>
           </div>
         </div>

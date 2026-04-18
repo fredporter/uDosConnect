@@ -7,6 +7,7 @@ import fs from "fs-extra";
 import { fileURLToPath } from "node:url";
 import { spawn } from "node:child_process";
 import readline from "node:readline";
+import os from "node:os";
 import { buildSurfaceIndex, buildSurfaceIndexFromFile, bundleForSurface } from "./surface-index.js";
 import { renderToHTML } from "./renderer.js";
 
@@ -76,6 +77,9 @@ export async function serve(opts: ServeOptions): Promise<void> {
   if (await fs.pathExists(publicDir)) {
     app.use(express.static(publicDir));
   }
+  
+  // Determine vault root for theme integration
+  const vaultRoot = process.env.UDOS_VAULT || path.join(os.homedir(), "vault");
 
   app.get("/", (_req, res) => {
     const ids = [...index.keys()].sort();
@@ -92,7 +96,7 @@ export async function serve(opts: ServeOptions): Promise<void> {
 </body></html>`);
   });
 
-  app.get("/surface/:id", (req, res) => {
+  app.get("/surface/:id", async (req, res) => {
     const id = req.params.id!;
     const entry = index.get(id);
     const bundle = bundleForSurface(id, entry);
@@ -100,8 +104,17 @@ export async function serve(opts: ServeOptions): Promise<void> {
       res.status(404).type("text/plain").send(`Unknown surface: ${id}`);
       return;
     }
-    const html = renderToHTML(bundle.usxd, bundle.grid, { tailwindCdn: true, liveReload: true });
-    res.type("html").send(html);
+    try {
+      const html = await renderToHTML(bundle.usxd, bundle.grid, { 
+        tailwindCdn: true, 
+        liveReload: true,
+        vaultRoot: vaultRoot 
+      });
+      res.type("html").send(html);
+    } catch (error) {
+      console.error(`Failed to render surface ${id}:`, error);
+      res.status(500).type("text/plain").send(`Render error: ${error instanceof Error ? error.message : String(error)}`);
+    }
   });
 
   const server = http.createServer(app);

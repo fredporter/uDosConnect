@@ -2,24 +2,44 @@
   "version": 1,
   "cdnBaseDefault": "https://cdn.udo.space",
   "bundles": {
-    "retro": {
-      "description": "Retro terminal / teletext faces (CDN or seed/)",
+    "core": {
+      "description": "Core font collection (prose + grid)",
       "files": [
-        {
-          "id": "Teletext50",
-          "filename": "Teletext50.woff2",
-          "path": "/fonts/Teletext50.woff2"
-        },
-        {
-          "id": "VT323",
-          "filename": "VT323.woff2",
-          "path": "/fonts/VT323.woff2"
-        },
-        {
-          "id": "PressStart2P",
-          "filename": "PressStart2P.woff2",
-          "path": "/fonts/PressStart2P.woff2"
-        }
+        {"id": "Inter", "filename": "Inter.woff2", "path": "/fonts/core/Inter.woff2", "source": "google", "license": "OFL", "credits": "Rasmus Andersson"},
+        {"id": "Merriweather", "filename": "Merriweather.woff2", "path": "/fonts/core/Merriweather.woff2", "source": "google", "license": "OFL", "credits": "Sorkin Type"},
+        {"id": "JetBrainsMono", "filename": "JetBrainsMono.woff2", "path": "/fonts/core/JetBrainsMono.woff2", "source": "google", "license": "Apache 2.0", "credits": "JetBrains"},
+        {"id": "MonaspaceArgon", "filename": "MonaspaceArgonVar.woff2", "path": "/fonts/core/MonaspaceArgonVar.woff2", "source": "github", "license": "OFL", "credits": "GitHub Next"},
+        {"id": "MonaspaceKrypton", "filename": "MonaspaceKryptonVar.woff2", "path": "/fonts/core/MonaspaceKryptonVar.woff2", "source": "github", "license": "OFL", "credits": "GitHub Next"},
+        {"id": "MonaspaceNeon", "filename": "MonaspaceNeonVar.woff2", "path": "/fonts/core/MonaspaceNeonVar.woff2", "source": "github", "license": "OFL", "credits": "GitHub Next"},
+        {"id": "MonaspaceRadon", "filename": "MonaspaceRadonVar.woff2", "path": "/fonts/core/MonaspaceRadonVar.woff2", "source": "github", "license": "OFL", "credits": "GitHub Next"},
+        {"id": "MonaspaceXenon", "filename": "MonaspaceXenonVar.woff2", "path": "/fonts/core/MonaspaceXenonVar.woff2", "source": "github", "license": "OFL", "credits": "GitHub Next"}
+      ]
+    },
+    "retro-grid": {
+      "description": "Retro terminal / teletext faces (active)",
+      "files": [
+        {"id": "Teletext50", "filename": "Teletext50.woff2", "path": "/fonts/retro-grid/Teletext50.woff2", "source": "cdn", "license": "MIT", "credits": "Teletext"},
+        {"id": "PressStart2P", "filename": "PressStart2P.woff2", "path": "/fonts/retro-grid/PressStart2P.woff2", "source": "cdn", "license": "MIT", "credits": "Press Start 2P"},
+        {"id": "PetMe64", "filename": "PetMe64.ttf", "path": "/fonts/retro-grid/PetMe64.ttf", "source": "local", "license": "MIT", "credits": "C64 Community"},
+        {"id": "C64_Pro_Mono", "filename": "C64_Pro_Mono.ttf", "path": "/fonts/retro-grid/C64_Pro_Mono.ttf", "source": "local", "license": "MIT", "credits": "C64 Community"},
+        {"id": "VT323", "filename": "VT323.woff2", "path": "/fonts/retro-grid/VT323.woff2", "source": "cdn", "license": "MIT", "credits": "VT323"}
+      ]
+    },
+    "classic-modern": {
+      "description": "Classic modern system fonts (fallback)",
+      "files": [
+        {"id": "SanFrancisco", "filename": "system", "path": "system", "source": "system", "license": "Apple", "credits": "Apple"},
+        {"id": "NewYork", "filename": "system", "path": "system", "source": "system", "license": "Apple", "credits": "Apple"},
+        {"id": "Menlo", "filename": "system", "path": "system", "source": "system", "license": "Apple", "credits": "Apple"},
+        {"id": "SFMono", "filename": "system", "path": "system", "source": "system", "license": "Apple", "credits": "Apple"}
+      ]
+    },
+    "font-pack": {
+      "description": "Curated font collection (separate from core)",
+      "files": [
+        {"id": "Mallard-Regular", "filename": "Mallard-Regular.ttf", "path": "/fonts/font-pack/mallard/Mallard-Regular.ttf", "source": "curated", "license": "MIT", "credits": "Vintage Fonts Archive"},
+        {"id": "Mallard-Bold", "filename": "Mallard-Bold.ttf", "path": "/fonts/font-pack/mallard/Mallard-Bold.ttf", "source": "curated", "license": "MIT", "credits": "Vintage Fonts Archive"},
+        {"id": "Mallard-Italic", "filename": "Mallard-Italic.ttf", "path": "/fonts/font-pack/mallard/Mallard-Italic.ttf", "source": "curated", "license": "MIT", "credits": "Vintage Fonts Archive"}
       ]
     }
   }

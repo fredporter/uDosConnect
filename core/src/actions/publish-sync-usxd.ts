@@ -12,7 +12,9 @@ import {
   applyUsxdTheme,
   listUsxdThemeNames,
   readActiveUsxd,
+  resolveThemeCssPath,
   usxdTemplatesRoot,
+  vaultUsxdCurrentDir,
 } from "../lib/usxd-theme.js";
 
 export async function cmdPublishBuild(): Promise<void> {
@@ -95,26 +97,63 @@ export async function cmdSyncPush(): Promise<void> {
 
 export async function cmdUsxdList(): Promise<void> {
   const names = await listUsxdThemeNames();
-  const root = usxdTemplatesRoot();
+  const root = await usxdTemplatesRoot();
   if (names.length === 0) {
-    console.log(chalk.dim(`No themes in ${root}`));
+    console.log(chalk.dim(`No USXD themes found in ${root}`));
+    console.log(chalk.dim(`Install themes by adding directories to: ${root}/`));
     return;
   }
-  names.forEach((n) => console.log(n));
+  
+  console.log(chalk.bold("Available USXD Themes:"));
+  console.log(chalk.dim("─────────────────────────────────────"));
+  
+  // Check active theme
+  const vault = getVaultRoot();
+  const active = await readActiveUsxd(vault);
+  const activeName = active?.name;
+  
+  names.forEach((n) => {
+    const activeMarker = n === activeName ? chalk.green("●") : " ";
+    console.log(`${activeMarker} ${chalk.bold(n)}`);
+  });
+  console.log(chalk.dim("─────────────────────────────────────"));
+  console.log(chalk.dim(`Location: ${root}/`));
+  console.log(chalk.dim(`Active: ${activeName || "none"}`));
+  console.log(chalk.dim(`Apply with: udo usxd apply <name>`));
 }
 
 export async function cmdUsxdApply(name: string): Promise<void> {
   const vault = getVaultRoot();
+  const dest = path.join(vault, "system", "usxd", "current");
   await applyUsxdTheme(vault, name);
-  console.log(chalk.green(`Applied USXD theme "${name}" → ${path.join(vault, "system", "usxd", "current")}`));
+  console.log(chalk.green(`✓ Applied USXD theme "${chalk.bold(name)}"`));
+  console.log(chalk.dim(`  → ${dest}/`));
+  console.log(chalk.dim(`Run ${chalk.bold("udo usxd show")} to verify`));
 }
 
 export async function cmdUsxdShow(): Promise<void> {
   const vault = getVaultRoot();
   const active = await readActiveUsxd(vault);
+  
   if (!active) {
-    console.log(chalk.dim("No theme applied — run: udo usxd apply <name>"));
+    console.log(chalk.yellow("⚠ No USXD theme is currently applied"));
+    console.log(chalk.dim("─────────────────────────────────────────────────────────────────"));
+    console.log(chalk.dim(`Available themes: ${chalk.bold("udo usxd list")}`));
+    console.log(chalk.dim(`Apply a theme:   ${chalk.bold("udo usxd apply <name>")}`));
     return;
   }
-  console.log(active);
+  
+  const currentPath = vaultUsxdCurrentDir(vault);
+  const themeCss = await resolveThemeCssPath(vault, active.name);
+  
+  console.log(chalk.bold("Active USXD Theme:"));
+  console.log(chalk.dim("─────────────────────────────────────────────────────────────────"));
+  console.log(`${chalk.bold("Name:")} ${active.name}`);
+  console.log(`${chalk.bold("Applied:")} ${new Date(active.appliedAt).toLocaleString()}`);
+  console.log(`${chalk.bold("Location:")} ${currentPath}/`);
+  if (themeCss) {
+    console.log(`${chalk.bold("CSS:")} ${themeCss}`);
+  }
+  console.log(chalk.dim("─────────────────────────────────────────────────────────────────"));
+  console.log(chalk.dim(`Change theme: ${chalk.bold("udo usxd apply <name>")}`));
 }
