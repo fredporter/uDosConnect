@@ -78,7 +78,7 @@ async function createServer() {
   console.log(chalk.blue(`🔑 Port: ${config.port}`));
 
   // Initialize database
-  const userDb = new UserDatabase(config.dbPath);
+  const userDb = new UserDatabase(config.dbPath, config.jwtSecret);
   await userDb.initialize();
 
   const app = express();
@@ -130,11 +130,23 @@ async function createServer() {
       // Update last seen
       await userDb.updateLastSeen(user.id!);
 
-      // Create session (simplified for now)
-      const sessionId = Math.random().toString(36).substring(2) + Date.now().toString(36);
+      // Generate JWT token
+      const token = userDb.generateToken(user);
+      
+      // Create session
+      const sessionId = userDb.generateSessionId();
+      const expires = new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString();
+      
+      await userDb.createSession({
+        session_id: sessionId,
+        user_id: user.id!,
+        expires: expires,
+        ip: req.ip as string
+      });
       
       res.json({
         success: true,
+        token,
         user: {
           id: user.id,
           username: user.user_login,
@@ -187,13 +199,36 @@ async function createServer() {
     }
   });
 
-  // Get current user (placeholder)
-  app.get('/api/user', (req, res) => {
-    // TODO: Implement session-based authentication
+  // JWT authentication middleware
+  const authenticateJWT = (req: any, res: any, next: any) => {
+    const authHeader = req.headers.authorization;
+    
+    if (authHeader) {
+      const token = authHeader.split(' ')[1];
+      const user = userDb.verifyToken(token);
+      
+      if (user) {
+        req.user = user;
+        return next();
+      }
+    }
+    
+    return res.status(401).json({ error: 'Unauthorized' });
+  };
+
+  // Get current user
+  app.get('/api/user', authenticateJWT, (req: any, res) => {
     res.json({ 
-      user: null,
-      authenticated: false,
-      message: 'Authentication not yet implemented'
+      user: req.user,
+      authenticated: true
+    });
+  });
+
+  // Protected route example
+  app.get('/api/protected', authenticateJWT, (req: any, res) => {
+    res.json({
+      message: 'This is a protected route',
+      user: req.user
     });
   });
 
@@ -228,9 +263,10 @@ async function createServer() {
     console.log(chalk.cyan('\nAvailable endpoints:'));
     console.log(chalk.dim(`  • GET  /health - Health check`));
     console.log(chalk.dim(`  • GET  /api/status - Server status`));
-    console.log(chalk.dim(`  • POST /api/login - User login`));
+    console.log(chalk.dim(`  • POST /api/login - User login (returns JWT)`));
     console.log(chalk.dim(`  • POST /api/users - Create user`));
-    console.log(chalk.dim(`  • GET  /api/user - Current user`));
+    console.log(chalk.dim(`  • GET  /api/user - Current user (JWT protected)`));
+    console.log(chalk.dim(`  • GET  /api/protected - Protected route example`));
     console.log(chalk.dim(`  • GET  /* - Static file serving`));
   });
 

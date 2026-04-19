@@ -7,6 +7,8 @@ import bcrypt from 'bcrypt';
 import chalk from 'chalk';
 import path from 'path';
 import fs from 'fs';
+import jwt from 'jsonwebtoken';
+import { v4 as uuidv4 } from 'uuid';
 
 // SQLite database wrapper with promises
 sqlite3.verbose();
@@ -37,9 +39,11 @@ interface Session {
 class UserDatabase {
   private db: any;
   private dbPath: string;
+  private jwtSecret: string;
 
-  constructor(dbPath: string) {
+  constructor(dbPath: string, jwtSecret: string = 'udos-default-secret-change-me') {
     this.dbPath = dbPath;
+    this.jwtSecret = jwtSecret;
     this.db = null;
   }
 
@@ -286,6 +290,33 @@ class UserDatabase {
     );
   }
 
+  // Generate JWT token for user
+  generateToken(user: User): string {
+    return jwt.sign(
+      {
+        userId: user.id,
+        username: user.user_login,
+        role: user.role
+      },
+      this.jwtSecret,
+      { expiresIn: '24h' }
+    );
+  }
+
+  // Verify JWT token
+  verifyToken(token: string): any {
+    try {
+      return jwt.verify(token, this.jwtSecret);
+    } catch (error) {
+      return null;
+    }
+  }
+
+  // Generate session ID
+  generateSessionId(): string {
+    return uuidv4();
+  }
+
   // Close database connection
   async close(): Promise<void> {
     if (this.db) {
@@ -297,6 +328,11 @@ class UserDatabase {
   // Get database path
   getDbPath(): string {
     return this.dbPath;
+  }
+
+  // Get JWT secret (for testing)
+  getJwtSecret(): string {
+    return this.jwtSecret;
   }
 }
 
