@@ -69,6 +69,14 @@ import { getVaultRoot } from "./paths.js";
 import { cmdTour } from "./actions/tour.js";
 import { cmdUpdate, cmdUninstall } from "./actions/self-manage.js";
 import { registerVibeCommand } from "./actions/vibe.js";
+import { registerCodeCommands } from "./actions/code.js";
+import { registerTestCommands } from "./actions/test.js";
+import { registerCostCommands } from "./actions/cost.js";
+import { registerConfigCommands } from "./actions/config.js";
+import { registerBenchmarkCommands } from "./actions/benchmark.js";
+import { registerSystemCheckCommands } from "./actions/doctor.js";
+import { registerBackgroundCommands } from "./commands/background.js";
+import { registerNetworkCommands } from "./commands/network.js";
 import { cmdFontActivate, cmdFontInstall, cmdFontList, cmdFontPreview } from "./actions/font.js";
 import {
   cmdServerConfigure,
@@ -493,6 +501,9 @@ export async function main(argv: string[]): Promise<void> {
   const beacon = program.command("beacon").description("Local network discovery stubs");
   beacon.command("scan").action(async () => cmdBeaconScan());
 
+  // Register network commands
+  registerNetworkCommands(program);
+
   const usxd = program.command("usxd").description("USXD surfaces (themes + USXD-Express preview)");
   usxd.command("list").description("List theme packs in templates/usxd/").action(async () => cmdUsxdList());
   usxd.command("apply").argument("<name>").action(async (n) => cmdUsxdApply(n));
@@ -800,6 +811,27 @@ export async function main(argv: string[]): Promise<void> {
       cmdUninstall({ yes: Boolean(o.yes), deleteVault: Boolean(o.deleteVault) })
     );
   program.command("help").description("Show help").action(() => console.log(VA1_HELP));
+
+  // Register code commands
+  registerCodeCommands(program);
+
+  // Register test commands
+  registerTestCommands(program);
+
+  // Register cost commands
+  registerCostCommands(program);
+
+  // Register config commands
+  registerConfigCommands(program);
+
+  // Register benchmark commands
+  registerBenchmarkCommands(program);
+
+  // Register system check commands
+  registerSystemCheckCommands(program);
+
+  // Register background commands
+  registerBackgroundCommands(program);
 
   // Register vibe command
   registerVibeCommand(program);
