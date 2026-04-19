@@ -77,6 +77,7 @@ import { registerBenchmarkCommands } from "./actions/benchmark.js";
 import { registerSystemCheckCommands } from "./actions/doctor.js";
 import { registerBackgroundCommands } from "./commands/background.js";
 import { registerNetworkCommands } from "./commands/network.js";
+import { registerPublishCommands } from "./commands/publish.js";
 import { cmdFontActivate, cmdFontInstall, cmdFontList, cmdFontPreview } from "./actions/font.js";
 import {
   cmdServerConfigure,
@@ -503,6 +504,9 @@ export async function main(argv: string[]): Promise<void> {
 
   // Register network commands
   registerNetworkCommands(program);
+
+  // Register publish commands
+  registerPublishCommands(program);
 
   const usxd = program.command("usxd").description("USXD surfaces (themes + USXD-Express preview)");
   usxd.command("list").description("List theme packs in templates/usxd/").action(async () => cmdUsxdList());
