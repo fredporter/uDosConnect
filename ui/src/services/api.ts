@@ -228,7 +228,7 @@ export async function removeAttachment(taskId: string, attachmentId: string): Pr
  * Real-time sync functionality
  */
 
-export function setupRealTimeSync(callback: (tasks: Task[]) => void): () => void {
+export function setupRealTimeSync(callback: (tasks: Task[]) => void): () => void { // eslint-disable-line no-unused-vars
   syncCallbacks.push(callback);
   
   // Try WebSocket first

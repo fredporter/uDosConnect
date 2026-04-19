@@ -84,9 +84,9 @@ export function registerProcessCommands(program: Command): void {
       }
     });
 
-  // Status command
+  // Status command (registered as process:status to avoid conflict with main status)
   program
-    .command('status')
+    .command('process:status')
     .description('Check the status of uDos services and processes')
     .option('-j, --json', 'Output status as JSON')
     .action(async (options) => {
