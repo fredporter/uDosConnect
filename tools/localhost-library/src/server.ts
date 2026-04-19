@@ -424,8 +424,20 @@ async function createServer() {
     console.log(chalk.dim(`  • POST /api/content - Create content (editor/admin)`));
     console.log(chalk.dim(`  • PUT  /api/content/:id - Update content (editor/admin)`));
     console.log(chalk.dim(`  • DELETE /api/content/:id - Delete content (admin)`));
+    console.log(chalk.dim(`  • GET  /admin - Admin dashboard (HTML)`));
+    console.log(chalk.dim(`  • GET  /admin/api/users - List users (admin)`));
+    console.log(chalk.dim(`  • GET  /admin/api/status - System status (admin)`));
     console.log(chalk.dim(`  • GET  /* - Static file serving`));
   });
+
+  // Setup admin dashboard routes
+  // Import and call the setup function
+  try {
+    const { setupAdminRoutes } = await import('./admin.js');
+    setupAdminRoutes(app, userDb, config);
+  } catch (error) {
+    console.error(chalk.yellow('⚠️  Admin dashboard setup failed:'), error);
+  }
 
   // Handle graceful shutdown
   process.on('SIGINT', () => {
