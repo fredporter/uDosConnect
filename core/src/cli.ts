@@ -78,6 +78,7 @@ import { registerSystemCheckCommands } from "./actions/doctor.js";
 import { registerBackgroundCommands } from "./commands/background.js";
 import { registerNetworkCommands } from "./commands/network.js";
 import { registerPublishCommands } from "./commands/publish.js";
+import { registerProcessCommands } from "./commands/process.js";
 import { cmdFontActivate, cmdFontInstall, cmdFontList, cmdFontPreview } from "./actions/font.js";
 import {
   cmdServerConfigure,
@@ -504,6 +505,9 @@ export async function main(argv: string[]): Promise<void> {
 
   // Register network commands
   registerNetworkCommands(program);
+
+  // Register process commands
+  registerProcessCommands(program);
 
   // Register publish commands (disabled - duplicate with publish command group above)
   // registerPublishCommands(program);

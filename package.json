@@ -1,11 +1,11 @@
 {
-  "name": "udos-connect",
+  "name": "udos",
   "private": true,
   "description": "uDos family monorepo — npm workspaces for JS/TS packages (core, ui, tools/sonic-express, tools/usxd-express, modules/*) plus core-rs Rust CLI",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/fredporter/uDosConnect.git"
+    "url": "https://github.com/fredporter/uDos.git"
   },
   "type": "module",
   "workspaces": [

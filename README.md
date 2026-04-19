@@ -1,9 +1,9 @@
-# uDosConnect
+# uDos
 
 Public **uDos** family monorepo: **A1 runtime scaffold**, governance, documentation, shared helper scripts, and a read-only **v2 reference** tree.  
 **uDos** = **Universal Device Operating Surface** (capital **D** in new prose — see [`dev/workflow/migrated-round1/process/dev-process-beta.md`](dev/workflow/migrated-round1/process/dev-process-beta.md)).
 
-This repository was previously published under other names (including **`uDOS-surface`**). **A1 (locked):** **`uDosConnect` is the only uDos project tree** for implementation — see **[`docs/A1-structure-locked.md`](docs/A1-structure-locked.md)**. VA1 work lives in **`core/`** (`udo` CLI) and related packages under this monorepo.
+This repository was previously published under other names (including **`uDOS-surface`** and **`uDosConnect`**). **A1 (locked):** **`uDos` is the only uDos project tree** for implementation — see **[`docs/A1-structure-locked.md`](docs/A1-structure-locked.md)**. VA1 work lives in **`core/`** (`udo` CLI) and related packages under this monorepo.
 
 ## Quickstart (students — one entry point)
 
@@ -79,7 +79,21 @@ When **`https://udos.sh/install`** is published, it can point at this repo’s `
 
 ## Workspace
 
-Open [`uDosConnect.code-workspace`](uDosConnect.code-workspace) in Cursor or VS Code — roots for **`core/`**, **`modules/`**, **`dev/`**, **`templates/`**, **`seed/`**, **`docs/`**, **`courses/`**, **`scripts/`**, and (when present) local **archive** trees per [`docs/family-workspace-layout.md`](docs/family-workspace-layout.md). **Dev flow (beta-era filenames in `dev/workflow/`):** [`dev/workflow/migrated-round1/process/dev-beta-flow-and-resume.md`](dev/workflow/migrated-round1/process/dev-beta-flow-and-resume.md). **A1 branch backlog:** [`dev/BACKLOG-A1-branch.md`](dev/BACKLOG-A1-branch.md).
+Open [`uDos.code-workspace`](uDos.code-workspace) in Cursor or VS Code — roots for **`core/`**, **`modules/`**, **`dev/`**, **`templates/`**, **`seed/`**, **`docs/`**, **`courses/`**, **`scripts/`**, and (when present) local **archive** trees per [`docs/family-workspace-layout.md`](docs/family-workspace-layout.md).
+
+## Development Approach
+
+uDos uses **round-based development** with clear exit criteria. Each round (3-5 days) focuses on a specific objective with operator tests validating production readiness.
+
+**Current Roadmap:** [`DEVELOPMENT_ROADMAP_ROUNDS.md`](DEVELOPMENT_ROADMAP_ROUNDS.md)
+
+**Current Focus:** Core system hardening (Rounds 1-4)
+- Round 1: Startup & Process Management
+- Round 2: LAN & Network Resilience  
+- Round 3: Feed Engine Integration
+- Round 4: Operator Test Framework
+
+**Round Template:** [`dev/ROUND_TEMPLATE.md`](dev/ROUND_TEMPLATE.md)
 
 In **tracked** prose, avoid machine-specific paths except the **optional** coding-root examples in [`docs/family-workspace-layout.md`](docs/family-workspace-layout.md); use `<repo-root>` where a neutral placeholder is better.
 

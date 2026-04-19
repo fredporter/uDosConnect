@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Single-source Vue views for uDos Connect (vault, tasks, contacts, workflows, dashboard, chat)",
+  "description": "Single-source Vue views for uDos (vault, tasks, contacts, workflows, dashboard, chat)",
   "exports": {
     ".": "./src/views/index.ts",
     "./package.json": "./package.json"
