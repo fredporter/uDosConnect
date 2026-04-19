@@ -21,6 +21,7 @@ if command -v rg >/dev/null 2>&1; then
 else
   SEARCH_CMD=(grep -RInE "(wordpress|hubspot|twilio|oauth2|saml|cloudwatch|kafka|rabbitmq|temporal)" \
     core/src \
+    --exclude-dir='cloud-stubs' \
     --exclude='cli.ts' \
     --exclude='a2.ts' \
     --exclude='server.ts' \

@@ -9,10 +9,6 @@ import { fileURLToPath } from 'url';
  */
 
 export interface UdosConfig {
-  WORDPRESS_URL?: string;
-  WORDPRESS_USERNAME?: string;
-  WORDPRESS_APPLICATION_PASSWORD?: string;
-  POST_TYPE?: string;
   VAULT_ROOT?: string;
   [key: string]: any;
 }

@@ -14,10 +14,6 @@ export interface UdosNote {
   tags?: string[];
   categories?: string[];
   metadata?: {
-    wordpressId?: number;
-    wordpressUrl?: string;
-    wordpressStatus?: string;
-    publishToWordPress?: boolean;
     [key: string]: any;
   };
   [key: string]: any;
@@ -33,7 +29,7 @@ export interface SyncConfig {
   enabled: boolean;
   intervalMinutes: number;
   autoResolveConflicts: boolean;
-  defaultConflictStrategy: 'udos' | 'wordpress' | 'manual';
+  defaultConflictStrategy: 'udos' | 'manual';
 }
 
 export interface AdaptorConfig {

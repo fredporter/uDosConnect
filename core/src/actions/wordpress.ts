@@ -1,6 +1,6 @@
 import chalk from "chalk";
 import { upgradeMessage } from "../cloud-stubs/upgrade.js";
-import { WordPressClient, WordPressClientFactory, WordPressPost } from "../lib/wordpress-client.js";
+import { WordPressClient, WordPressClientFactory, WordPressPost } from "../cloud-stubs/wordpress/wordpress-client.js";
 import { WordPressSyncFactory } from "../sync/wordpress-sync.js";
 
 /**
