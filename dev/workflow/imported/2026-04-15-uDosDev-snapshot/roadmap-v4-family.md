@@ -1,8 +1,8 @@
 # Roadmap — uDos v4 family (cross-repo)
 
-**Monorepo note (uDosConnect):** Paths like `../TASKS.md`, `docs/specs/...`, and `~/Code/uDosConnect/uDosDev` refer to **historical uDosDev layout**. For **canonical links in this repo**, use [`../../family-pre-v5-index.md`](../../family-pre-v5-index.md) and [`docs/roadmap/pre-v5-family-notes.md`](../../../../docs/roadmap/pre-v5-family-notes.md).
+**Monorepo note (uDos):** Paths like `../TASKS.md`, `docs/specs/...`, and `~/Code/uDos/uDosDev` refer to **historical uDosDev layout**. For **canonical links in this repo**, use [`../../family-pre-v5-index.md`](../../family-pre-v5-index.md) and [`docs/roadmap/pre-v5-family-notes.md`](../../../../docs/roadmap/pre-v5-family-notes.md).
 
-**Role:** One-page spine for **v4** work that spans **uDosGo**, **uDosConnect**, **UniversalSurfaceXD**, **Macdown (Syncdown-app)**, and **Sonic**.  
+**Role:** One-page spine for **v4** work that spans **uDosGo**, **uDos**, **UniversalSurfaceXD**, **Macdown (Syncdown-app)**, and **Sonic**.  
 **Execution:** Task [`../TASKS.md`](../TASKS.md); per-repo roadmaps stay in each repository.
 
 ### v4.6+ integration tranche — **closed (2026-04)**
@@ -21,7 +21,7 @@ The cross-repo **v4.6+** backlog (feeds, operators, spatial layers, degrade/imag
 
 **Next program (v5 — depth + physical, after family v5 lock):** same file — **Part 2** — Z-depth (6 layers per cell), digital ↔ **uCube**, Lego prototyping, **teleport --v5** / 3D print, **uGridComposer** 3D mode; **Part 3** — v5 checklist. **Preview-only** until promoted; does not override **spatial algebra** / **uCell** economics without a merge review. **Part 2 *Consideration* (roadmap):** optional **24×(≤24) px** variable sub-cell, **2:3 teletext** semantics preserved, **[Monaspace](https://github.com/githubnext/monaspace)** layout review, and implications for **2:3×6 → 6×6×6** cube mapping — before full 3D cube implementation.
 
-**Workspace:** open **`~/Code/UI-dev.code-workspace`** for **uDosConnect**, **uDosGo**, **UniversalSurfaceXD**, **UniversalSketchSVG**, **nano-banana-pro-mcp**, **uNameStringGen**, **uGridComposer** (see [`WORKSPACES.md`](../../../WORKSPACES.md) at `~/Code`).
+**Workspace:** open **`~/Code/UI-dev.code-workspace`** for **uDos**, **uDosGo**, **UniversalSurfaceXD**, **UniversalSketchSVG**, **nano-banana-pro-mcp**, **uNameStringGen**, **uGridComposer** (see [`WORKSPACES.md`](../../../WORKSPACES.md) at `~/Code`).
 
 ---
 
@@ -29,10 +29,10 @@ The cross-repo **v4.6+** backlog (feeds, operators, spatial layers, degrade/imag
 
 | Step | Action |
 | --- | --- |
-| **1** | **Sonic:** open `~/Code/SonicScrewdriver/SonicScrewdriver.code-workspace` — roots: **SonicScrewdriver**, **`../Ventoy`** (**`fredporter/Ventoy`**), **`../uDosConnect/uDosDev`**. **`~/Code/cursor-master.code-workspace`** loads all `~/Code` git repos. |
+| **1** | **Sonic:** open `~/Code/SonicScrewdriver/SonicScrewdriver.code-workspace` — roots: **SonicScrewdriver**, **`../Ventoy`** (**`fredporter/Ventoy`**), **`../uDos/uDosDev`**. **`~/Code/cursor-master.code-workspace`** loads all `~/Code` git repos. |
 | **2** | **Macdown:** open `~/Code/Macdown.code-workspace` (native app + USXD + docs). |
 | **3** | **USXD lab:** open `UniversalSurfaceXD/UniversalSurfaceXD-v4.siblings.code-workspace` (paths aligned to `~/Code/`). |
-| **4** | **Full family:** `~/Code/uDosFamily.code-workspace` or `uDosConnect.code-workspace` (includes `../uDosGo` where listed). |
+| **4** | **Full family:** `~/Code/uDosFamily.code-workspace` or `uDos.code-workspace` (includes `../uDosGo` where listed). |
 
 ---
 
@@ -40,7 +40,7 @@ The cross-repo **v4.6+** backlog (feeds, operators, spatial layers, degrade/imag
 
 **[`docs/specs/v4/README.md`](specs/v4/README.md)** — copied from Obsidian; **[`docs/specs/v4/DECISIONS-2026-04_v4.md`](specs/v4/DECISIONS-2026-04_v4.md)** — locked decisions (Sonic, USXD, Shell, Macdown naming). **MCP (full family):** [`specs/v4/INTEGRATION_v4_mcp-family-full.md`](specs/v4/INTEGRATION_v4_mcp-family-full.md) — uDosGo Host, uChatDown client, governance here. **Versioned execution (4.2.0–4.9.9):** [`future/uDos-v4-execution-plan-versioned-moves.md`](future/uDos-v4-execution-plan-versioned-moves.md).
 
-**Round A — core architecture (locked):** **[`docs/specs/v4/ROUND_A_CORE_ARCHITECTURE_v4.md`](specs/v4/ROUND_A_CORE_ARCHITECTURE_v4.md)** — **uDosGo** reference implementation, **uDosConnect** governance-only boundary, **vault** as shared state (`.md` / `.fdx`); dev process alignment.
+**Round A — core architecture (locked):** **[`docs/specs/v4/ROUND_A_CORE_ARCHITECTURE_v4.md`](specs/v4/ROUND_A_CORE_ARCHITECTURE_v4.md)** — **uDosGo** reference implementation, **uDos** governance-only boundary, **vault** as shared state (`.md` / `.fdx`); dev process alignment.
 
 **Round B — product boundaries (locked):** **[`docs/specs/v4/ROUND_B_PRODUCT_BOUNDARIES_v4.md`](specs/v4/ROUND_B_PRODUCT_BOUNDARIES_v4.md)** — **Linkdown Core** first; **uMacDown** (Apple-native); **uChatDown** (chat IDE); **uFeedThru** (feed engine). Sibling repos — not **uDosGo** runtime code.
 
@@ -48,7 +48,7 @@ The cross-repo **v4.6+** backlog (feeds, operators, spatial layers, degrade/imag
 
 **Round D — publishing and graphics (locked):** **[`docs/specs/v4/ROUND_D_PUBLISHING_GRAPHICS_v4.md`](specs/v4/ROUND_D_PUBLISHING_GRAPHICS_v4.md)** — **uDosPublish** (media, email, Apple Mail/tags), **UniversalVectorIL** implementation + **`uvil`** CLI vocabulary, **Classic Modern** tokens; pairs with **`UNIVERSAL_VECTOR_IL_UVIL_v1`**.
 
-**Round E — development process (locked):** **[`docs/specs/v4/ROUND_E_DEVELOPMENT_PROCESS_v4.md`](specs/v4/ROUND_E_DEVELOPMENT_PROCESS_v4.md)** — checklists, **`uDosConnect/scripts/shakedown.sh`**, Task surfaces at monorepo + submodule roots.
+**Round E — development process (locked):** **[`docs/specs/v4/ROUND_E_DEVELOPMENT_PROCESS_v4.md`](specs/v4/ROUND_E_DEVELOPMENT_PROCESS_v4.md)** — checklists, **`uDos/scripts/shakedown.sh`**, Task surfaces at monorepo + submodule roots.
 
 **Round F — roadmap (locked):** **[`docs/specs/v4/ROUND_F_ROADMAP_v4.md`](specs/v4/ROUND_F_ROADMAP_v4.md)** — parallel **A–E** tracks (uDosGo, Linkdown, Macdown, Chatdown/uFeedThru, uRing), **alpha** archive strategy, **v5+** deferrals; complements this spine and the consolidated execution plan.
 
@@ -73,7 +73,7 @@ The cross-repo **v4.6+** backlog (feeds, operators, spatial layers, degrade/imag
 | Repo | v4 focus |
 | --- | --- |
 | **uDos-Go** | Runnable core, ThinUI, **MCP** ([`INTEGRATION_v4_mcp-family-full.md`](specs/v4/INTEGRATION_v4_mcp-family-full.md)), grid canon, USXD validation |
-| **uDosConnect** | Governance, `uDosDev` specs, `v2-reference` archive |
+| **uDos** | Governance, `uDosDev` specs, `v2-reference` archive |
 | **UniversalSurfaceXD** | USXD interchange, schemas, browser-mockup lab |
 | **UniversalVectorIL** (sibling clone) | UVIL — blueprint / teletext / QR / map editors; CLI **`uvil`** (illustrative); feeds USXD + themes + Linkdown — **[`ROUND_D_PUBLISHING_GRAPHICS_v4.md`](specs/v4/ROUND_D_PUBLISHING_GRAPHICS_v4.md)** |
 | **Syncdown-app** | **Macdown** — native macOS client, Apple sync architecture |
@@ -94,4 +94,4 @@ Gameplay extension, uCode TUI, spatial maps, Docker/VM infrastructure, and **Cha
 
 ## Obsolete layout
 
-Multi-root workspaces that pointed at **`uDOS-family/*`** or **`syncdown`** (lowercase) beside USXD are **replaced** by **`~/Code/`** paths (`uDosGo`, `Syncdown-app`, **`SonicScrewdriver`**, **`Ventoy`**). Legacy **`sonic-v1/*`** trees are obsolete for new work. Keep **v2** material only under **`uDosConnect/v2-reference/`**.
+Multi-root workspaces that pointed at **`uDOS-family/*`** or **`syncdown`** (lowercase) beside USXD are **replaced** by **`~/Code/`** paths (`uDosGo`, `Syncdown-app`, **`SonicScrewdriver`**, **`Ventoy`**). Legacy **`sonic-v1/*`** trees are obsolete for new work. Keep **v2** material only under **`uDos/v2-reference/`**.

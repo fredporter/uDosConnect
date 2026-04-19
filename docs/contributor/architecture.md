@@ -1,5 +1,5 @@
 ---
-title: "uDosConnect architecture (contributor)"
+title: "uDos architecture (contributor)"
 tags: [--contributor]
 audience: contributor
 slot: 7

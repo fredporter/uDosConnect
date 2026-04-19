@@ -1,8 +1,8 @@
-# Dev process — uDosConnect (beta)
+# Dev process — uDos (beta)
 
 **Status:** Working governance for this monorepo (2026-04). Older docs used version labels (v3–v5); **this file treats that era as uDos beta** — same rules, no external repo required.
 
-**Repo:** **uDosConnect** only. Canonical workflow lives under **`dev/`**; public and contributor documentation under **`docs/`**. Do **not** recreate **`uDosDev/`** or **`uDosDocs/`** at the repository root — those trees are **absorbed** into **`dev/`** and **`docs/`**.
+**Repo:** **uDos** only. Canonical workflow lives under **`dev/`**; public and contributor documentation under **`docs/`**. Do **not** recreate **`uDosDev/`** or **`uDosDocs/`** at the repository root — those trees are **absorbed** into **`dev/`** and **`docs/`**.
 
 **Framework:** Proposals, decisions, and promotions follow the intent in **`dev/workflow/`** templates and [`CONTRIBUTING.md`](../../../../CONTRIBUTING.md) — product code stays in application directories (`core/`, `core-rs/`, `tools/`, …), not in governance-only stubs.
 
@@ -30,7 +30,7 @@ Prefer **uDos** in **new and edited** docs and script comments; the capital **D*
 | **`dev/TASKS.md`** | Canonical task table — **[`TASKS.md`](../../../TASKS.md)**. |
 | **Legacy `@dev/`** | **Beta** — long-lived intake is closed; archive to **`.compost/`** instead of growing new `@dev/` trees. |
 
-**Rule:** **Product code** lives only in **uDosConnect** (`core/`, `core-rs/`, `tools/`, `modules/`, …).
+**Rule:** **Product code** lives only in **uDos** (`core/`, `core-rs/`, `tools/`, `modules/`, …).
 
 **Flow:** intent in **`dev/TASKS.md`** → implement → tests → PR; use **`dev/BACKLOG-A1-branch.md`** for the **A1 branch** queue until it is merged into main A1 closure.
 

@@ -110,7 +110,7 @@ acceptance:
 
 ```yaml
 task: "Implement Wizard role and submission workflow documentation"
-repo: uDosConnect
+repo: uDos
 version: v4.6.0
 priority: [*]
 

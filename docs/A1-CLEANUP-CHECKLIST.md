@@ -4,10 +4,10 @@
 
 ## Part 1 — Cleanup (complete)
 
-- [x] `~/Code/uDosConnect/` is the only active uDos repo at `~/Code/` root
+- [x] `~/Code/uDos/` is the only active uDos repo at `~/Code/` root
 - [x] `~/Code/archive/` holds backups: `uDosGo-v4-backup`, `uHomeNest-backup`, `uDosFamily-backup`, `uDOS-family-backup`, `udos-a1-backup`, `udos-a2-backup`, `udos-pre-alpha/`
 - [x] `~/Code/udos-a1/`, `~/Code/udos-a2/`, `~/Code/uDosFamily/`, `~/Code/uDosGo/`, etc. **removed** from `~/Code/` (moved to archive, not shredded)
-- [x] `uDosConnect.code-workspace` lists `core`, `ui`, `tools`, `modules`, `dev`, `templates`, `seed`, `docs`, `courses`, `scripts`, … (no stale `../apps/uDosGo`)
+- [x] `uDos.code-workspace` lists `core`, `ui`, `tools`, `modules`, `dev`, `templates`, `seed`, `docs`, `courses`, `scripts`, … (no stale `../apps/uDosGo`)
 - [x] `README.md`, `CONTRIBUTING.md`, `AGENTS.md` updated
 - [x] `docs/family-workspace-layout.md` updated
 - [x] `docs/shared-resources-architecture.md` updated

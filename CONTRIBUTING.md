@@ -1,6 +1,6 @@
-# Contributing to uDosConnect
+# Contributing to uDos
 
-Thank you for contributing to uDosConnect! This guide will help you get started with the development workflow.
+Thank you for contributing to uDos! This guide will help you get started with the development workflow.
 
 ## Development Workflow
 
@@ -15,8 +15,8 @@ Thank you for contributing to uDosConnect! This guide will help you get started 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/fredporter/uDosConnect.git
-   cd uDosConnect
+   git clone https://github.com/fredporter/uDos.git
+   cd uDos
    ```
 
 2. Install dependencies:
@@ -114,8 +114,8 @@ To trigger the auto-healing workflow manually, use the following command:
 curl -X POST \
   -H "Authorization: token YOUR_GITHUB_TOKEN" \
   -H "Accept: application/vnd.github.v3+json" \
-  https://api.github.com/repos/fredporter/uDosConnect/dispatches \
-  -d '{"event_type":"udos_feed_notification", "client_payload": {"event": "workflow_failure", "repo": "uDosConnect", "workflow": "CI", "status": "failed"}}'
+  https://api.github.com/repos/fredporter/uDos/dispatches \
+  -d '{"event_type":"udos_feed_notification", "client_payload": {"event": "workflow_failure", "repo": "uDos", "workflow": "CI", "status": "failed"}}'
 ```
 
 #### uDos Feed Format
@@ -134,7 +134,7 @@ Example uDos Feed Notification:
 ```json
 {
   "event": "workflow_failure",
-  "repo": "uDosConnect",
+  "repo": "uDos",
   "workflow": "CI",
   "status": "failed",
   "timestamp": "2026-04-18T12:00:00.000Z",
@@ -142,7 +142,7 @@ Example uDos Feed Notification:
   "details": {
     "run_id": 123456789,
     "run_number": 42,
-    "workflow_url": "https://github.com/fredporter/uDosConnect/actions/runs/123456789"
+    "workflow_url": "https://github.com/fredporter/uDos/actions/runs/123456789"
   }
 }
 ```
@@ -184,4 +184,4 @@ Report bugs and request features by opening an issue on GitHub. Include as much 
 
 ## License
 
-By contributing to uDosConnect, you agree that your contributions will be licensed under the MIT License.
+By contributing to uDos, you agree that your contributions will be licensed under the MIT License.

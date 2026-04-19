@@ -1,4 +1,4 @@
-# Decision: Submodule migration — phase closure (uDosConnect)
+# Decision: Submodule migration — phase closure (uDos)
 
 - **Date:** 2026-04-15
 - **Status:** locked
@@ -6,7 +6,7 @@
 
 ## Result
 
-**Phase closure (v1) approved.** The **uDosConnect** tree uses canonical **`dev/`** and **`docs/`** only. Root **`uDosDev/`** and **`uDosDocs/`** submodule directories are **not** used. Remaining differences vs upstream GitHub repositories are **documented** in [`dev/workflow/migration-intentional-gaps-v1.md`](../workflow/migration-intentional-gaps-v1.md).
+**Phase closure (v1) approved.** The **uDos** tree uses canonical **`dev/`** and **`docs/`** only. Root **`uDosDev/`** and **`uDosDocs/`** submodule directories are **not** used. Remaining differences vs upstream GitHub repositories are **documented** in [`dev/workflow/migration-intentional-gaps-v1.md`](../workflow/migration-intentional-gaps-v1.md).
 
 ## What this does **not** mean
 

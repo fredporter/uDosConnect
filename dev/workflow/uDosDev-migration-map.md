@@ -1,6 +1,6 @@
 # Upstream uDosDev (GitHub) → `dev/` migration map (Round 0)
 
-**Canonical in uDosConnect:** **`dev/`** — not a root-level `uDosDev/` folder. The **`uDosDev/…`** prefixes below mean paths in the **[fredporter/uDosDev](https://github.com/fredporter/uDosDev)** repository when merging **into** this monorepo.
+**Canonical in uDos:** **`dev/`** — not a root-level `uDosDev/` folder. The **`uDosDev/…`** prefixes below mean paths in the **[fredporter/uDosDev](https://github.com/fredporter/uDosDev)** repository when merging **into** this monorepo.
 
 ## Must-Keep (migrate into active tree)
 
@@ -34,7 +34,7 @@ Promoted from **`main`** at `uDosDev` Git (shallow clone) into `dev/workflow/imp
 - `docs/future/UDOS_V46_CURSOR_IMPLEMENTATION_CHECKLIST_v1.md`
 - `docs/roadmap-v4-family.md`
 
-**Derived in uDosConnect (not a separate upstream pull):** [`future/PRE_V5_ROADMAP_SINGLE_LANE_v1.md`](imported/2026-04-15-uDosDev-snapshot/future/PRE_V5_ROADMAP_SINGLE_LANE_v1.md) — single-lane **PRE5-R01–R07** table aligned with **§4** of the execution-rounds doc. Index: [`family-pre-v5-index.md`](family-pre-v5-index.md); public summary: [`docs/roadmap/pre-v5-family-notes.md`](../../docs/roadmap/pre-v5-family-notes.md).
+**Derived in uDos (not a separate upstream pull):** [`future/PRE_V5_ROADMAP_SINGLE_LANE_v1.md`](imported/2026-04-15-uDosDev-snapshot/future/PRE_V5_ROADMAP_SINGLE_LANE_v1.md) — single-lane **PRE5-R01–R07** table aligned with **§4** of the execution-rounds doc. Index: [`family-pre-v5-index.md`](family-pre-v5-index.md); public summary: [`docs/roadmap/pre-v5-family-notes.md`](../../docs/roadmap/pre-v5-family-notes.md).
 
 ## Round 4 closure (2026-04-15)
 

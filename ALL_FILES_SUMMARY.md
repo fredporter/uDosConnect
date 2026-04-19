@@ -1,7 +1,7 @@
 # All Files Summary for Dev Mode and Mistral Prompt Engineering
 
 ## Overview
-This document lists all the files created for the Dev Mode and Mistral Prompt Engineering implementation in uDosConnect and their purposes.
+This document lists all the files created for the Dev Mode and Mistral Prompt Engineering implementation in uDos and their purposes.
 
 ## Files Created
 
@@ -100,7 +100,7 @@ This document lists all the files created for the Dev Mode and Mistral Prompt En
 
 ## Next Steps
 
-1. **Integrate with uDosConnect GUI**: Add the Dev Mode toggle button and conditional UI rendering.
+1. **Integrate with uDos GUI**: Add the Dev Mode toggle button and conditional UI rendering.
 2. **Add More DevOnly Actions**: Implement other DevOnly actions like rate limit tuning, custom format parsers, etc.
 3. **Test with Team**: Share with the team for feedback and testing.
 
@@ -112,10 +112,10 @@ This document lists all the files created for the Dev Mode and Mistral Prompt En
 
 ## Conclusion
 
-All files for the Dev Mode and Mistral Prompt Engineering implementation are now in place and ready for integration with the uDosConnect GUI. The implementation provides a clear and intuitive way for developers to adjust Mistral's prompt settings, ensuring a smooth user experience for all users.
+All files for the Dev Mode and Mistral Prompt Engineering implementation are now in place and ready for integration with the uDos GUI. The implementation provides a clear and intuitive way for developers to adjust Mistral's prompt settings, ensuring a smooth user experience for all users.
 
 **Status**: ✅ Ready for Integration
-**Next Steps**: Integrate with uDosConnect GUI and test with the team.
+**Next Steps**: Integrate with uDos GUI and test with the team.
 
 ---
 

@@ -1,6 +1,6 @@
 # Beta roadmap index — imported snapshots (`dev/workflow/`)
 
-**Audience:** `--devonly` — **uDosConnect** only; paths below are **in-repo** copies (historical labels “pre-v5” / v4.x in filenames = **beta** era).
+**Audience:** `--devonly` — **uDos** only; paths below are **in-repo** copies (historical labels “pre-v5” / v4.x in filenames = **beta** era).
 
 ## Canonical copies in this monorepo
 

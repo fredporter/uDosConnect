@@ -22,7 +22,7 @@ This document consolidates all Phase 8 requirements into a unified implementatio
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                    uDosConnect Home Network (Phase 7+8)            │
+│                    uDos Home Network (Phase 7+8)            │
 ├─────────────────┬─────────────────┬─────────────────┬─────────────┤
 │  MASTER (Linux)  │  CHILD (macOS)   │  CHILD (Win)     │  CHILD (Linux) │
 │  ┌─────────────┐  │  ┌─────────────┐  │  ┌─────────────┐  │  ┌─────────────┐  │
@@ -640,4 +640,4 @@ systemctl start udos-compost
 
 **Ready to implement!** 🚀
 
-This consolidated plan provides a clear roadmap for transforming uDosConnect into a full-featured home intranet with publishing, user management, and AI resilience capabilities.
+This consolidated plan provides a clear roadmap for transforming uDos into a full-featured home intranet with publishing, user management, and AI resilience capabilities.

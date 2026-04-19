@@ -70,7 +70,7 @@ Index and naming: [`dev/devlog/README.md`](../devlog/README.md).
 ## Related
 
 - [`dev-process-beta.md`](migrated-round1/process/dev-process-beta.md) — framework zones, `.local/` / `.compost/` (uDos **beta** label for older version-era docs).
-- [`dev/BACKLOG-A1-branch.md`](../BACKLOG-A1-branch.md) — A1 side branch backlog; merge before A1 closes; **uDosConnect** only.
+- [`dev/BACKLOG-A1-branch.md`](../BACKLOG-A1-branch.md) — A1 side branch backlog; merge before A1 closes; **uDos** only.
 - [`dev-beta-flow-and-resume.md`](migrated-round1/process/dev-beta-flow-and-resume.md) — sync, resume, live-testing evidence in `docs/dev-reports/` when using slotted templates under `docs/` / `dev/`.
 - [`dev/TASKS.md`](../TASKS.md) — backlog.
 - [`dev/DOC-TODO.md`](../DOC-TODO.md) — deferred public-doc items.

@@ -1,4 +1,4 @@
-# uDosConnect AI Integration - Production
+# uDos AI Integration - Production
 
 ## Setup
 

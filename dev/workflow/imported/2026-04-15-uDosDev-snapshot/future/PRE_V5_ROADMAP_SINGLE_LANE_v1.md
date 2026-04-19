@@ -9,13 +9,13 @@ slot: 5
 
 **Canonical detail:** [`PRE_V5_ROADMAP_AND_EXECUTION_ROUNDS_v1.md`](./PRE_V5_ROADMAP_AND_EXECUTION_ROUNDS_v1.md) (version **1.7.3** as imported), especially **section 4** (exit criteria per round).
 
-This file records the **one-lane execution order** **PRE5-R01 → PRE5-R07** for **uDosConnect**; exit criteria stay aligned with section 4 of the execution-rounds doc in this import.
+This file records the **one-lane execution order** **PRE5-R01 → PRE5-R07** for **uDos**; exit criteria stay aligned with section 4 of the execution-rounds doc in this import.
 
 **Rule:** Rounds are **batches**, not strict releases; close a round when **exit criteria** in the execution-rounds doc pass.
 
-**Note (uDosConnect):** Execution applies to **this monorepo** only. See [`BACKLOG-A1-branch.md`](../../../../BACKLOG-A1-branch.md) for the **A1 branch** backlog (merge before A1 closes).
+**Note (uDos):** Execution applies to **this monorepo** only. See [`BACKLOG-A1-branch.md`](../../../../BACKLOG-A1-branch.md) for the **A1 branch** backlog (merge before A1 closes).
 
-| Order | Round | Goal (short) | Primary surface *(uDosConnect monorepo; beta program)* |
+| Order | Round | Goal (short) | Primary surface *(uDos monorepo; beta program)* |
 | --- | --- | --- | --- |
 | 1 | **PRE5-R01** | Spec spine and roadmap parity — docs in-tree | `docs/`, `dev/` |
 | 2 | **PRE5-R02** | Portal and two gates (when in scope for this repo) | `docs/`, `core/` |

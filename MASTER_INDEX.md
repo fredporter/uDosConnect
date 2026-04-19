@@ -1,8 +1,8 @@
-# 📚 Master Index: uDosConnect AI Integration
+# 📚 Master Index: uDos AI Integration
 
 ## Overview
 
-This document serves as the **master index** for the complete uDosConnect AI integration, including:
+This document serves as the **master index** for the complete uDos AI integration, including:
 - DeepSeek-Coder-V2 Integration
 - Dev Mode CLI (Skeleton Mode)
 - MCP Tool Integration

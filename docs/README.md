@@ -1,4 +1,4 @@
-# uDosConnect — top-level docs
+# uDos — top-level docs
 
 ## Policy (locked)
 

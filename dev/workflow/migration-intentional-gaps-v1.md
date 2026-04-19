@@ -7,7 +7,7 @@
 
 ## Layout rule
 
-**uDosConnect** does **not** recreate upstream top-level folder names at `dev/` or `docs/` when content moved into **`migrated-roundN/`**, **`scripts/imported/`**, or **`~/Code/archive/`**.
+**uDos** does **not** recreate upstream top-level folder names at `dev/` or `docs/` when content moved into **`migrated-roundN/`**, **`scripts/imported/`**, or **`~/Code/archive/`**.
 
 ---
 
@@ -33,7 +33,7 @@ Overlapping root files (`AGENTS.md`, `README.md`, `TASKS.md`, `.gitignore`) diff
 
 ## `uDosDocs` → `docs/` (upstream-only top-level names)
 
-| Upstream path | Where it lives in uDosConnect |
+| Upstream path | Where it lives in uDos |
 | --- | --- |
 | `architecture/` | `docs/contributor/migrated-round1/architecture/` |
 | `site/` | `docs/contributor/migrated-round2/site/` |

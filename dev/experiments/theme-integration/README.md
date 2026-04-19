@@ -1,6 +1,6 @@
 # uDos Theme Experiments — Master Brief
 
-**Location:** [`dev/experiments/theme-integration/`](.) (this folder) in **uDosConnect** — not under legacy `uDosDev/`, and not coupled to `nano-banana-pro-mcp`.
+**Location:** [`dev/experiments/theme-integration/`](.) (this folder) in **uDos** — not under legacy `uDosDev/`, and not coupled to `nano-banana-pro-mcp`.
 
 **Status:** Pre-experiment
 

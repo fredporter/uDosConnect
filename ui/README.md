@@ -9,7 +9,7 @@ Single-source Vue 3 views for vault, tasks, contacts, workflows, dashboard, chat
 - **Publishing bridge:** `src/views/themes/usxd-publish.ts` (`toJekyllMarkdown()` for vault export)
 - **Mock data:** `src/views/data/defaults.ts` (override via props when wiring the vault)
 
-**Host bundler alias:** map `@udos/views` → `…/uDosConnect/ui/src/views` (or to this package name once published).
+**Host bundler alias:** map `@udos/views` → `…/uDos/ui/src/views` (or to this package name once published).
 
 ```bash
 cd ui && npm run typecheck

@@ -1,4 +1,4 @@
-# Operator live test — **alpha** A1 milestone (uDosConnect)
+# Operator live test — **alpha** A1 milestone (uDos)
 
 **Milestone:** Rust core tasks **T001–T021**, TypeScript VA1 `**@udos/core`** tests, repo hygiene (shakedown), optional Rust `**udos-core`** CLI smoke. (**Alpha** = A1/A2 product line; **beta** = historical program docs.)
 
@@ -8,7 +8,7 @@
 
 - **Node.js** ≥ 18 (workspace recommends 20+ — see `core/package.json`).
 - **Rust** toolchain (`cargo`, `rustc`) for `core-rs/`.
-- Clone at `**~/Code/uDosConnect/`** (or any path); no root `uDosDev/` / `uDosDocs/` folders required.
+- Clone at `**~/Code/uDos/`** (or any path); no root `uDosDev/` / `uDosDocs/` folders required.
 
 ## One-shot automated gate
 

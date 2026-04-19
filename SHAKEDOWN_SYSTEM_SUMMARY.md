@@ -225,7 +225,7 @@ Duration:          2446ms
 ### Report Format
 ```json
 {
-  "system": "uDosConnect",
+  "system": "uDos",
   "version": "1.0.0-va1",
   "timestamp": "2026-04-19T05:34:59.098Z",
   "environment": "darwin/arm64",
@@ -269,7 +269,7 @@ Duration:          2446ms
 ### MCP Feedback Format
 ```
 📊 uDos Shakedown Report - 2026-04-19T05:34:59.103Z
-System: uDosConnect | Version: 1.0.0-va1 | Environment: darwin/arm64
+System: uDos | Version: 1.0.0-va1 | Environment: darwin/arm64
 Pass Rate: 93% (14/15)
 Self-Healed: 1 issues
 

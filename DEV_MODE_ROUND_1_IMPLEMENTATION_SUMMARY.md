@@ -1,7 +1,7 @@
 # Dev Mode Round 1 Implementation Summary
 
 ## Overview
-This document summarizes the implementation of Dev Mode Round 1 features for uDosConnect, including the Dev Mode Dashboard, React Renderer for browser surfaces, USXD Story Format, and MCP Tool Registry.
+This document summarizes the implementation of Dev Mode Round 1 features for uDos, including the Dev Mode Dashboard, React Renderer for browser surfaces, USXD Story Format, and MCP Tool Registry.
 
 ## Features Implemented
 
@@ -246,7 +246,7 @@ Dev Mode Round 1 has been successfully implemented with all four major features 
 3. **Story Surface** - Complete USXD Story format implementation
 4. **Tool Registry** - Standardized MCP tool management
 
-All features are integrated into the existing uDosConnect UI framework and follow established patterns. The implementation provides a solid foundation for future Dev Mode enhancements and advanced user workflows.
+All features are integrated into the existing uDos UI framework and follow established patterns. The implementation provides a solid foundation for future Dev Mode enhancements and advanced user workflows.
 
 **Status**: ✅ DEV MODE ROUND 1 COMPLETE
 **Date**: 2024-04-18

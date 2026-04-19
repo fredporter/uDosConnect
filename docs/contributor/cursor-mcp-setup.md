@@ -11,7 +11,7 @@ Use this guide to connect Cursor to the local `udo` MCP server and verify tool c
 
 ## Prerequisites
 
-- Repo cloned locally (`uDosConnect`)
+- Repo cloned locally (`uDos`)
 - Rust toolchain installed
 - `core-rs` builds locally (`cargo test` passes in `core-rs/`)
 

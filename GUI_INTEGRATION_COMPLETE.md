@@ -1,10 +1,10 @@
-# 🎮 uDosConnect GUI Integration - Complete!
+# 🎮 uDos GUI Integration - Complete!
 
 ## ✅ What's Working
 
 ### 1. **Vibe TUI Integration**
 - `udo vibe` command fully integrated
-- Launches Mistral Vibe with uDosConnect context
+- Launches Mistral Vibe with uDos context
 - Auto-installs Vibe if not found
 - Environment variables set for vault integration
 
@@ -36,7 +36,7 @@
 - **MCP Surface**: Model Context Protocol bridge (placeholder)
 
 ### 5. **Configuration**
-- **Vibe Config**: `~/.vibe/config.toml` with uDosConnect settings
+- **Vibe Config**: `~/.vibe/config.toml` with uDos settings
 - **Auto-approve**: Bash commands set to auto-approve
 - **MCP Bridge**: Configured for uDos A2 server integration
 
@@ -78,7 +78,7 @@ udo vibe --model mistral-large
 ### Launcher & Scripts
 - `scripts/gui-launcher.sh` - Enhanced with monitoring
 - `~/code-vault/launch-udos.sh` - Universal launcher
-- `~/Desktop/Launch uDosConnect.command` - Mac launcher
+- `~/Desktop/Launch uDos.command` - Mac launcher
 
 ### Configuration
 - `~/.vibe/config.toml` - Vibe settings
@@ -173,5 +173,5 @@ udo vibe --model mistral-large
 ---
 
 **Integration Complete!** 🎮
-The uDosConnect GUI is now fully integrated with Vibe TUI.
+The uDos GUI is now fully integrated with Vibe TUI.
 Use `udo vibe` for terminal AI assistance and http://localhost:5174 for the graphical interface.

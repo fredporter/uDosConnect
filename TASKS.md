@@ -1,4 +1,4 @@
-# TASKS.md — uDosConnect (monorepo root)
+# TASKS.md — uDos (monorepo root)
 
 **Canonical backlog:** [`dev/TASKS.md`](dev/TASKS.md) — family governance and Rust-core A1 tasks.
 

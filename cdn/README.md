@@ -1,4 +1,4 @@
-# `cdn/` — local mirror / wireframe (uDosConnect)
+# `cdn/` — local mirror / wireframe (uDos)
 
 This directory is a **development seed** that mirrors the public CDN layout for **`cdn.udo.space`**.
 

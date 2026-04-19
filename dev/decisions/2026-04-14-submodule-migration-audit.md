@@ -4,7 +4,7 @@
 - Status: locked (historical snapshot)
 - Scope: deletion readiness for `uDosDev` and `uDosDocs`
 
-**Update 2026-04-15:** Phase closure for the **uDosConnect** monorepo is recorded in [`2026-04-15-migration-phase-closure.md`](2026-04-15-migration-phase-closure.md) with intentional gaps in [`../workflow/migration-intentional-gaps-v1.md`](../workflow/migration-intentional-gaps-v1.md). The dry-run figures below remain a useful **baseline**; they are not an open blocker once that closure is merged.
+**Update 2026-04-15:** Phase closure for the **uDos** monorepo is recorded in [`2026-04-15-migration-phase-closure.md`](2026-04-15-migration-phase-closure.md) with intentional gaps in [`../workflow/migration-intentional-gaps-v1.md`](../workflow/migration-intentional-gaps-v1.md). The dry-run figures below remain a useful **baseline**; they are not an open blocker once that closure is merged.
 
 ## Result
 
@@ -43,4 +43,4 @@ Migration is **not complete**. Do **not** delete either submodule yet.
    - docs/process links updated
    - CI and workspace references validated.
 
-**2026-04-15:** **uDosConnect** no longer uses those submodules; canonical trees are **`dev/`** / **`docs/`**. GitHub repos stay as archives. See [`2026-04-15-migration-phase-closure.md`](2026-04-15-migration-phase-closure.md).
+**2026-04-15:** **uDos** no longer uses those submodules; canonical trees are **`dev/`** / **`docs/`**. GitHub repos stay as archives. See [`2026-04-15-migration-phase-closure.md`](2026-04-15-migration-phase-closure.md).

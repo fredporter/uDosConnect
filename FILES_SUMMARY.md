@@ -1,7 +1,7 @@
 # Files Summary for Dev Mode Implementation
 
 ## Overview
-This document lists all the files created for the Dev Mode implementation in uDosConnect and their purposes.
+This document lists all the files created for the Dev Mode implementation in uDos and their purposes.
 
 ## Files Created
 
@@ -72,7 +72,7 @@ This document lists all the files created for the Dev Mode implementation in uDo
 ./udo-dev status
 ```
 
-## Integration with uDosConnect
+## Integration with uDos
 
 ### GUI Toggle Button
 - **Location**: Settings → General → **Dev Mode Toggle**
@@ -87,7 +87,7 @@ This document lists all the files created for the Dev Mode implementation in uDo
 
 ## Next Steps
 
-1. **Integrate with uDosConnect GUI**: Add the Dev Mode toggle button and conditional UI rendering.
+1. **Integrate with uDos GUI**: Add the Dev Mode toggle button and conditional UI rendering.
 2. **Add Password Protection**: Implement `--dev-pass` flag for additional security.
 3. **Log Dangerous Actions**: Log dev actions to a file for auditing.
 4. **Test with Team**: Share with the team for feedback and testing.
@@ -100,4 +100,4 @@ This document lists all the files created for the Dev Mode implementation in uDo
 
 ## Conclusion
 
-All files for the Dev Mode implementation are now in place and ready for integration with the uDosConnect GUI. The implementation provides a clear separation between everyday and developer features, ensuring a smooth user experience for all users.
+All files for the Dev Mode implementation are now in place and ready for integration with the uDos GUI. The implementation provides a clear separation between everyday and developer features, ensuring a smooth user experience for all users.

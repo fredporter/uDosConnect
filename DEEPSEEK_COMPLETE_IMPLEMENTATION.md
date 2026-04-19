@@ -1,7 +1,7 @@
 # ✅ DeepSeek-Coder-V2 Integration Complete
 
 ## Overview
-This document provides a comprehensive summary of the DeepSeek-Coder-V2 integration with uDosConnect, including the pattern cache, fallback chain, intent classifier, and all supporting components. The implementation is now fully functional and tested.
+This document provides a comprehensive summary of the DeepSeek-Coder-V2 integration with uDos, including the pattern cache, fallback chain, intent classifier, and all supporting components. The implementation is now fully functional and tested.
 
 ## Key Components Implemented
 
@@ -131,7 +131,7 @@ Testing Full Pipeline...
 - **Latency**: ~10ms per classification
 - **Confidence**: Threshold-based routing
 
-## Integration with uDosConnect
+## Integration with uDos
 
 ### GUI Toggle Button (Future)
 - **Location**: Settings → General → **Skeleton Mode Toggle**
@@ -146,7 +146,7 @@ Testing Full Pipeline...
 
 ## Next Steps
 
-1. **Integrate with uDosConnect GUI**: Add the Skeleton Mode toggle button
+1. **Integrate with uDos GUI**: Add the Skeleton Mode toggle button
 2. **Add More DevOnly Actions**: Implement rate limit tuning, custom parsers, etc.
 3. **Test with Team**: Share for feedback and testing
 4. **Monitor Performance**: Track cache hit rates and fallback usage
@@ -168,7 +168,7 @@ The DeepSeek-Coder-V2 integration is now **fully functional and tested**. The im
 4. **Mistral Integration**: Full prompt engineering support
 
 **Status**: ✅ **Ready for Production**
-**Next Steps**: Integrate with uDosConnect GUI and expand DevOnly actions.
+**Next Steps**: Integrate with uDos GUI and expand DevOnly actions.
 
 ---
 

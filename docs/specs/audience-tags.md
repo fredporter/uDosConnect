@@ -21,4 +21,4 @@ Every document declares **who it is for** using these tags (YAML frontmatter or 
 
 - Prefer **YAML frontmatter** at the top of each markdown file: `tags: [--public]` (or multiple tags if policy allows).
 - **Publishing slot** (where it lands on disk / CDN) is separate from audience; see [publishing-slots.md](publishing-slots.md).
-- **Canonical governance** for this monorepo lives under **`dev/`** (tracked). The **uDosDev** GitHub repo is an upstream archive for merges and cherry-picks, not a required parallel checkout. This table applies to **uDosConnect `docs/`** layout.
+- **Canonical governance** for this monorepo lives under **`dev/`** (tracked). The **uDosDev** GitHub repo is an upstream archive for merges and cherry-picks, not a required parallel checkout. This table applies to **uDos `docs/`** layout.

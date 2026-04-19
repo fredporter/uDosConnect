@@ -7,7 +7,7 @@ slot: 7
 
 # Contributor docs (`--contributor`)
 
-**Audience:** contributors (invite-only workflows). **Canonical** governance and workflow for **uDosConnect** live under **`dev/`** (this repo). The GitHub **[uDosDev](https://github.com/fredporter/uDosDev)** repo is an upstream archive for merges and history.
+**Audience:** contributors (invite-only workflows). **Canonical** governance and workflow for **uDos** live under **`dev/`** (this repo). The GitHub **[uDosDev](https://github.com/fredporter/uDosDev)** repo is an upstream archive for merges and history.
 
 | Doc | Purpose |
 | --- | --- |

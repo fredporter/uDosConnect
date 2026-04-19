@@ -7,4 +7,4 @@ slot: 7
 
 # Decisions (`docs/contributor/decisions/`)
 
-Short **ADR-style** notes for this repo. Canonical family decisions remain on **[uDosDev](https://github.com/fredporter/uDosDev)**; record here only what affects **`uDosConnect`** layout and tooling.
+Short **ADR-style** notes for this repo. Canonical family decisions remain on **[uDosDev](https://github.com/fredporter/uDosDev)**; record here only what affects **`uDos`** layout and tooling.

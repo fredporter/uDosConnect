@@ -7,7 +7,7 @@ slot: 5
 
 # uDos A1 — Simplified repo structure (locked)
 
-**Principle:** **`uDosConnect` is the one home** for runtime, tools, modules, UI views, dev scaffold, docs, templates, seed content, courses, and shared scripts.
+**Principle:** **`uDos` is the one home** for runtime, tools, modules, UI views, dev scaffold, docs, templates, seed content, courses, and shared scripts.
 
 **Documentation policy (tags, OBF, grid):** [`documentation-policy.md`](documentation-policy.md). **VA1 style + commands:** [`docs/specs/va1-style-guide.md`](specs/va1-style-guide.md), [`docs/public/ucode-commands.md`](public/ucode-commands.md).
 
@@ -28,7 +28,7 @@ slot: 5
 
 **No Git submodules** in this layout — product code is plain folders. **Governance** and **dev-standard (beta-era filenames in `dev/workflow/`)** live under **`dev/`**; the **A1 documentation grid** lives under **`docs/`** per [`documentation-policy.md`](documentation-policy.md).
 
-**Versioning:** one repo version for `uDosConnect`; each tool under `tools/` may keep its own `go.mod` / `package.json`.
+**Versioning:** one repo version for `uDos`; each tool under `tools/` may keep its own `go.mod` / `package.json`.
 
 **Node:** **npm workspaces** at the repo root — one hoisted **`node_modules/`**; workspaces include **`core/`**, **`ui/`**, **`tools/sonic-express/`**, **`tools/usxd-express/`**, and **`modules/*`**; shared **`@udos/shared-types`** / **`@udos/shared-utils`**. Sonic-express runs **`npm ci`** at the root (students do not need to run npm by hand for the default path). **Future:** optional single binary distribution so Node is not required for end users.
 

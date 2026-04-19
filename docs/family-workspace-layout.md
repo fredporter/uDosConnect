@@ -1,19 +1,19 @@
 # Family workspace layout (planning spine)
 
-**Canonical “where on disk” doc** for **uDosConnect** — other pages should **link here** instead of repeating path prose.
+**Canonical “where on disk” doc** for **uDos** — other pages should **link here** instead of repeating path prose.
 
 ---
 
 ## Coding root (optional)
 
-**uDosConnect does not require a specific folder.** Clone anywhere; tools use paths **inside** the repo.
+**uDos does not require a specific folder.** Clone anywhere; tools use paths **inside** the repo.
 
 A single parent folder for local clones (e.g. **`~/Code/`**) is a common convention; the name is your choice.
 
 | Idea | macOS | Linux | Windows (typical) |
 | --- | --- | --- | --- |
 | Coding root (examples) | `/Users/you/Code/` | `/home/you/Code/` | `C:\Users\you\Code\` |
-| This monorepo | `…/Code/uDosConnect/` | `…/Code/uDosConnect/` | `…\Code\uDosConnect\` |
+| This monorepo | `…/Code/uDos/` | `…/Code/uDos/` | `…\Code\uDos\` |
 | Optional archive / retired trees | `…/Code/archive/` | `…/Code/archive/` | `…\Code\archive\` |
 
 On **Windows**, **Git Bash** and many tools expand `~/`; use a consistent logical tree even if the drive path differs.
@@ -22,11 +22,11 @@ On **Windows**, **Git Bash** and many tools expand `~/`; use a consistent logica
 
 ## Single active uDos repo
 
-**Primary checkout (illustrated):** **`~/Code/uDosConnect/`** — **`udo`** CLI in **`core/`**, **`tools/`**, **`modules/`**, **`dev/`**, **`templates/`**, **`seed/`**, **`docs/`**, **`courses/`**, **`scripts/`** — **monorepo** (no Git submodules).
+**Primary checkout (illustrated):** **`~/Code/uDos/`** — **`udo`** CLI in **`core/`**, **`tools/`**, **`modules/`**, **`dev/`**, **`templates/`**, **`seed/`**, **`docs/`**, **`courses/`**, **`scripts/`** — **monorepo** (no Git submodules).
 
-- **`…/uDosConnect/dev/`** — contributor workflow, tasks, imported snapshots  
-- **`…/uDosConnect/docs/`** — tagged documentation corpus  
-- **`…/uDosConnect/scripts/`** — automation and checks  
+- **`…/uDos/dev/`** — contributor workflow, tasks, imported snapshots  
+- **`…/uDos/docs/`** — tagged documentation corpus  
+- **`…/uDos/scripts/`** — automation and checks  
 
 **Do not** recreate old **`uDosDev/`** or **`uDosDocs/`** folder names at the root. Governance and documentation are **only** under **`dev/`** and **`docs/`**. Active backlog for the A1 milestone: [`dev/BACKLOG-A1-branch.md`](../dev/BACKLOG-A1-branch.md).
 
@@ -38,7 +38,7 @@ On **Windows**, **Git Bash** and many tools expand `~/`; use a consistent logica
 
 ```text
 ~/Code/                    ← optional coding root
-  uDosConnect/             ← this monorepo
+  uDos/             ← this monorepo
     core/
     dev/
     docs/

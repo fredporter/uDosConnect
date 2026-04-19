@@ -14,7 +14,7 @@ This document provides a clear overview of what's implemented vs. what's planned
 ### What You Can Use Right Now
 
 1. **Structural Update Complete**
-   - Repository renamed from uDosConnect to uDos
+   - Repository renamed from uDos to uDos
    - All references updated
    - Workspace files configured
    - All smoke tests passing (11/11)

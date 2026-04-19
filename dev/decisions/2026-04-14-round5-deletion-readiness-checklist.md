@@ -1,7 +1,7 @@
 # Round 5 Deletion Readiness Checklist
 
 - Date: 2026-04-14
-- Status: **phase closed** for uDosConnect monorepo (2026-04-15)
+- Status: **phase closed** for uDos monorepo (2026-04-15)
 - Scope: upstream **`uDosDev`** / **`uDosDocs`** on GitHub (archives), not nested submodules in this repo
 
 ## Checklist
@@ -15,7 +15,7 @@
 
 ## Current Verdict
 
-- **uDosConnect:** Do **not** reintroduce root **`uDosDev/`** or **`uDosDocs/`** folders; canonical trees are **`dev/`** and **`docs/`**.
+- **uDos:** Do **not** reintroduce root **`uDosDev/`** or **`uDosDocs/`** folders; canonical trees are **`dev/`** and **`docs/`**.
 - **GitHub:** Do **not** delete the **`uDosDev`** or **`uDosDocs`** **repositories** — they remain family archives and cherry-pick sources.
 
 ## Follow-up (non-blocking)

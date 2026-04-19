@@ -22,4 +22,4 @@ audience: devonly
 
 ## Notes
 
-- Transition `~/Code/uDosConnect/` to `~/code-vault/uDosConnect/` in a future dev round.
+- Transition `~/Code/uDos/` to `~/code-vault/uDos/` in a future dev round.

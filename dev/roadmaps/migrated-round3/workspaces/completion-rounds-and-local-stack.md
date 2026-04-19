@@ -1,6 +1,6 @@
 # Completion rounds — workspaces, proof surfaces, and local stack
 
-**Current planning spine:** **`~/Code/archive/uDosGo-v4-backup/`** (integration) and **`~/Code/uDosConnect/…`** (this repo and nested family trees) — [`../../docs/family-workspace-layout.md`](../../docs/family-workspace-layout.md). Historical text below still refers to **`~/Code/uDOS-family/`** and flat sibling names; map those peers under **`~/Code/uDosConnect/`** when following the new layout.
+**Current planning spine:** **`~/Code/archive/uDosGo-v4-backup/`** (integration) and **`~/Code/uDos/…`** (this repo and nested family trees) — [`../../docs/family-workspace-layout.md`](../../docs/family-workspace-layout.md). Historical text below still refers to **`~/Code/uDOS-family/`** and flat sibling names; map those peers under **`~/Code/uDos/`** when following the new layout.
 
 **Location:** `uDOS-dev/workspaces/archive/v2/completion-round-*.code-workspace` (multi-root Cursor / VS Code).  
 **How to open:** **File → Open Workspace from File…** and pick a file under **`archive/v2/`**.
@@ -40,7 +40,7 @@ Completion work should be **demonstrable**:
 | `Open-Shell-TUI.command` | Runs **`uDOS-shell`** `npm run go:run` (Bubble Tea TUI) when `node_modules` is installed — measurable TUI proof. |
 | `Run-v2-6-release-pass.command` | Runs **`uDOS-dev`** `scripts/run-v2-6-release-pass.sh` — full **family `v2.6`** spine verification (workspace + Core + ThinUI + host + roadmap status). |
 
-These assume **sibling checkouts** next to the control-plane repo (historically `~/Code/uDOS-family/uDOS-dev`, …). With the **uDosConnect** spine, place the same repo names under **`~/Code/uDosConnect/`** (or keep a flat `~/Code/` tree and adjust paths). See [`../../docs/family-workspace-layout.md`](../../docs/family-workspace-layout.md).
+These assume **sibling checkouts** next to the control-plane repo (historically `~/Code/uDOS-family/uDOS-dev`, …). With the **uDos** spine, place the same repo names under **`~/Code/uDos/`** (or keep a flat `~/Code/` tree and adjust paths). See [`../../docs/family-workspace-layout.md`](../../docs/family-workspace-layout.md).
 
 **Repos that are not meant for standalone execution** (library-only or scaffold) should ship a root **`requirements.txt`** (Python) or the repo’s canonical manifest (**`pyproject.toml`**, **`package.json`**) plus **installation / activation** notes in **`README.md`**. Example: **`uDOS-workflow`** is still a thin scaffold — see that repo’s README and `requirements.txt`.
 

@@ -1,11 +1,11 @@
-# 🌐 uDosConnect Localhost Services
+# 🌐 uDos Localhost Services
 
 ## Active Services
 
 ### 1. GUI Dashboard
 - **URL**: http://localhost:5174
 - **Port**: 5174
-- **Purpose**: Main graphical interface for uDosConnect
+- **Purpose**: Main graphical interface for uDos
 - **Features**: Surface management, command execution, theme switching
 - **Status**: ✅ Running (auto-restart on failure)
 

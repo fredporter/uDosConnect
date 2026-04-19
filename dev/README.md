@@ -1,10 +1,10 @@
-# uDosConnect `dev/` — contributor scaffold (`--devonly` templates)
+# uDos `dev/` — contributor scaffold (`--devonly` templates)
 
 **Principle:** This tree holds **templates and policy text**, not personal project state. Scratch work stays under **`local/`** (ignored). **VibeCLI** lives in **`vibe/`**; CDN deploy notes: [`cdn-cloud-setup.md`](cdn-cloud-setup.md).
 
 ## Start dev flow (daily)
 
-1. **One repo:** work only in **uDosConnect** — planning spine: [`docs/family-workspace-layout.md`](../docs/family-workspace-layout.md).
+1. **One repo:** work only in **uDos** — planning spine: [`docs/family-workspace-layout.md`](../docs/family-workspace-layout.md).
 2. **Live queue:** open **[`TASKS.md`](TASKS.md)** — section **Dev flow** + table **Alpha roadmap tracked** (semver lanes, Story, `usxd-go`, `uos`, image experiments, Ventoy, GUI service).
 3. **Experimental integration briefs:** [`experiments/README.md`](experiments/README.md) (module briefs + [`experiments/theme-integration/`](experiments/theme-integration/) harness plan) — linked from the Alpha table when a task ID exists.
 4. **Beta-era backlog (reference):** [`BACKLOG-A1-branch.md`](BACKLOG-A1-branch.md) — reconciled; not the primary execution list.

@@ -30,7 +30,7 @@ Layout rules and CLI examples below describe the **target** product surface for 
 | --- | --- | --- | --- | --- |
 | **User data** | `@user/*` | tasks, contacts, workflows, templates, feeds | Yes | Yes |
 | **System read-only** | `@system/*` | schemas, prompts, workflow templates, feed presets | No | N/A (system) |
-| **Code** | `uDosConnect/` (repo) | task engine, workflow executor, CLI, MCP server | No (dev only) | N/A (code) |
+| **Code** | `uDos/` (repo) | task engine, workflow executor, CLI, MCP server | No (dev only) | N/A (code) |
 | **Dependencies** | `.local/lib/`, `.local/bin/` | installed requirements, binaries | No | No |
 | **Runtime** | `.local/cache/`, `.local/indexes/`, `.local/state.db`, `.local/logs/` | compiled views, search indexes, vault state | No | No |
 | **Hidden archive** | `.compost/` (any folder) | soft-deleted items, version backups | Yes (restore) | No |
@@ -136,7 +136,7 @@ Folders starting with `.` are **hidden** — not visible in normal listings, exc
 | Workspace | Purpose | User editable |
 | --- | --- | --- |
 | `@system/` | System resources (read-only) | No |
-| `@dev/` | Symlink to uDosConnect/dev | No (dev only) |
+| `@dev/` | Symlink to uDos/dev | No (dev only) |
 | `@user/` | User-owned data | Yes |
 
 ### 3.4 System workspace structure
@@ -473,7 +473,7 @@ udo move @sandbox/my-project/* '#my-project/'
 | System prompts | `@system/prompts/` | No | N/A |
 | System workflow templates | `@system/workflow/` | No | N/A |
 | System templates (versioned) | `@system/templates/vN/` | No | N/A |
-| Task engine code | `uDosConnect/core/` | No (dev only) | N/A |
+| Task engine code | `uDos/core/` | No (dev only) | N/A |
 | Installed dependencies | `.local/lib/`, `.local/bin/` | No | No |
 | Runtime cache | `.local/cache/` | No | No |
 | Search indexes | `.local/indexes/` | No | No |
@@ -570,7 +570,7 @@ Existing vaults without `@`/`#` structure continue to work as Master Vault. No f
 
 **State DB maintenance (target):** Prefer **`udo state rebuild`**, **`udo state verify`**, **`udo state export`** — not yet implemented in VA1; see [public/ucode-commands.md](../public/ucode-commands.md).
 
-**`@dev/` (target):** May symlink to `../uDosConnect/dev` when a `uDosConnect` checkout sits adjacent to the vault root. Optional developer convenience; path is machine-specific. **VA1 bootstrap does not create `@dev/`** yet.
+**`@dev/` (target):** May symlink to `../uDos/dev` when a `uDos` checkout sits adjacent to the vault root. Optional developer convenience; path is machine-specific. **VA1 bootstrap does not create `@dev/`** yet.
 
 ### 13.3 `state.db` schema
 

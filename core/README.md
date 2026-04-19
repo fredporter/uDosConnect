@@ -4,7 +4,7 @@
 
 ## Install / run (development)
 
-This package is part of the **repo-root npm workspace**. From **`uDosConnect/`** (parent of `core/`):
+This package is part of the **repo-root npm workspace**. From **`uDos/`** (parent of `core/`):
 
 ```bash
 npm ci

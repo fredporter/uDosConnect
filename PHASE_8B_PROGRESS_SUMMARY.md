@@ -219,7 +219,7 @@ curl -X POST http://localhost:8080/api/login \
 
 **Phase 8B is 60% complete and making excellent progress!** 🚀
 
-The foundation for uDosConnect's user authentication and web server is now in place. With the core infrastructure working, we can now focus on completing the authentication system, adding role-based access control, and building out the content management API.
+The foundation for uDos's user authentication and web server is now in place. With the core infrastructure working, we can now focus on completing the authentication system, adding role-based access control, and building out the content management API.
 
 **Next Steps:**
 1. Complete JWT/session authentication

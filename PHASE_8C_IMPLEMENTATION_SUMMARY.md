@@ -1,7 +1,7 @@
 # Phase 8C Implementation Summary
 
 ## Overview
-This document summarizes the implementation of Phase 8C, which includes Hivemind integration and Contact Sync functionality for uDosConnect.
+This document summarizes the implementation of Phase 8C, which includes Hivemind integration and Contact Sync functionality for uDos.
 
 ## Completed Features
 

@@ -38,7 +38,7 @@ Use `~/.udos/` for runtime-owned material and keep repos clean.
 - `~/.udos/library/` for downloaded libraries, mirrored sources, and media packs
 - `~/.udos/sync/` for replication state, outgoing queues, and peer snapshots
 
-The **uDosConnect** repository root remains the **source checkout**, not the runtime data root.
+The **uDos** repository root remains the **source checkout**, not the runtime data root.
 
 ## Canonical root scripts (this repo)
 

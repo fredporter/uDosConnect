@@ -3,7 +3,7 @@
 Date: 2026-04-14  
 Mode: continuous
 
-**Restart 2026-04-15:** migration assessment resumed — **canonical** public/docs work lands in **`uDosConnect/docs/`**; the triage paths below refer to **upstream** [uDosDocs](https://github.com/fredporter/uDosDocs) folder names when cherry-picking into `docs/`. Nested **`uDosDocs/`** at the root of this repo is **retired**. Snapshot: [`2026-04-15-docs-migration-restart.md`](2026-04-15-docs-migration-restart.md).
+**Restart 2026-04-15:** migration assessment resumed — **canonical** public/docs work lands in **`uDos/docs/`**; the triage paths below refer to **upstream** [uDosDocs](https://github.com/fredporter/uDosDocs) folder names when cherry-picking into `docs/`. Nested **`uDosDocs/`** at the root of this repo is **retired**. Snapshot: [`2026-04-15-docs-migration-restart.md`](2026-04-15-docs-migration-restart.md).
 
 ## Scope
 

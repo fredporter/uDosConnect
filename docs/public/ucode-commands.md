@@ -119,7 +119,7 @@ Requires external **`figlet`** on `PATH` for large banners; boxed fallback if mi
 | `udo github push` | Commit and push local changes | `udo github push -m "update vault"` |
 | `udo github status` | Show repo sync/status summary | `udo github status` |
 | `udo github sync` | Pull then push | `udo github sync` |
-| `udo github fork [repo]` | Fork upstream repo via `gh` | `udo github fork udos/uDosConnect` |
+| `udo github fork [repo]` | Fork upstream repo via `gh` | `udo github fork udos/uDos` |
 | `udo github release <tag>` | Create GitHub release | `udo github release v1.2.0` |
 | `udo github configure --username --repo` | Save defaults in `~/.config/udos/github.yaml` | `udo github configure --username bro --repo bro/udos-vault` |
 

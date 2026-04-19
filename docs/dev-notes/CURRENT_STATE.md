@@ -4,7 +4,7 @@
 
 ### 1. USXD Surface System — 100% Complete
 
-**Surfaces:** 11 comprehensive test surfaces in `~/code-vault/uDosConnect/surfaces/`
+**Surfaces:** 11 comprehensive test surfaces in `~/code-vault/uDos/surfaces/`
 - **Basic:** minimal, demo-surface, teletext
 - **Applications:** dashboard, terminal, editor, monitor, game
 - **Advanced:** ascii-art, matrix, complex-grid
@@ -91,10 +91,10 @@ udo gui              # Start GUI with themes
 **Surface Development:**
 ```bash
 # Create surface
-vim ~/code-vault/uDosConnect/surfaces/new-surface.md
+vim ~/code-vault/uDos/surfaces/new-surface.md
 
 # Test in GUI
-UDOS_VAULT=/Users/fredbook/code-vault/uDosConnect \
+UDOS_VAULT=/Users/fredbook/code-vault/uDos \
 UDOS_VENDOR=/Users/fredbook/code-vault/vendor \
 udo gui
 
@@ -145,7 +145,7 @@ done
 
 ### New Files
 - `~/code-vault/vendor/themes/retro/` — Complete retro theme
-- `~/code-vault/uDosConnect/surfaces/*.md` — 11 test surfaces
+- `~/code-vault/uDos/surfaces/*.md` — 11 test surfaces
 - `docs/dev-notes/SURFACE_COLLECTION.md` — Surface documentation
 
 ---

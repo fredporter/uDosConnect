@@ -8,7 +8,7 @@ apple_color: Blue
 
 # Pre-v5 family notes (uDos **beta**)
 
-**Context:** Historical program labels (v4.x / “pre-v5”) appear in imported filenames; **working meaning = uDos beta**. Execution rounds **PRE5-R01–R07** are summarized here; full text lives under **`dev/workflow/imported/`** in **uDosConnect** only.
+**Context:** Historical program labels (v4.x / “pre-v5”) appear in imported filenames; **working meaning = uDos beta**. Execution rounds **PRE5-R01–R07** are summarized here; full text lives under **`dev/workflow/imported/`** in **uDos** only.
 
 ## Canonical documents (this repo)
 

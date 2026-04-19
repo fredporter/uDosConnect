@@ -2,12 +2,12 @@
 
 **Rolling status:** [`migration-progress-2026-04.md`](migration-progress-2026-04.md) (T012 / T013 checklist).
 
-## Canonical locations (uDosConnect monorepo)
+## Canonical locations (uDos monorepo)
 
 All governance, workflow, dev-only material belongs under **`dev/`**.  
 All product, public, student, and contributor documentation belongs under **`docs/`**.
 
-The old **Git submodule paths** **`uDosConnect/uDosDev/`** and **`uDosConnect/uDosDocs/`** are **removed** — do not recreate those folder names at the repo root. Any straggler content should be **merged into `dev/` or `docs/`** (or dropped if obsolete), then the empty legacy paths stay deleted.
+The old **Git submodule paths** **`uDos/uDosDev/`** and **`uDos/uDosDocs/`** are **removed** — do not recreate those folder names at the repo root. Any straggler content should be **merged into `dev/` or `docs/`** (or dropped if obsolete), then the empty legacy paths stay deleted.
 
 The historical **GitHub** repositories [fredporter/uDosDev](https://github.com/fredporter/uDosDev) and [fredporter/uDosDocs](https://github.com/fredporter/uDosDocs) are **upstream archives** only: use them to cherry-pick or diff when something is still missing from **`dev/`** / **`docs/`**. They are **not** second working trees you keep beside the monorepo as a permanent layout.
 
@@ -17,7 +17,7 @@ Migration work ran in parallel with A1 lanes. This file tracks **assessment** an
 
 ## Comparing against upstream (optional, throwaway)
 
-If you need a full tree to diff or `rsync` dry-runs, clone upstream into a **throwaway** directory (for example under `/tmp/`), compare against **`./dev/`** and **`./docs/`** from the **uDosConnect** repo root, then delete the temp clone. Do **not** keep permanent parallel checkouts that recreate the old **`uDosDev/`** / **`uDosDocs/`** submodule layout beside this monorepo.
+If you need a full tree to diff or `rsync` dry-runs, clone upstream into a **throwaway** directory (for example under `/tmp/`), compare against **`./dev/`** and **`./docs/`** from the **uDos** repo root, then delete the temp clone. Do **not** keep permanent parallel checkouts that recreate the old **`uDosDev/`** / **`uDosDocs/`** submodule layout beside this monorepo.
 
 Example dry-runs (from repo root, after cloning upstream to a temp path). **Always exclude** upstream **`.git/`** (and usually `.cursor/`, `.github/`, `.compost/`, `node_modules/`) or line counts are inflated:
 

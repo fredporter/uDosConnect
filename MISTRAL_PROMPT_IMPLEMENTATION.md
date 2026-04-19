@@ -1,7 +1,7 @@
 # Mistral Prompt Engineering Implementation
 
 ## Overview
-This document outlines the implementation of the `mistral-prompt-edit` action for uDosConnect's Dev Mode. The implementation allows developers to adjust Mistral's prompt settings, including context window, temperature, and system messages.
+This document outlines the implementation of the `mistral-prompt-edit` action for uDos's Dev Mode. The implementation allows developers to adjust Mistral's prompt settings, including context window, temperature, and system messages.
 
 ## Files Created
 
@@ -145,7 +145,7 @@ This document outlines the implementation of the `mistral-prompt-edit` action fo
 **Expected Output**:
 ```json
 {
-  "system_prompt": "You are a helpful assistant for uDosConnect.",
+  "system_prompt": "You are a helpful assistant for uDos.",
   "context_window": 8192,
   "temperature": 0.7,
   "max_tokens": 2048,
@@ -164,7 +164,7 @@ This document outlines the implementation of the `mistral-prompt-edit` action fo
 {
   "status": "success",
   "config": {
-    "system_prompt": "You are a helpful assistant for uDosConnect.",
+    "system_prompt": "You are a helpful assistant for uDos.",
     "context_window": 4096,
     "temperature": 0.7,
     "max_tokens": 2048,
@@ -199,7 +199,7 @@ The Mistral configuration is stored in `~/.udos/mistral_config.json` and include
 
 ```json
 {
-  "system_prompt": "You are a helpful assistant for uDosConnect.",
+  "system_prompt": "You are a helpful assistant for uDos.",
   "context_window": 4096,
   "temperature": 0.7,
   "max_tokens": 2048,
@@ -211,7 +211,7 @@ The Mistral configuration is stored in `~/.udos/mistral_config.json` and include
 
 ## Next Steps
 
-1. **Integrate with uDosConnect GUI**: Add the Mistral prompt editing functionality to the GUI.
+1. **Integrate with uDos GUI**: Add the Mistral prompt editing functionality to the GUI.
 2. **Add More DevOnly Actions**: Implement other DevOnly actions like rate limit tuning, custom format parsers, etc.
 3. **Test with Team**: Share with the team for feedback and testing.
 
@@ -223,10 +223,10 @@ The Mistral configuration is stored in `~/.udos/mistral_config.json` and include
 
 ## Conclusion
 
-The `mistral-prompt-edit` action is now fully functional and ready for integration with the uDosConnect GUI. The implementation provides a clear and intuitive way for developers to adjust Mistral's prompt settings, ensuring a smooth user experience.
+The `mistral-prompt-edit` action is now fully functional and ready for integration with the uDos GUI. The implementation provides a clear and intuitive way for developers to adjust Mistral's prompt settings, ensuring a smooth user experience.
 
 **Status**: ✅ Ready for Integration
-**Next Steps**: Integrate with uDosConnect GUI and test with the team.
+**Next Steps**: Integrate with uDos GUI and test with the team.
 
 ---
 

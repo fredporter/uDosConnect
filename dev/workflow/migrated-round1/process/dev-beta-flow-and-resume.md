@@ -1,9 +1,9 @@
-# Dev flow and resume — uDosConnect (beta governance, **alpha** product: A1 / A2)
+# Dev flow and resume — uDos (beta governance, **alpha** product: A1 / A2)
 
 **Companion:** [`dev-process-beta.md`](dev-process-beta.md)  
 **A1 branch backlog (merge before alpha A1 closes):** [`dev/BACKLOG-A1-branch.md`](../../../BACKLOG-A1-branch.md)
 
-**Alpha** = milestones **A1** and **A2**. **Beta** = historical program labels (v3–v5, imported snapshots). This doc is **beta**-era process text; execution targets **alpha**. **uDosConnect only** (`dev/` + `docs/`).
+**Alpha** = milestones **A1** and **A2**. **Beta** = historical program labels (v3–v5, imported snapshots). This doc is **beta**-era process text; execution targets **alpha**. **uDos only** (`dev/` + `docs/`).
 
 ---
 
@@ -11,7 +11,7 @@
 
 | Location | Role |
 | --- | --- |
-| **`…/uDosConnect/`** | Monorepo — `core/`, `core-rs/`, `tools/`, `modules/`, **`dev/`**, **`docs/`**, `courses/`, `scripts/`. **No submodules.** |
+| **`…/uDos/`** | Monorepo — `core/`, `core-rs/`, `tools/`, `modules/`, **`dev/`**, **`docs/`**, `courses/`, `scripts/`. **No submodules.** |
 | **`dev/`** | Governance, tasks, workflow, imported snapshots. **[`dev/TASKS.md`](../../../TASKS.md)** is canonical. |
 | **`docs/`** | Documentation corpus and specs. |
 
@@ -20,7 +20,7 @@
 ## 2. Default flow
 
 1. **Intent** — Trace work in **[`dev/TASKS.md`](../../../TASKS.md)** and, while open, **[`dev/BACKLOG-A1-branch.md`](../../../BACKLOG-A1-branch.md)**.
-2. **Implement** — Code and tests under **`uDosConnect`**; cite spec paths under `docs/` or `dev/` in PR descriptions.
+2. **Implement** — Code and tests under **`uDos`**; cite spec paths under `docs/` or `dev/` in PR descriptions.
 3. **Hygiene** — From repo root: `npm run build`, `npm test`, and any workspace scripts you touch.
 4. **Slotted markdown** — If you edit frontmatter-driven docs under **`dev/`** or **`docs/`**, run **`./scripts/validate-doc-frontmatter.sh`** when present.
 5. **Umbrella** — When changing courses or layout: **`./scripts/shakedown.sh`** (Round E / family checks in this repo).
@@ -41,7 +41,7 @@
 
 ## 4. Resume after a break
 
-1. **`git pull`** in **uDosConnect**. Do **not** run `git submodule update`.
+1. **`git pull`** in **uDos**. Do **not** run `git submodule update`.
 2. Read **`dev/TASKS.md`** and **`dev/BACKLOG-A1-branch.md`**.
 3. `npm ci` or `npm install`; `npm run build` when needed; **`npm run verify:a1`** for the A1 gate; **`./scripts/shakedown.sh`** when present.
 4. Run **`./scripts/validate-doc-frontmatter.sh`** if you edited slotted docs.

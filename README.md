@@ -3,7 +3,7 @@
 Public **uDos** family monorepo: **A1 runtime scaffold**, governance, documentation, shared helper scripts, and a read-only **v2 reference** tree.  
 **uDos** = **Universal Device Operating Surface** (capital **D** in new prose — see [`dev/workflow/migrated-round1/process/dev-process-beta.md`](dev/workflow/migrated-round1/process/dev-process-beta.md)).
 
-This repository was previously published under other names (including **`uDOS-surface`** and **`uDosConnect`**). **A1 (locked):** **`uDos` is the only uDos project tree** for implementation — see **[`docs/A1-structure-locked.md`](docs/A1-structure-locked.md)**. VA1 work lives in **`core/`** (`udo` CLI) and related packages under this monorepo.
+This repository was previously published under other names (including **`uDOS-surface`** and **`uDos`**). **A1 (locked):** **`uDos` is the only uDos project tree** for implementation — see **[`docs/A1-structure-locked.md`](docs/A1-structure-locked.md)**. VA1 work lives in **`core/`** (`udo` CLI) and related packages under this monorepo.
 
 ## Quickstart (students — one entry point)
 
@@ -62,7 +62,7 @@ When **`https://udos.sh/install`** is published, it can point at this repo’s `
 
 ## Planning spine (optional coding root)
 
-**Where to put clones on disk** — one recommended parent folder for all repos (often named **`Code`** under your home directory; **optional**). Mac / Linux / Windows examples and the usual **`uDosConnect`** + **`archive`** layout: **[`docs/family-workspace-layout.md`](docs/family-workspace-layout.md)**.
+**Where to put clones on disk** — one recommended parent folder for all repos (often named **`Code`** under your home directory; **optional**). Mac / Linux / Windows examples and the usual **`uDos`** + **`archive`** layout: **[`docs/family-workspace-layout.md`](docs/family-workspace-layout.md)**.
 
 ## Contents
 

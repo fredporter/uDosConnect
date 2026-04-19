@@ -2,7 +2,7 @@
 
 ## 🎯 Overview
 
-Phase 8 adds a **WordPress-like user portal and static site generator** to the uDosConnect master node, transforming it into a private intranet with user management, content publishing, and contact synchronization.
+Phase 8 adds a **WordPress-like user portal and static site generator** to the uDos master node, transforming it into a private intranet with user management, content publishing, and contact synchronization.
 
 ## 📅 Implementation Phases
 

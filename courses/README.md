@@ -26,7 +26,7 @@
 
 ## Validate
 
-From **uDosConnect** repo root:
+From **uDos** repo root:
 
 ```bash
 bash scripts/validate-courses.sh
@@ -34,4 +34,4 @@ bash scripts/validate-courses.sh
 
 ## Principle
 
-One **uDosConnect** checkout holds **`dev/`**, **`docs/`**, **`courses/`** (this tree), **`scripts/`**, **`modules/`** — versioned together (no Git submodules). Upstream **[uDosDev](https://github.com/fredporter/uDosDev)** / **[uDosDocs](https://github.com/fredporter/uDosDocs)** remain archives for cherry-picks; do **not** recreate **`uDosDev/`** / **`uDosDocs/`** folders at the repo root ([CONTRIBUTING.md](../CONTRIBUTING.md)).
+One **uDos** checkout holds **`dev/`**, **`docs/`**, **`courses/`** (this tree), **`scripts/`**, **`modules/`** — versioned together (no Git submodules). Upstream **[uDosDev](https://github.com/fredporter/uDosDev)** / **[uDosDocs](https://github.com/fredporter/uDosDocs)** remain archives for cherry-picks; do **not** recreate **`uDosDev/`** / **`uDosDocs/`** folders at the repo root ([CONTRIBUTING.md](../CONTRIBUTING.md)).

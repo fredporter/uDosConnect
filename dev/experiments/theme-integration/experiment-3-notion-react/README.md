@@ -1,6 +1,6 @@
 # Experiment 3 — notion-design-system (React + Tailwind)
 
-This experiment is a **local Vite app** (gitignored `node_modules/`, `dist/`). Do not commit generated project files; only this README and `notes.md` stay in uDosConnect.
+This experiment is a **local Vite app** (gitignored `node_modules/`, `dist/`). Do not commit generated project files; only this README and `notes.md` stay in uDos.
 
 ## One-time scaffold
 

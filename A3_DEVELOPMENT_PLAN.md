@@ -450,7 +450,7 @@ udo gui open
 
 ### For New Users:
 ```bash
-# Install uDosConnect
+# Install uDos
 npm install -g @udos/core
 
 # Launch GUI

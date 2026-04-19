@@ -8,7 +8,7 @@ apple_color: Blue
 
 # Public roadmap pointers
 
-**uDosConnect only** — long-form material lives under **`dev/workflow/imported/`** (snapshots with **beta**-era filenames). Slotted templates and dev-report conventions: see in-repo copies under **`dev/workflow/`** and **`docs/`** where mirrored.
+**uDos only** — long-form material lives under **`dev/workflow/imported/`** (snapshots with **beta**-era filenames). Slotted templates and dev-report conventions: see in-repo copies under **`dev/workflow/`** and **`docs/`** where mirrored.
 
 - **[Pre-v5 family notes](pre-v5-family-notes.md)** — short index + **PRE5-R01–R07** summary *(filename is historical; meaning = uDos **beta**).*
 - **[Beta roadmap index (`dev/`)](../../dev/workflow/family-pre-v5-index.md)** — directory of imported roadmap files

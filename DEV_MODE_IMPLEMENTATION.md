@@ -1,7 +1,7 @@
-# Dev Mode Implementation for uDosConnect
+# Dev Mode Implementation for uDos
 
 ## Overview
-This document outlines the implementation of Dev Mode for uDosConnect, which gates advanced features behind explicit commands and UI toggles.
+This document outlines the implementation of Dev Mode for uDos, which gates advanced features behind explicit commands and UI toggles.
 
 ## Features Implemented
 
@@ -81,12 +81,12 @@ The `dev_mode_config.json` file contains the following settings:
   },
   "mistral_chat": {
     "general_chat": {
-      "system_prompt": "You are a helpful assistant for uDosConnect.",
+      "system_prompt": "You are a helpful assistant for uDos.",
       "model": "mistral",
       "context_window": 4096
     },
     "dev_chat": {
-      "system_prompt": "You are a dev assistant for uDosConnect with access to advanced tools.",
+      "system_prompt": "You are a dev assistant for uDos with access to advanced tools.",
       "model": "mistral",
       "context_window": 8192
     }
@@ -94,7 +94,7 @@ The `dev_mode_config.json` file contains the following settings:
 }
 ```
 
-## Integration with uDosConnect
+## Integration with uDos
 
 ### GUI Toggle Button
 - **Location**: Settings → General → **Dev Mode Toggle**
@@ -119,7 +119,7 @@ The `dev_mode_config.json` file contains the following settings:
 
 ## Next Steps
 
-1. **Integrate with uDosConnect GUI**: Add the Dev Mode toggle button and conditional UI rendering.
+1. **Integrate with uDos GUI**: Add the Dev Mode toggle button and conditional UI rendering.
 2. **Add Password Protection**: Implement `--dev-pass` flag for additional security.
 3. **Log Dangerous Actions**: Log dev actions to a file for auditing.
 4. **Test with Team**: Share with the team for feedback and testing.

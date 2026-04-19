@@ -1,4 +1,4 @@
-# Root `scripts/` (uDosConnect)
+# Root `scripts/` (uDos)
 
 Shared bash helpers for Python env bootstrap, multi-repo checks, and `~/.udos` path conventions used across the family workspace.
 
@@ -12,7 +12,7 @@ Run from the **repository root** (parent of this folder), for example:
 
 **Courses:** `./scripts/validate-courses.sh` — ensures each `courses/[0-9][0-9]-*/` folder has a `README.md`.
 
-**Workspace drift guard:** `./scripts/check-workspace-drift.sh` — verifies npm workspace resolution and validates `uDosConnect.code-workspace` required folders and path sanity (no machine-specific absolute paths).
+**Workspace drift guard:** `./scripts/check-workspace-drift.sh` — verifies npm workspace resolution and validates `uDos.code-workspace` required folders and path sanity (no machine-specific absolute paths).
 
 **Markdownify runtime bootstrap:** `./scripts/bootstrap-markdownify-runtime.sh` — creates `vendor/markdownify-mcp/.venv` with a pinned upstream MarkItDown build (`Python >=3.10`, prefers `python3.11`) and verifies CLI availability.
 

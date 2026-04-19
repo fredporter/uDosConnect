@@ -3,7 +3,7 @@
 ## ✅ What's Working
 
 ### 1. Structural Update Complete
-- ✅ Repository renamed from uDosConnect to uDos
+- ✅ Repository renamed from uDos to uDos
 - ✅ All references updated (package.json, README.md, workspace)
 - ✅ All smoke tests passing (11/11 - except vendor theme issue)
 - ✅ TypeScript compilation successful
@@ -219,7 +219,7 @@ cat CURRENT_STATUS_SUMMARY.md
 ## Summary
 
 ### ✅ Achievements
-1. **Structural Update:** uDosConnect → uDos complete
+1. **Structural Update:** uDos → uDos complete
 2. **Feed Engine:** Production-ready implementation
 3. **Development Approach:** Round-based execution established
 4. **Round 1:** Infrastructure complete, 25% progress

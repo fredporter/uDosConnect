@@ -1,6 +1,6 @@
 # DSC2 vs DeepSeek-V3 Routing Guide
 
-This document explains how uDosConnect routes requests between DSC2 (DeepSeek-Coder-V2) and DeepSeek-V3.
+This document explains how uDos routes requests between DSC2 (DeepSeek-Coder-V2) and DeepSeek-V3.
 
 ## 🎯 Routing Rules
 

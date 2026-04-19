@@ -1,6 +1,6 @@
 # Upstream uDosDocs (GitHub) → `docs/` migration map (Round 0)
 
-**Canonical in uDosConnect:** **`docs/`** — not a root-level `uDosDocs/` folder. The **`uDosDocs/…`** prefixes below mean paths in the **[fredporter/uDosDocs](https://github.com/fredporter/uDosDocs)** repository when merging **into** this monorepo.
+**Canonical in uDos:** **`docs/`** — not a root-level `uDosDocs/` folder. The **`uDosDocs/…`** prefixes below mean paths in the **[fredporter/uDosDocs](https://github.com/fredporter/uDosDocs)** repository when merging **into** this monorepo.
 
 ## Must-Keep (migrate into active tree)
 

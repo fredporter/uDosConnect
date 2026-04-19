@@ -264,7 +264,7 @@ udo wp export --dry-run            # Preview only
 
 ### For New Users:
 ```bash
-# Install uDosConnect
+# Install uDos
 npm install -g @udos/core
 
 # Setup WordPress connection
@@ -440,7 +440,7 @@ udo wp --help     # See new commands
 
 ## 🎯 Final Words
 
-> "WordPress Round 1 represents a significant milestone in uDosConnect's evolution. What began as a vision for seamless WordPress integration has become a production-ready system that empowers users with powerful content management capabilities while maintaining the simplicity and reliability that define uDos tools."
+> "WordPress Round 1 represents a significant milestone in uDos's evolution. What began as a vision for seamless WordPress integration has become a production-ready system that empowers users with powerful content management capabilities while maintaining the simplicity and reliability that define uDos tools."
 
 > "This achievement stands as a testament to what can be accomplished through systematic planning, modular architecture, comprehensive testing, and unwavering attention to quality. Round 1 delivers not just features, but a foundation for future innovation."
 
@@ -487,4 +487,4 @@ udo wp --help     # See new commands
 ---
 
 > "WordPress Round 1 - Mission Accomplished! 🎉"
-> — uDosConnect Team
+> — uDos Team
