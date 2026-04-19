@@ -216,7 +216,47 @@ async function createServer() {
     return res.status(401).json({ error: 'Unauthorized' });
   };
 
-  // Get current user
+  // Role-based access control middleware
+  const requireRole = (requiredRole: string | string[]) => {
+    return async (req: any, res: any, next: any) => {
+      // First authenticate
+      const authHeader = req.headers.authorization;
+      
+      if (!authHeader) {
+        return res.status(401).json({ error: 'Unauthorized' });
+      }
+
+      const token = authHeader.split(' ')[1];
+      const user = userDb.verifyToken(token);
+      
+      if (!user) {
+        return res.status(401).json({ error: 'Unauthorized' });
+      }
+
+      // Check role
+      const userWithRole = await userDb.findUserById(user.userId);
+      
+      if (!userWithRole) {
+        return res.status(401).json({ error: 'Unauthorized' });
+      }
+
+      // Convert to array for easier checking
+      const requiredRoles = Array.isArray(requiredRole) ? requiredRole : [requiredRole];
+      
+      if (!requiredRoles.includes(userWithRole.role)) {
+        return res.status(403).json({ 
+          error: 'Forbidden',
+          message: `Requires one of: ${requiredRoles.join(', ')}`
+        });
+      }
+
+      // Attach full user data to request
+      req.user = userWithRole;
+      return next();
+    };
+  };
+
+  // Get current user (requires authentication)
   app.get('/api/user', authenticateJWT, (req: any, res) => {
     res.json({ 
       user: req.user,
@@ -224,10 +264,18 @@ async function createServer() {
     });
   });
 
-  // Protected route example
-  app.get('/api/protected', authenticateJWT, (req: any, res) => {
+  // Admin-only route example
+  app.get('/api/admin', requireRole('admin'), (req: any, res) => {
     res.json({
-      message: 'This is a protected route',
+      message: 'Admin dashboard',
+      user: req.user
+    });
+  });
+
+  // Editor or admin route example
+  app.get('/api/editor', requireRole(['editor', 'admin']), (req: any, res) => {
+    res.json({
+      message: 'Editor dashboard',
       user: req.user
     });
   });
@@ -265,8 +313,9 @@ async function createServer() {
     console.log(chalk.dim(`  • GET  /api/status - Server status`));
     console.log(chalk.dim(`  • POST /api/login - User login (returns JWT)`));
     console.log(chalk.dim(`  • POST /api/users - Create user`));
-    console.log(chalk.dim(`  • GET  /api/user - Current user (JWT protected)`));
-    console.log(chalk.dim(`  • GET  /api/protected - Protected route example`));
+    console.log(chalk.dim(`  • GET  /api/user - Current user (JWT required)`));
+    console.log(chalk.dim(`  • GET  /api/admin - Admin dashboard (admin only)`));
+    console.log(chalk.dim(`  • GET  /api/editor - Editor dashboard (editor/admin)`));
     console.log(chalk.dim(`  • GET  /* - Static file serving`));
   });
 
