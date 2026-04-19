@@ -280,6 +280,109 @@ async function createServer() {
     });
   });
 
+  // Content Management API - Admin only
+  app.get('/api/content', requireRole('admin'), async (req: any, res) => {
+    try {
+      // In a real implementation, this would query the content from the vault
+      // For now, return a placeholder response
+      res.json({
+        success: true,
+        content: [],
+        message: 'Content management API placeholder'
+      });
+    } catch (error: unknown) {
+      console.error(chalk.red('❌ Content API error:'), error instanceof Error ? error.message : String(error));
+      res.status(500).json({ error: 'Content API failed' });
+    }
+  });
+
+  // Get specific content item
+  app.get('/api/content/:id', requireRole(['editor', 'admin']), async (req: any, res) => {
+    try {
+      const contentId = req.params.id;
+      
+      // Placeholder - in real implementation, this would fetch from vault
+      res.json({
+        success: true,
+        content: {
+          id: contentId,
+          title: 'Sample Content',
+          status: 'published',
+          created_at: new Date().toISOString()
+        }
+      });
+    } catch (error: unknown) {
+      console.error(chalk.red('❌ Content fetch error:'), error instanceof Error ? error.message : String(error));
+      res.status(500).json({ error: 'Failed to fetch content' });
+    }
+  });
+
+  // Create new content (placeholder)
+  app.post('/api/content', requireRole(['editor', 'admin']), async (req: any, res) => {
+    try {
+      const { title, content, status = 'draft' } = req.body;
+      
+      if (!title || !content) {
+        return res.status(400).json({ error: 'Title and content are required' });
+      }
+
+      // Placeholder - in real implementation, this would save to vault
+      const newContentId = Math.random().toString(36).substring(2, 10);
+      
+      res.status(201).json({
+        success: true,
+        content: {
+          id: newContentId,
+          title,
+          content,
+          status,
+          created_at: new Date().toISOString(),
+          created_by: req.user.id
+        }
+      });
+    } catch (error: unknown) {
+      console.error(chalk.red('❌ Content creation error:'), error instanceof Error ? error.message : String(error));
+      res.status(500).json({ error: 'Content creation failed' });
+    }
+  });
+
+  // Update content (placeholder)
+  app.put('/api/content/:id', requireRole(['editor', 'admin']), async (req: any, res) => {
+    try {
+      const contentId = req.params.id;
+      const updates = req.body;
+      
+      // Placeholder - in real implementation, this would update vault content
+      res.json({
+        success: true,
+        content: {
+          id: contentId,
+          ...updates,
+          updated_at: new Date().toISOString()
+        }
+      });
+    } catch (error: unknown) {
+      console.error(chalk.red('❌ Content update error:'), error instanceof Error ? error.message : String(error));
+      res.status(500).json({ error: 'Content update failed' });
+    }
+  });
+
+  // Delete content (admin only)
+  app.delete('/api/content/:id', requireRole('admin'), async (req: any, res) => {
+    try {
+      const contentId = req.params.id;
+      
+      // Placeholder - in real implementation, this would delete from vault
+      res.json({
+        success: true,
+        message: `Content ${contentId} deleted`
+      });
+    } catch (error: unknown) {
+      console.error(chalk.red('❌ Content deletion error:'), error instanceof Error ? error.message : String(error));
+      res.status(500).json({ error: 'Content deletion failed' });
+    }
+  });
+
   // Basic API routes
   app.get('/api/status', (req, res) => {
     res.json({
@@ -316,6 +419,11 @@ async function createServer() {
     console.log(chalk.dim(`  • GET  /api/user - Current user (JWT required)`));
     console.log(chalk.dim(`  • GET  /api/admin - Admin dashboard (admin only)`));
     console.log(chalk.dim(`  • GET  /api/editor - Editor dashboard (editor/admin)`));
+    console.log(chalk.dim(`  • GET  /api/content - List all content (admin)`));
+    console.log(chalk.dim(`  • GET  /api/content/:id - Get content (editor/admin)`));
+    console.log(chalk.dim(`  • POST /api/content - Create content (editor/admin)`));
+    console.log(chalk.dim(`  • PUT  /api/content/:id - Update content (editor/admin)`));
+    console.log(chalk.dim(`  • DELETE /api/content/:id - Delete content (admin)`));
     console.log(chalk.dim(`  • GET  /* - Static file serving`));
   });
 
