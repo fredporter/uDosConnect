@@ -13,7 +13,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 
 const repoRoot = process.cwd();
-const workspacePath = path.join(repoRoot, "uDosConnect.code-workspace");
+const workspacePath = path.join(repoRoot, "uDos.code-workspace");
 const requiredFolders = [
   ".",
   "core",
