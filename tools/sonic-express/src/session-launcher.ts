@@ -3,7 +3,7 @@
  * Manages the session, including startup, health checks, and self-healing.
  */
 
-import { Installer } from './installer';
+import { Installer } from './installer.js';
 import { exec } from 'child_process';
 import { promisify } from 'util';
 

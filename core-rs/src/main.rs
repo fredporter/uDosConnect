@@ -7,10 +7,13 @@ mod obf;
 mod orchestrator;
 mod rexpaint;
 mod server;
+mod swarm;
 mod teletext;
 mod ucode;
 mod usxd;
 mod vault;
+mod background;
+mod learning;
 
 use anyhow::Result;
 use clap::{Parser, Subcommand, ValueEnum};

@@ -2,7 +2,7 @@
  * Entry point for the Webhook Helper server.
  */
 
-import { WebhookHelper } from './webhook-helper';
+import { WebhookHelper } from './webhook-helper.js';
 
 // Initialize and start the webhook helper
 const port = process.env.PORT ? parseInt(process.env.PORT) : 3000;

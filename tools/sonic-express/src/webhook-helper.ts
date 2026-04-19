@@ -45,7 +45,8 @@ class WebhookHelper {
   private verifyWebhook(req: Request, res: Response, next: Function): void {
     const signature = req.headers['x-webhook-signature'] as string;
     if (signature !== this.webhookSecret) {
-      return res.status(403).json({ error: 'Invalid webhook signature' });
+      res.status(403).json({ error: 'Invalid webhook signature' });
+      return;
     }
     next();
   }

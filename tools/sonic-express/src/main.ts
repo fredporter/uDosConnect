@@ -2,8 +2,9 @@
  * Main entry point for the uDos Webhook Helper Installer and Session Launcher
  */
 
-import { Installer } from './installer';
-import { SessionLauncher } from './session-launcher';
+import { Installer } from './installer.js';
+import { SessionLauncher } from './session-launcher.js';
+import { InitLauncher } from './init-launcher.js';
 
 async function main() {
   try {

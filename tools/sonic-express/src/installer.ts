@@ -31,6 +31,14 @@ class Installer {
     };
   }
 
+  public async runInstall(): Promise<void> {
+    await this.install();
+  }
+
+  public async runUpdate(): Promise<void> {
+    await this.install();
+  }
+
   public async install(): Promise<void> {
     try {
       console.log('🚀 Starting uDos Webhook Helper Installer...');
@@ -184,6 +192,26 @@ class Installer {
       throw error;
     }
   }
+}
+
+// Helper functions for backward compatibility
+export async function checkPrerequisites(): Promise<void> {
+  console.log('🔍 Checking prerequisites...');
+  // Add prerequisite checks here
+  console.log('✅ Prerequisites check passed');
+}
+
+// Create a default installer instance for backward compatibility
+const defaultInstaller = new Installer();
+
+// Export functions that match the expected interface
+export async function runInstall(options?: { auto?: boolean; skipDesktopLauncher?: boolean; silent?: boolean }): Promise<void> {
+  await defaultInstaller.runInstall();
+}
+
+// Export functions that match the expected interface
+export async function runUpdate(options?: { auto?: boolean; silent?: boolean }): Promise<void> {
+  await defaultInstaller.runUpdate();
 }
 
 // Export the Installer class

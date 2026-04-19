@@ -26,6 +26,16 @@ const connectionStatusColor = computed(() => {
   }
 });
 
+// Post status class helper
+function statusClass(status: string) {
+  switch (status) {
+    case 'published': return 'bg-green-600';
+    case 'draft': return 'bg-yellow-600';
+    case 'private': return 'bg-gray-600';
+    default: return 'bg-gray-600';
+  }
+}
+
 // WordPress connection state
 const connectionStatus = ref<'disconnected' | 'connecting' | 'connected' | 'error'>('disconnected');
 const wpUrl = ref('');
@@ -345,14 +355,7 @@ onMounted(() => {
           <div class="flex items-center space-x-2">
             <span class="text-gray-400">{{ post.id }}</span>
             <span class="text-white">{{ post.title }}</span>
-            <span 
-              class="text-xs px-2 py-1 rounded" 
-              :class="{
-                'bg-green-600': post.status === 'published',
-                'bg-yellow-600': post.status === 'draft',
-                'bg-gray-600': post.status === 'private'
-              }
-            >
+            <span class="text-xs px-2 py-1 rounded" :class="statusClass(post.status)">
               {{ post.status }}
             </span>
           </div>
@@ -375,14 +378,7 @@ onMounted(() => {
         >
           <div class="flex items-center space-x-3">
             <span class="text-gray-400 text-sm">{{ sync.date }}</span>
-            <span 
-              class="text-xs px-2 py-1 rounded" 
-              :class="{
-                'bg-green-600': sync.status === 'success',
-                'bg-yellow-600': sync.status === 'running'
-                'bg-red-600': sync.status === 'error'
-              }
-            >
+            <span class="text-xs px-2 py-1 rounded bg-gray-600">
               {{ sync.status }}
             </span>
             <span class="text-white text-sm">{{ sync.items }} items in {{ sync.duration }}</span>
@@ -464,7 +460,7 @@ onMounted(() => {
     :class="{
       'border-green-500': notificationType === 'success',
       'border-red-500': notificationType === 'error',
-      'border-blue-500': notificationType === 'info'
+      'border-blue-500': notificationType === 'info',
     }"
   >
     <div class="flex items-center justify-between mb-2">
@@ -482,7 +478,7 @@ onMounted(() => {
     <p class="text-sm" :class="{
       'text-green-300': notificationType === 'success',
       'text-red-300': notificationType === 'error',
-      'text-blue-300': notificationType === 'info'
+      'text-blue-300': notificationType === 'info',
     }">{{ notificationMessage }}</p>
     <div v-if="isLoading" class="mt-2 flex items-center space-x-2">
       <div class="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>

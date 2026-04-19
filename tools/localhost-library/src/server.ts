@@ -83,6 +83,14 @@ async function createServer() {
 
   const app = express();
 
+  // Initialize Hivemind Manager
+  const hivemindManager = new (await import('./hivemind.js')).HivemindManager(config);
+
+  // Initialize Contact Manager
+  const contactManager = new (await import('./contacts.js')).ContactManager(config, config.dbPath);
+  await contactManager.initialize();
+  await contactManager.seedDemoContacts();
+
   // Middleware
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
@@ -388,8 +396,240 @@ async function createServer() {
     res.json({
       server: 'localhost-library',
       version: '1.0.0',
-      features: ['static_serving', 'health_check', 'authentication']
+      features: ['static_serving', 'health_check', 'authentication', 'hivemind', 'contacts']
     });
+  });
+
+  // Hivemind API endpoints
+  app.get('/api/hivemind/status', async (req, res) => {
+    try {
+      const status = hivemindManager.getStatus();
+      res.json({
+        success: true,
+        ...status
+      });
+    } catch (error: unknown) {
+      console.error(chalk.red('❌ Hivemind status error:'), error instanceof Error ? error.message : String(error));
+      res.status(500).json({ error: 'Failed to get Hivemind status' });
+    }
+  });
+
+  app.get('/api/hivemind/rankings', async (req, res) => {
+    try {
+      const rankings = hivemindManager.getProviderRankings();
+      res.json({
+        success: true,
+        rankings
+      });
+    } catch (error: unknown) {
+      console.error(chalk.red('❌ Hivemind rankings error:'), error instanceof Error ? error.message : String(error));
+      res.status(500).json({ error: 'Failed to get Hivemind rankings' });
+    }
+  });
+
+  app.get('/api/hivemind/metrics', async (req, res) => {
+    try {
+      const metrics = hivemindManager.getMetrics();
+      res.json({
+        success: true,
+        metrics
+      });
+    } catch (error: unknown) {
+      console.error(chalk.red('❌ Hivemind metrics error:'), error instanceof Error ? error.message : String(error));
+      res.status(500).json({ error: 'Failed to get Hivemind metrics' });
+    }
+  });
+
+  app.post('/api/hivemind/query', requireRole(['editor', 'admin']), async (req: any, res) => {
+    try {
+      const { provider, prompt } = req.body;
+      
+      if (!prompt) {
+        return res.status(400).json({ error: 'Prompt is required' });
+      }
+
+      let selectedProvider = provider;
+      if (!selectedProvider) {
+        selectedProvider = await hivemindManager.autoSelectProvider();
+      }
+
+      const result = await hivemindManager.queryProvider(selectedProvider, prompt);
+      
+      res.json({
+        success: true,
+        result
+      });
+    } catch (error: unknown) {
+      console.error(chalk.red('❌ Hivemind query error:'), error instanceof Error ? error.message : String(error));
+      res.status(500).json({ error: 'Hivemind query failed' });
+    }
+  });
+
+  // Contact API endpoints
+  app.get('/api/contacts', requireRole(['editor', 'admin']), async (req: any, res) => {
+    try {
+      const contacts = await contactManager.getAllContacts();
+      res.json({
+        success: true,
+        contacts
+      });
+    } catch (error: unknown) {
+      console.error(chalk.red('❌ Contacts list error:'), error instanceof Error ? error.message : String(error));
+      res.status(500).json({ error: 'Failed to get contacts' });
+    }
+  });
+
+  app.get('/api/contacts/:id', requireRole(['editor', 'admin']), async (req: any, res) => {
+    try {
+      const contact = await contactManager.getContact(req.params.id);
+      if (!contact) {
+        return res.status(404).json({ error: 'Contact not found' });
+      }
+      res.json({
+        success: true,
+        contact
+      });
+    } catch (error: unknown) {
+      console.error(chalk.red('❌ Contact fetch error:'), error instanceof Error ? error.message : String(error));
+      res.status(500).json({ error: 'Failed to get contact' });
+    }
+  });
+
+  app.post('/api/contacts', requireRole(['editor', 'admin']), async (req: any, res) => {
+    try {
+      const { name, email, phone, type, tags, notes } = req.body;
+      
+      if (!name) {
+        return res.status(400).json({ error: 'Name is required' });
+      }
+
+      const contact = await contactManager.createContact({
+        name,
+        email,
+        phone,
+        type: type || 'other',
+        tags: tags || [],
+        notes
+      });
+
+      res.status(201).json({
+        success: true,
+        contact
+      });
+    } catch (error: unknown) {
+      console.error(chalk.red('❌ Contact creation error:'), error instanceof Error ? error.message : String(error));
+      res.status(500).json({ error: 'Failed to create contact' });
+    }
+  });
+
+  app.put('/api/contacts/:id', requireRole(['editor', 'admin']), async (req: any, res) => {
+    try {
+      const updates = req.body;
+      const contact = await contactManager.updateContact(req.params.id, updates);
+      
+      if (!contact) {
+        return res.status(404).json({ error: 'Contact not found' });
+      }
+
+      res.json({
+        success: true,
+        contact
+      });
+    } catch (error: unknown) {
+      console.error(chalk.red('❌ Contact update error:'), error instanceof Error ? error.message : String(error));
+      res.status(500).json({ error: 'Failed to update contact' });
+    }
+  });
+
+  app.delete('/api/contacts/:id', requireRole(['editor', 'admin']), async (req: any, res) => {
+    try {
+      const success = await contactManager.deleteContact(req.params.id);
+      
+      if (!success) {
+        return res.status(404).json({ error: 'Contact not found' });
+      }
+
+      res.json({
+        success: true,
+        message: 'Contact deleted'
+      });
+    } catch (error: unknown) {
+      console.error(chalk.red('❌ Contact deletion error:'), error instanceof Error ? error.message : String(error));
+      res.status(500).json({ error: 'Failed to delete contact' });
+    }
+  });
+
+  app.get('/api/contacts/search', requireRole(['editor', 'admin']), async (req: any, res) => {
+    try {
+      const query = req.query.q as string;
+      
+      if (!query) {
+        return res.status(400).json({ error: 'Search query required' });
+      }
+
+      const contacts = await contactManager.searchContacts(query);
+      res.json({
+        success: true,
+        contacts
+      });
+    } catch (error: unknown) {
+      console.error(chalk.red('❌ Contact search error:'), error instanceof Error ? error.message : String(error));
+      res.status(500).json({ error: 'Failed to search contacts' });
+    }
+  });
+
+  app.post('/api/contacts/sync', requireRole(['editor', 'admin']), async (req: any, res) => {
+    try {
+      const result = await contactManager.syncContacts();
+      res.json({
+        success: true,
+        result
+      });
+    } catch (error: unknown) {
+      console.error(chalk.red('❌ Contact sync error:'), error instanceof Error ? error.message : String(error));
+      res.status(500).json({ error: 'Failed to sync contacts' });
+    }
+  });
+
+  app.get('/api/contacts/stats', requireRole(['editor', 'admin']), async (req: any, res) => {
+    try {
+      const stats = contactManager.getStats();
+      res.json({
+        success: true,
+        stats
+      });
+    } catch (error: unknown) {
+      console.error(chalk.red('❌ Contact stats error:'), error instanceof Error ? error.message : String(error));
+      res.status(500).json({ error: 'Failed to get contact stats' });
+    }
+  });
+
+  app.get('/api/contacts/recent', requireRole(['editor', 'admin']), async (req: any, res) => {
+    try {
+      const limit = parseInt(req.query.limit as string) || 10;
+      const contacts = await contactManager.getRecentContacts(limit);
+      res.json({
+        success: true,
+        contacts
+      });
+    } catch (error: unknown) {
+      console.error(chalk.red('❌ Recent contacts error:'), error instanceof Error ? error.message : String(error));
+      res.status(500).json({ error: 'Failed to get recent contacts' });
+    }
+  });
+
+  app.get('/api/contacts/frequent', requireRole(['editor', 'admin']), async (req: any, res) => {
+    try {
+      const limit = parseInt(req.query.limit as string) || 10;
+      const contacts = await contactManager.getFrequentContacts(limit);
+      res.json({
+        success: true,
+        contacts
+      });
+    } catch (error: unknown) {
+      console.error(chalk.red('❌ Frequent contacts error:'), error instanceof Error ? error.message : String(error));
+      res.status(500).json({ error: 'Failed to get frequent contacts' });
+    }
   });
 
   // 404 handler
@@ -424,9 +664,26 @@ async function createServer() {
     console.log(chalk.dim(`  • POST /api/content - Create content (editor/admin)`));
     console.log(chalk.dim(`  • PUT  /api/content/:id - Update content (editor/admin)`));
     console.log(chalk.dim(`  • DELETE /api/content/:id - Delete content (admin)`));
+    console.log(chalk.dim(`  • GET  /api/hivemind/status - Hivemind status`));
+    console.log(chalk.dim(`  • GET  /api/hivemind/rankings - Provider rankings`));
+    console.log(chalk.dim(`  • GET  /api/hivemind/metrics - Hivemind metrics`));
+    console.log(chalk.dim(`  • POST /api/hivemind/query - Query Hivemind (editor/admin)`));
+    console.log(chalk.dim(`  • GET  /api/contacts - List all contacts (editor/admin)`));
+    console.log(chalk.dim(`  • GET  /api/contacts/:id - Get contact (editor/admin)`));
+    console.log(chalk.dim(`  • POST /api/contacts - Create contact (editor/admin)`));
+    console.log(chalk.dim(`  • PUT  /api/contacts/:id - Update contact (editor/admin)`));
+    console.log(chalk.dim(`  • DELETE /api/contacts/:id - Delete contact (editor/admin)`));
+    console.log(chalk.dim(`  • GET  /api/contacts/search - Search contacts (editor/admin)`));
+    console.log(chalk.dim(`  • POST /api/contacts/sync - Sync contacts (editor/admin)`));
+    console.log(chalk.dim(`  • GET  /api/contacts/stats - Contact statistics (editor/admin)`));
+    console.log(chalk.dim(`  • GET  /api/contacts/recent - Recent contacts (editor/admin)`));
+    console.log(chalk.dim(`  • GET  /api/contacts/frequent - Frequent contacts (editor/admin)`));
     console.log(chalk.dim(`  • GET  /admin - Admin dashboard (HTML)`));
     console.log(chalk.dim(`  • GET  /admin/api/users - List users (admin)`));
     console.log(chalk.dim(`  • GET  /admin/api/status - System status (admin)`));
+    console.log(chalk.dim(`  • GET  /admin/api/hivemind - Hivemind admin status`));
+    console.log(chalk.dim(`  • GET  /admin/api/hivemind/rankings - Hivemind rankings`));
+    console.log(chalk.dim(`  • GET  /admin/api/hivemind/metrics - Hivemind admin metrics`));
     console.log(chalk.dim(`  • GET  /* - Static file serving`));
   });
 
@@ -434,7 +691,7 @@ async function createServer() {
   // Import and call the setup function
   try {
     const { setupAdminRoutes } = await import('./admin.js');
-    setupAdminRoutes(app, userDb, config);
+    setupAdminRoutes(app, userDb, config, hivemindManager);
   } catch (error) {
     console.error(chalk.yellow('⚠️  Admin dashboard setup failed:'), error);
   }

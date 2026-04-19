@@ -1,6 +1,14 @@
 name: CI
 on: [push, pull_request]
 
+# Permissions required for this workflow
+permissions:
+  contents: read
+  pull-requests: read
+  actions: read
+  checks: write
+  statuses: write
+
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
@@ -31,7 +39,7 @@ jobs:
               workflow: "CI",
               status: "failed",
               timestamp: new Date().toISOString(),
-              message: "CI workflow failed. Auto-healing triggered.",
+              message: "CI workflow failed.",
               details: {
                 run_id: context.runId,
                 run_number: context.runNumber,

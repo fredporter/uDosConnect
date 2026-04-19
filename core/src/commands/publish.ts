@@ -27,7 +27,7 @@ interface PublishConfig {
 const DEFAULT_CONFIG: PublishConfig = {
   vaultPath: path.join(os.homedir(), 'vault'),
   outputPath: '/srv/udos/www',
-  templatePath: path.join(__dirname, '..', '..', 'templates'),
+  templatePath: path.join(process.cwd(), 'core', 'templates'),
   baseUrl: '/',
   watchMode: false,
   forceRebuild: false

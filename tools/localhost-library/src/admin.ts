@@ -8,7 +8,7 @@ import chalk from 'chalk';
 import { UserDatabase } from './db.js';
 
 // Admin dashboard routes
-function setupAdminRoutes(app: express.Application, userDb: UserDatabase, config: any) {
+function setupAdminRoutes(app: express.Application, userDb: UserDatabase, config: any, hivemindManager?: any) {
   
   // Admin dashboard - HTML page
   app.get('/admin', async (req, res) => {
@@ -89,6 +89,74 @@ function setupAdminRoutes(app: express.Application, userDb: UserDatabase, config
     } catch (error: unknown) {
       console.error(chalk.red('❌ Status error:'), error instanceof Error ? error.message : String(error));
       res.status(500).json({ error: 'Failed to get status' });
+    }
+  });
+
+  // Admin API - Hivemind status
+  app.get('/admin/api/hivemind', async (req, res) => {
+    try {
+      if (hivemindManager) {
+        const status = hivemindManager.getStatus();
+        res.json({
+          success: true,
+          hivemind: status
+        });
+      } else {
+        res.json({
+          success: true,
+          hivemind: {
+            status: 'not_configured',
+            providers: [],
+            active_provider: 'none',
+            metrics: {}
+          }
+        });
+      }
+    } catch (error: unknown) {
+      console.error(chalk.red('❌ Hivemind status error:'), error instanceof Error ? error.message : String(error));
+      res.status(500).json({ error: 'Failed to get Hivemind status' });
+    }
+  });
+
+  // Admin API - Hivemind provider rankings
+  app.get('/admin/api/hivemind/rankings', async (req, res) => {
+    try {
+      if (hivemindManager) {
+        const rankings = hivemindManager.getProviderRankings();
+        res.json({
+          success: true,
+          rankings
+        });
+      } else {
+        res.json({
+          success: true,
+          rankings: []
+        });
+      }
+    } catch (error: unknown) {
+      console.error(chalk.red('❌ Hivemind rankings error:'), error instanceof Error ? error.message : String(error));
+      res.status(500).json({ error: 'Failed to get Hivemind rankings' });
+    }
+  });
+
+  // Admin API - Hivemind metrics
+  app.get('/admin/api/hivemind/metrics', async (req, res) => {
+    try {
+      if (hivemindManager) {
+        const metrics = hivemindManager.getMetrics();
+        res.json({
+          success: true,
+          metrics
+        });
+      } else {
+        res.json({
+          success: true,
+          metrics: {}
+        });
+      }
+    } catch (error: unknown) {
+      console.error(chalk.red('❌ Hivemind metrics error:'), error instanceof Error ? error.message : String(error));
+      res.status(500).json({ error: 'Failed to get Hivemind metrics' });
     }
   });
 

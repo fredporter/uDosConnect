@@ -505,8 +505,16 @@ export async function main(argv: string[]): Promise<void> {
   // Register network commands
   registerNetworkCommands(program);
 
-  // Register publish commands
-  registerPublishCommands(program);
+  // Register publish commands (disabled - duplicate with publish command group above)
+  // registerPublishCommands(program);
+
+  // Register admin panel commands
+  const { registerAdminPanelCommands } = await import("./commands/admin-panel.js");
+  registerAdminPanelCommands(program);
+
+  // Register shakedown commands
+  const { registerShakedownCommands } = await import("./commands/shakedown.js");
+  registerShakedownCommands(program);
 
   const usxd = program.command("usxd").description("USXD surfaces (themes + USXD-Express preview)");
   usxd.command("list").description("List theme packs in templates/usxd/").action(async () => cmdUsxdList());

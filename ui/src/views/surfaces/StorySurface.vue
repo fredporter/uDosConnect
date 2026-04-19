@@ -508,8 +508,8 @@ export function markdownToHtml(markdown: string): string {
   html = html.replace(/^\* (.*$)/gm, '<li>$1</li>');
   html = html.replace(/^\- (.*$)/gm, '<li>$1</li>');
   html = html.replace(/^\d\. (.*$)/gm, '<li>$1</li>');
-  html = html.replace(/<li>(.*?)<\/li>/g, '<li>$1</li>');
-  html = html.replace(/((<li>.*<\/li>)+)/g, '<ul>$1</ul>');
+  // html = html.replace(/<li>(.*?)<\/li>/g, '<li>$1</li>');
+  // html = html.replace(/((<li>.*<\/li>)+)/g, '<ul>$1</ul>');
   
   return html;
 }
